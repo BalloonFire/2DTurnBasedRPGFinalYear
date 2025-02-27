@@ -1,5 +1,5 @@
 # 2DTurnBasedRPGFinalYear
- For greenwich final year showcase coding skills
+For greenwich final year showcase coding skills
 
 1. Work Distribution (Technical Focus)
 
@@ -66,10 +66,3 @@ Code Architecture: Use State Machines (for combat), ScriptableObjects (for data)
 Task Management: Trello/JIRA/Notion to track progress.
 Testing: Playtest each system before integration, use Unity Profiler for performance.
 Export and finalize builds
-
-3. Tools & Best Practices
-
-Source Control: GitHub/GitLab for version control (e.g., feature branches for each major system).
-Code Architecture: Use State Machines (for combat), ScriptableObjects (for data), and Singletons (for managers).
-Task Management: Trello/JIRA/Notion to track progress.
-Testing: Playtest each system before integration, use Unity Profiler for performance.

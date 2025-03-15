@@ -8,6 +8,10 @@ public class BattleHandler : MonoBehaviour
 
     public GameObject PlayerPanel;
 
+    public GameObject TurnPlayerUI;
+
+    public GameObject TurnEnemyUI;
+
     public EnemyController[] enemies;
     private int enemyIndex = -1;
 
@@ -29,10 +33,14 @@ public class BattleHandler : MonoBehaviour
         if (playerTurn)
         {
             PlayerPanel.SetActive(true);
+            TurnPlayerUI.SetActive(true);
+            TurnEnemyUI.SetActive(false);
         }
         else
         {
             PlayerPanel.SetActive(false);
+            TurnEnemyUI.SetActive(true);
+            TurnPlayerUI.SetActive(false);
             EnemyTurn();
         }
     }
@@ -40,16 +48,17 @@ public class BattleHandler : MonoBehaviour
     public void EnemyTurn()
     {
         enemyIndex++;
-        if (enemyIndex == enemies.Length)
+
+        if (enemyIndex >= enemies.Length) // Reset cycle correctly
         {
-            enemyIndex = 0;
+            enemyIndex = -1; // Reset before switching turns
             TogglePlayerTurn();
+            return;
         }
-        else
-        {
-            StartCoroutine(WaitForAttack(enemies[enemyIndex]));
-        }
+
+        StartCoroutine(WaitForAttack(enemies[enemyIndex]));
     }
+
 
     public void NextEnemy()
     {

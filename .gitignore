@@ -11,6 +11,9 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# But allow .asset files inside Library
+!Library/**/*.asset
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -72,3 +75,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 2DRPGBattle/Library/PackageCache/com.unity.burst@1.8.18/.Runtime/libburst-llvm-16.dylib
+/2DRPGBattle/Library

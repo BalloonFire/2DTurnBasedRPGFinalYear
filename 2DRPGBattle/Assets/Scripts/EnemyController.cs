@@ -58,6 +58,17 @@ public class EnemyController : MonoBehaviour
     public void getHit(int dmgTaken)
     {
         // Set animation to play based on states
+        if (health <= 0)
+        {
+            health = 0;
+            ani.SetBool("isDead", true); // Trigger death animation
+            ani.SetTrigger("hurt");
+            Debug.Log("NPC is dead!");
+
+            // Optionally disable player actions
+            this.enabled = false;
+            return;
+        }
         ani.SetTrigger("hurt");
         health -= dmgTaken;
         if (health < 0) health = 0;

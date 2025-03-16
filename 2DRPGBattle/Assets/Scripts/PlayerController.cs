@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonUp("Fire2"))
         {
-            //getHit(10);
+            //getHit(100);
         }
     }
 
@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
     {
         if (manaText != null)
             manaText.text = "Mana: " + currentMana + "/" + maxMana;
+
+        // Disable skill button if not enough mana
+        if (skillButton != null)
+            skillButton.interactable = currentMana > 0;
     }
 
     public void Attack(GameObject enemy)
@@ -137,19 +141,6 @@ public class PlayerController : MonoBehaviour
 
     public void getHit(int dmgTaken)
     {
-        // Set animation to play based on states
-        if (health <= 0)
-        {
-            health = 0;
-            ani.SetBool("isDead", true); // Trigger death animation
-            ani.SetTrigger("hurt");
-            Debug.Log("Player is dead!");
-
-            // Optionally disable player actions
-            this.enabled = false;
-            return;
-        }
-        ani.SetTrigger("hurt");
         health -= dmgTaken;
         if (health < 0) health = 0;
         // Calculate health percentage based on maxHealth
@@ -158,5 +149,16 @@ public class PlayerController : MonoBehaviour
         // Debugging
         Debug.Log($"Health: {health}/{maxHealth}, Health %: {healthPercentage * 100}%, New Width: {newWidth}");
         healthBar.rectTransform.sizeDelta = new Vector2(newWidth, healthBar.rectTransform.sizeDelta.y);
+        // Set animation to play based on states
+        if (health <= 0)
+        {
+            ani.SetBool("isDead", true); // Trigger death animation
+            ani.SetTrigger("hurt");
+            Debug.Log("Player is dead!");
+            FindObjectOfType<BattleHandler>().CheckGameOver(); // Check for gameover
+            return;
+        } else {
+            ani.SetTrigger("hurt");
+        }
     }
 }

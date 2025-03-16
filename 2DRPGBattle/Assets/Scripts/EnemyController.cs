@@ -12,8 +12,14 @@ public class EnemyController : MonoBehaviour
     public int maxDmg;
     public int critChance;
 
+    public int minDmg2;
+    public int maxDmg2;
+    public int critChance2;
+
     private PlayerController playerController;
     private Animator ani;
+
+    private bool useAttack1 = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,50 +32,71 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire2"))
         {
-            //Attack1();
+            //getHit(100);
         }
+    }
+
+    // Method to alternate between attacks
+    public void Attack()
+    {
+        if (useAttack1)
+        {
+            Attack1();
+        }
+        else
+        {
+            Attack2();
+        }
+
+        useAttack1 = !useAttack1; // Toggle attack flag
     }
 
     public void Attack1()
     {
-        ani.SetTrigger("attack1");
         int crit = Random.Range(0, 100);
+        int tempMinDmg = minDmg; // Store original damage values
+        int tempMaxDmg = maxDmg;
+
         if (crit <= critChance)
         {
-            Debug.Log("Crit");
-            float min = minDmg * 1.5f;
-            float max = maxDmg * 1.5f;
-            minDmg = Mathf.RoundToInt(min);
-            maxDmg = Mathf.RoundToInt(max);
+            Debug.Log("Crit!");
+            tempMinDmg = Mathf.RoundToInt(tempMinDmg * 1.5f);
+            tempMaxDmg = Mathf.RoundToInt(tempMaxDmg * 1.5f);
         }
-        int dmg = Random.Range(minDmg, maxDmg);
-        Debug.Log(dmg);
+
+        int dmg = Random.Range(tempMinDmg, tempMaxDmg);
+        Debug.Log($"Enemy Attack 1 Damage: {dmg}");
+
+        ani.SetTrigger("attack1");
 
         playerController.getHit(dmg);
     }
 
     public void Attack2()
     {
+        int crit = Random.Range(0, 100);
+        int tempMinDmg2 = minDmg2; // Store original damage values
+        int tempMaxDmg2 = maxDmg2;
+
+        if (crit <= critChance2)
+        {
+            Debug.Log("Crit!");
+            tempMinDmg2 = Mathf.RoundToInt(tempMinDmg2 * 1.5f);
+            tempMaxDmg2 = Mathf.RoundToInt(tempMaxDmg2 * 1.5f);
+        }
+
+        int dmg = Random.Range(tempMinDmg2, tempMaxDmg2);
+        Debug.Log($"Enemy Attack 2 Damage: {dmg}");
+
         ani.SetTrigger("attack2");
+
+        playerController.getHit(dmg);
     }
 
     public void getHit(int dmgTaken)
     {
-        // Set animation to play based on states
-        if (health <= 0)
-        {
-            health = 0;
-            ani.SetBool("isDead", true); // Trigger death animation
-            ani.SetTrigger("hurt");
-            Debug.Log("NPC is dead!");
-
-            // Optionally disable player actions
-            this.enabled = false;
-            return;
-        }
-        ani.SetTrigger("hurt");
         health -= dmgTaken;
         if (health < 0) health = 0;
         // Calculate health percentage based on maxHealth
@@ -78,5 +105,15 @@ public class EnemyController : MonoBehaviour
         // Debugging
         Debug.Log($"Health: {health}/{maxHealth}, Health %: {healthPercentage * 100}%, New Width: {newWidth}");
         healthBar.rectTransform.sizeDelta = new Vector2(newWidth, healthBar.rectTransform.sizeDelta.y);
+        // Set animation to play based on states
+        if (health <= 0)
+        {
+            ani.SetBool("isDead", true); // Trigger death animation
+            ani.SetTrigger("hurt");
+            Debug.Log("NPC is dead!");
+            return;
+        } else {
+            ani.SetTrigger("hurt");
+        }
     }
 }

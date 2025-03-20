@@ -157,8 +157,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player is dead!");
             FindObjectOfType<BattleHandler>().CheckGameOver(); // Check for gameover
             return;
-        } else {
+        }
+        else
+        {
             ani.SetTrigger("hurt");
         }
+    }
+
+    public void ResetStats()
+    {
+        Debug.Log("Resetting Player Stats...");
+        health = maxHealth;
+        currentMana = maxMana;
+        UpdateHealthUI();
+        UpdateManaUI();
+        ani.SetBool("isDead", false); // Ensure player is alive
+    }
+
+   
+
+    void UpdateHealthUI()
+    {
+        float healthPercentage = (float)health / maxHealth;
+        healthBar.rectTransform.sizeDelta = new Vector2(300f * healthPercentage, healthBar.rectTransform.sizeDelta.y);
     }
 }

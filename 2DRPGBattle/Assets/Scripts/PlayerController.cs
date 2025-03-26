@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int health;
     private int maxHealth;
     public Image healthBar;
+    public GameObject playerBar;
     public int minDmgAtk;
     public int maxDmgAtk;
     public int critChanceAtk;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public int currentMana;
 
     public TextMeshProUGUI manaText;
+    private bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +80,9 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(GameObject enemy)
     {
-        if (enemy == null) return;
+        if (enemy == null || isAttacking) return; // Prevent multiple attacks
+
+        isAttacking = true; // Lock attack to prevent duplicates
 
         Debug.Log("Current attackSelected: " + attackSelected);
 
@@ -89,39 +93,59 @@ public class PlayerController : MonoBehaviour
         // Determine attack type and values
         if (attackSelected == 0) // Basic Attack
         {
-            ani.SetTrigger("attack");
             attackType = "Basic Attack";
             minDamage = minDmgAtk;
             maxDamage = maxDmgAtk;
             critChance = critChanceAtk;
-            currentMana = Mathf.Min(currentMana + 1, maxMana); // Regenerate mana on Basic Attack
+            currentMana = Mathf.Min(currentMana + 1, maxMana);
             UpdateManaUI();
-            Debug.Log($"Mana Updated: {manaText.text}");
         }
         else if (attackSelected == 1) // Skill Attack
         {
             if (currentMana > 0)
             {
-                ani.SetTrigger("attack");
                 attackType = "Skill Attack";
                 minDamage = minDmgSkill;
                 maxDamage = maxDmgSkill;
                 critChance = critChanceSkill;
-                currentMana = Mathf.Max(currentMana - 1, 0); // Use mana
+                currentMana = Mathf.Max(currentMana - 1, 0);
                 UpdateManaUI();
-                Debug.Log($"Mana Updated: {manaText.text}");
             }
             else
             {
-                Debug.Log("Not enough mana to use Skill Attack!");
-                return; // Exit if no mana
+                Debug.Log("Not enough mana!");
+                isAttacking = false; // Unlock attack
+                return;
             }
         }
         else
         {
             Debug.Log("No attack initialized");
+            isAttacking = false; // Unlock attack
             return;
         }
+
+        StartCoroutine(SlideAndAttack(enemy, attackType, minDamage, maxDamage, critChance, crit));
+    }
+
+    IEnumerator SlideAndAttack(GameObject enemy, string attackType, int minDamage, int maxDamage, int critChance, int crit)
+    {
+        playerBar.SetActive(false);
+
+        Vector3 startPosition = transform.position;
+        Vector3 enemyPosition = enemy.transform.position;
+
+        // Ensure the player moves only on the X-axis (prevent Y movement)
+        Vector3 attackPosition = new Vector3(enemyPosition.x - 1.0f, startPosition.y, startPosition.z);
+
+        // Move towards enemy
+        yield return StartCoroutine(SlideToPosition(attackPosition, 0.2f));
+
+        // Play attack animation only once
+        ani.SetTrigger("attack");
+
+        // Wait for the animation duration (adjust if needed)
+        yield return new WaitForSeconds(0.7f);
 
         // Apply critical hit logic
         if (crit <= critChance)
@@ -131,16 +155,35 @@ public class PlayerController : MonoBehaviour
             maxDamage = Mathf.RoundToInt(maxDamage * 1.5f);
         }
 
-        // Calculate damage
+        // Calculate and apply damage
         int damage = Random.Range(minDamage, maxDamage);
         Debug.Log($"Total {attackType}: {damage}");
-
-        // Apply damage to enemy
         enemy.GetComponent<EnemyController>().getHit(damage);
+
+        // Move back to start position
+        yield return StartCoroutine(SlideToPosition(startPosition, 0.2f));
+
+        isAttacking = false; // Unlock attack after completion
+    }
+
+    IEnumerator SlideToPosition(Vector3 target, float duration)
+    {
+        float elapsed = 0;
+        Vector3 startingPos = transform.position;
+
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startingPos, target, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = target; // Ensure exact positioning
     }
 
     public void getHit(int dmgTaken)
     {
+        playerBar.SetActive(true);
         health -= dmgTaken;
         if (health < 0) health = 0;
         // Calculate health percentage based on maxHealth
@@ -152,6 +195,7 @@ public class PlayerController : MonoBehaviour
         // Set animation to play based on states
         if (health <= 0)
         {
+            playerBar.SetActive(false);
             ani.SetBool("isDead", true); // Trigger death animation
             ani.SetTrigger("hurt");
             Debug.Log("Player is dead!");

@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public int health;
     private int maxHealth;
     public Image healthBar;
+    public GameObject enemyBar;
     public int minDmg;
     public int maxDmg;
     public int critChance;
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
     private Animator ani;
 
     private bool useAttack1 = true;
+    private bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -34,69 +36,82 @@ public class EnemyController : MonoBehaviour
     {
         if (Input.GetButtonUp("Fire2"))
         {
-            //getHit(100);
+            getHit(100);
         }
     }
 
     // Method to alternate between attacks
     public void Attack()
     {
+        if (isAttacking) return;
+        isAttacking = true;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            isAttacking = false;
+            return;
+        }
+
         if (useAttack1)
         {
-            Attack1();
+            StartCoroutine(SlideAndAttack(player, "attack1", minDmg, maxDmg, critChance));
         }
         else
         {
-            Attack2();
+            StartCoroutine(SlideAndAttack(player, "attack2", minDmg2, maxDmg2, critChance2));
         }
 
-        useAttack1 = !useAttack1; // Toggle attack flag
+        useAttack1 = !useAttack1;
     }
 
-    public void Attack1()
+    IEnumerator SlideAndAttack(GameObject player, string attackTrigger, int minDamage, int maxDamage, int critChance)
     {
-        int crit = Random.Range(0, 100);
-        int tempMinDmg = minDmg; // Store original damage values
-        int tempMaxDmg = maxDmg;
+        enemyBar.SetActive(false);
 
+        Vector3 startPosition = transform.position;
+        Vector3 playerPosition = player.transform.position;
+        Vector3 attackPosition = new Vector3(playerPosition.x + 1.0f, startPosition.y, startPosition.z);
+
+        yield return StartCoroutine(SlideToPosition(attackPosition, 0.2f));
+
+        ani.SetTrigger(attackTrigger);
+        yield return new WaitForSeconds(0.7f);
+
+        int crit = Random.Range(0, 100);
         if (crit <= critChance)
         {
-            Debug.Log("Crit!");
-            tempMinDmg = Mathf.RoundToInt(tempMinDmg * 1.5f);
-            tempMaxDmg = Mathf.RoundToInt(tempMaxDmg * 1.5f);
+            minDamage = Mathf.RoundToInt(minDamage * 1.5f);
+            maxDamage = Mathf.RoundToInt(maxDamage * 1.5f);
+            Debug.Log("Enemy Crit!");
         }
 
-        int dmg = Random.Range(tempMinDmg, tempMaxDmg);
-        Debug.Log($"Enemy Attack 1 Damage: {dmg}");
+        int damage = Random.Range(minDamage, maxDamage);
+        Debug.Log($"Enemy {attackTrigger} Damage: {damage}");
+        playerController.getHit(damage);
 
-        ani.SetTrigger("attack1");
-
-        playerController.getHit(dmg);
+        yield return StartCoroutine(SlideToPosition(startPosition, 0.2f));
+        isAttacking = false;
     }
 
-    public void Attack2()
+    IEnumerator SlideToPosition(Vector3 target, float duration)
     {
-        int crit = Random.Range(0, 100);
-        int tempMinDmg2 = minDmg2; // Store original damage values
-        int tempMaxDmg2 = maxDmg2;
+        float elapsed = 0;
+        Vector3 startingPos = transform.position;
 
-        if (crit <= critChance2)
+        while (elapsed < duration)
         {
-            Debug.Log("Crit!");
-            tempMinDmg2 = Mathf.RoundToInt(tempMinDmg2 * 1.5f);
-            tempMaxDmg2 = Mathf.RoundToInt(tempMaxDmg2 * 1.5f);
+            transform.position = Vector3.Lerp(startingPos, target, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        int dmg = Random.Range(tempMinDmg2, tempMaxDmg2);
-        Debug.Log($"Enemy Attack 2 Damage: {dmg}");
-
-        ani.SetTrigger("attack2");
-
-        playerController.getHit(dmg);
+        transform.position = target;
     }
 
     public void getHit(int dmgTaken)
     {
+        enemyBar.SetActive(true);
         health -= dmgTaken;
         if (health < 0) health = 0;
         // Calculate health percentage based on maxHealth
@@ -108,6 +123,7 @@ public class EnemyController : MonoBehaviour
         // Set animation to play based on states
         if (health <= 0)
         {
+            enemyBar.SetActive(false);
             ani.SetBool("isDead", true); // Trigger death animation
             ani.SetTrigger("hurt");
             Debug.Log("NPC is dead!");

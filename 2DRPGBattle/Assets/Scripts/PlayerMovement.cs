@@ -4,46 +4,62 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed = 1f;
 
-    public bool isMoving;
+    private PlayerControls playerControls;
+    private Vector2 movement;
+    private Rigidbody2D rb;
+    private Animator myAnimator;
+    private SpriteRenderer mySpriteRender;
 
-    public Vector2 input;
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+        mySpriteRender = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
 
     private void Update()
     {
-        if (!isMoving)
-        {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            if (input != Vector2.zero)
-            {
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                StartCoroutine(Move(targetPos));
-            }
-        }
+        PlayerInput();
     }
 
-    IEnumerator Move(Vector3 targetPos)
+    private void FixedUpdate()
     {
-        isMoving = true;
+        AdjustPlayerFacingDirection();
+        Move();
+    }
+    private void PlayerInput()
+    {
+        movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-
-        isMoving = false;
-
+        myAnimator.SetFloat("moveX", movement.x);
+        myAnimator.SetFloat("moveY", movement.y);
     }
 
+    private void Move()
+    {
+        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+    }
 
+    private void AdjustPlayerFacingDirection()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
+        if (mousePos.x < playerScreenPoint.x)
+        {
+            mySpriteRender.flipX = true;
+        }
+        else
+        {
+            mySpriteRender.flipX = false;
+        }
+    }
 }
-

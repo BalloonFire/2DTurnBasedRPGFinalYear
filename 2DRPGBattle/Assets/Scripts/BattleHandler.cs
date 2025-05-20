@@ -7,7 +7,6 @@ public class BattleHandler : MonoBehaviour
 {
     bool playerTurn = true;
 
-    public GameObject PlayerPanel;
     public GameObject TurnPlayerUI;
     public GameObject TurnEnemyUI;
 
@@ -21,7 +20,6 @@ public class BattleHandler : MonoBehaviour
 
     void Start()
     {
-        PlayerPanel.SetActive(true);
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
@@ -43,13 +41,11 @@ public class BattleHandler : MonoBehaviour
 
         if (playerTurn)
         {
-            PlayerPanel.SetActive(true);
             TurnPlayerUI.SetActive(true);
             TurnEnemyUI.SetActive(false);
         }
         else
         {
-            PlayerPanel.SetActive(false);
             TurnEnemyUI.SetActive(true);
             TurnPlayerUI.SetActive(false);
             EnemyTurn();
@@ -118,7 +114,6 @@ public class BattleHandler : MonoBehaviour
         victoryScreen.SetActive(true);
         TurnPlayerUI.SetActive(false);
         TurnEnemyUI.SetActive(false);
-        PlayerPanel.SetActive(false);
 
         playerTurn = false;
 
@@ -141,7 +136,6 @@ public class BattleHandler : MonoBehaviour
         defeatScreen.SetActive(true);
         TurnPlayerUI.SetActive(false);
         TurnEnemyUI.SetActive(false);
-        PlayerPanel.SetActive(false);
 
         playerTurn = false;
 
@@ -152,5 +146,12 @@ public class BattleHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         SceneManager.LoadSceneAsync(0); // Load the menu screen
+    }
+
+    public void SetCurrentPlayer(PlayerController player)
+    {
+        // You can store the player reference for future use
+        Debug.Log("Current player set: " + player.name);
+        // Add your logic here (e.g., store the player, initialize turn, etc.)
     }
 }

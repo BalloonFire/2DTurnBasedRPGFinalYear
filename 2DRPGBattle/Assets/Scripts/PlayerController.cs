@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public int health;
     private int maxHealth;
     public Image healthBar;
-    public GameObject playerBar;
+
     public int minDmgAtk;
     public int maxDmgAtk;
     public int critChanceAtk;
@@ -21,10 +20,15 @@ public class PlayerController : MonoBehaviour
     public int maxDmgSkill;
     public int critChanceSkill;
 
+    public int minDmgUltimate;
+    public int maxDmgUltimate;
+    public int critChanceUltimate;
+
     private Animator ani;
 
     public Button attackButton;
     public Button skillButton;
+    public Button ultimateButton;
 
     private const int maxMana = 5;
     public int currentMana;
@@ -46,6 +50,9 @@ public class PlayerController : MonoBehaviour
         if (skillButton != null)
             skillButton.onClick.AddListener(() => SelectAttack(1)); // Skill Attack
 
+        if (ultimateButton != null)
+            ultimateButton.onClick.AddListener(() => SelectAttack(2)); // Ultimate Attack
+
         Debug.Log("Current attackSelected: " + attackSelected);
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         UpdateManaUI();
@@ -64,8 +71,7 @@ public class PlayerController : MonoBehaviour
     public void SelectAttack(int attackId)
     {
         attackSelected = attackId;
-        Debug.Log("Attack Selected: " + (attackId == 0 ? "Basic Attack" : "Skill Attack"));
-
+        Debug.Log("Attack Selected: " + (attackId == 0 ? "Basic Attack" : attackId == 1 ? "Skill Attack" : "Ultimate Attack"));
     }
 
     void UpdateManaUI()
@@ -76,6 +82,10 @@ public class PlayerController : MonoBehaviour
         // Disable skill button if not enough mana
         if (skillButton != null)
             skillButton.interactable = currentMana > 0;
+
+        // Disable ultimate button unless mana is full
+        if (ultimateButton != null)
+            ultimateButton.interactable = currentMana == maxMana;
     }
 
     public void Attack(GameObject enemy)
@@ -118,6 +128,24 @@ public class PlayerController : MonoBehaviour
                 return;
             }
         }
+        else if (attackSelected == 2) // Ultimate Attack
+        {
+            if (currentMana == maxMana)
+            {
+                attackType = "Ultimate Attack";
+                minDamage = minDmgUltimate;
+                maxDamage = maxDmgUltimate;
+                critChance = critChanceUltimate;
+                currentMana = 0;
+                UpdateManaUI();
+            }
+            else
+            {
+                Debug.Log("Not enough mana for Ultimate!");
+                isAttacking = false; // Unlock attack
+                return;
+            }
+        }
         else
         {
             Debug.Log("No attack initialized");
@@ -130,8 +158,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SlideAndAttack(GameObject enemy, string attackType, int minDamage, int maxDamage, int critChance, int crit)
     {
-        playerBar.SetActive(false);
-
         Vector3 startPosition = transform.position;
         Vector3 enemyPosition = enemy.transform.position;
 
@@ -183,7 +209,6 @@ public class PlayerController : MonoBehaviour
 
     public void getHit(int dmgTaken)
     {
-        playerBar.SetActive(true);
         health -= dmgTaken;
         if (health < 0) health = 0;
         // Calculate health percentage based on maxHealth
@@ -195,13 +220,14 @@ public class PlayerController : MonoBehaviour
         // Set animation to play based on states
         if (health <= 0)
         {
-            playerBar.SetActive(false);
             ani.SetBool("isDead", true); // Trigger death animation
             ani.SetTrigger("hurt");
             Debug.Log("Player is dead!");
             FindObjectOfType<BattleHandler>().CheckGameOver(); // Check for gameover
             return;
-        } else {
+        }
+        else
+        {
             ani.SetTrigger("hurt");
         }
     }

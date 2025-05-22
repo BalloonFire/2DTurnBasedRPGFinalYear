@@ -6,6 +6,10 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    // Player identification (new addition)
+    public enum PlayerID { Player1, Player2, Player3 }
+    public PlayerID playerID;
+
     private int attackSelected = -1;
 
     public int health;
@@ -36,27 +40,41 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI manaText;
     private bool isAttacking;
 
+    // Reference to battle handler (new addition)
+    private BattleHandler battleHandler;
+
     // Start is called before the first frame update
     void Start()
     {
-        //playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         maxHealth = health;
         ani = GetComponent<Animator>();
+        battleHandler = FindObjectOfType<BattleHandler>();
 
-        // Assign button events (if buttons are set in Inspector)
-        if (attackButton != null)
-            attackButton.onClick.AddListener(() => SelectAttack(0)); // Basic Attack
+        // Initialize based on player ID (modified)
+        switch (playerID)
+        {
+            case PlayerID.Player1:
+                if (attackButton != null)
+                    attackButton.onClick.AddListener(() => SelectAttack(0));
+                if (skillButton != null)
+                    skillButton.onClick.AddListener(() => SelectAttack(1));
+                if (ultimateButton != null)
+                    ultimateButton.onClick.AddListener(() => SelectAttack(2));
+                break;
 
-        if (skillButton != null)
-            skillButton.onClick.AddListener(() => SelectAttack(1)); // Skill Attack
+            case PlayerID.Player2:
+                // Player 2 specific initialization
+                break;
 
-        if (ultimateButton != null)
-            ultimateButton.onClick.AddListener(() => SelectAttack(2)); // Ultimate Attack
+            case PlayerID.Player3:
+                // Player 3 specific initialization
+                break;
+        }
 
-        Debug.Log("Current attackSelected: " + attackSelected);
+        Debug.Log(playerID + " initialized. Current attackSelected: " + attackSelected);
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         UpdateManaUI();
-        Debug.Log($"Mana Updated: {manaText.text}");
+        Debug.Log(playerID + $" Mana Updated: {manaText.text}");
     }
 
     // Update is called once per frame
@@ -71,13 +89,21 @@ public class PlayerController : MonoBehaviour
     public void SelectAttack(int attackId)
     {
         attackSelected = attackId;
-        Debug.Log("Attack Selected: " + (attackId == 0 ? "Basic Attack" : attackId == 1 ? "Skill Attack" : "Ultimate Attack"));
+        Debug.Log(playerID + " selected: " +
+            (attackId == 0 ? "Basic Attack" :
+             attackId == 1 ? "Skill Attack" : "Ultimate Attack"));
+
+        // Notify battle handler (new addition)
+        if (battleHandler != null)
+        {
+            battleHandler.PlayerReady(this);
+        }
     }
 
     void UpdateManaUI()
     {
         if (manaText != null)
-            manaText.text = "Mana: " + currentMana + "/" + maxMana;
+            manaText.text = playerID + " Mana: " + currentMana + "/" + maxMana;
 
         // Disable skill button if not enough mana
         if (skillButton != null)
@@ -94,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
         isAttacking = true; // Lock attack to prevent duplicates
 
-        Debug.Log("Current attackSelected: " + attackSelected);
+        Debug.Log(playerID + " current attackSelected: " + attackSelected);
 
         int crit = Random.Range(0, 100);
         int minDamage = 0, maxDamage = 0, critChance = 0;
@@ -123,7 +149,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough mana!");
+                Debug.Log(playerID + " Not enough mana!");
                 isAttacking = false; // Unlock attack
                 return;
             }
@@ -141,14 +167,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough mana for Ultimate!");
+                Debug.Log(playerID + " Not enough mana for Ultimate!");
                 isAttacking = false; // Unlock attack
                 return;
             }
         }
         else
         {
-            Debug.Log("No attack initialized");
+            Debug.Log(playerID + " No attack initialized");
             isAttacking = false; // Unlock attack
             return;
         }
@@ -176,20 +202,26 @@ public class PlayerController : MonoBehaviour
         // Apply critical hit logic
         if (crit <= critChance)
         {
-            Debug.Log("Crit!");
+            Debug.Log(playerID + " Crit!");
             minDamage = Mathf.RoundToInt(minDamage * 1.5f);
             maxDamage = Mathf.RoundToInt(maxDamage * 1.5f);
         }
 
         // Calculate and apply damage
         int damage = Random.Range(minDamage, maxDamage);
-        Debug.Log($"Total {attackType}: {damage}");
+        Debug.Log(playerID + $" Total {attackType}: {damage}");
         enemy.GetComponent<EnemyController>().getHit(damage);
 
         // Move back to start position
         yield return StartCoroutine(SlideToPosition(startPosition, 0.2f));
 
         isAttacking = false; // Unlock attack after completion
+
+        // Notify battle handler (new addition)
+        if (battleHandler != null)
+        {
+            battleHandler.PlayerAttackComplete(this);
+        }
     }
 
     IEnumerator SlideToPosition(Vector3 target, float duration)
@@ -215,20 +247,29 @@ public class PlayerController : MonoBehaviour
         float healthPercentage = (float)health / maxHealth;
         float newWidth = 300f * healthPercentage;
         // Debugging
-        Debug.Log($"Health: {health}/{maxHealth}, Health %: {healthPercentage * 100}%, New Width: {newWidth}");
+        Debug.Log(playerID + $" Health: {health}/{maxHealth}, Health %: {healthPercentage * 100}%, New Width: {newWidth}");
         healthBar.rectTransform.sizeDelta = new Vector2(newWidth, healthBar.rectTransform.sizeDelta.y);
         // Set animation to play based on states
         if (health <= 0)
         {
             ani.SetBool("isDead", true); // Trigger death animation
             ani.SetTrigger("hurt");
-            Debug.Log("Player is dead!");
-            FindObjectOfType<BattleHandler>().CheckGameOver(); // Check for gameover
+            Debug.Log(playerID + " Player is dead!");
+            if (battleHandler != null)
+            {
+                battleHandler.CheckGameOver(); // Check for gameover
+            }
             return;
         }
         else
         {
             ani.SetTrigger("hurt");
         }
+    }
+
+    // New helper method
+    public bool IsAlive()
+    {
+        return health > 0;
     }
 }

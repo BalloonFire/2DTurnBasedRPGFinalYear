@@ -1,30 +1,67 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyClickHandler : MonoBehaviour
 {
-    public GameObject enemyUI; // Assign this in the Inspector to the hidden UI panel.
-    public GameObject buttonUI; // Display button UI
+    public GameObject enemyUI; // Assign in Inspector: enemy's UI panel
+    public GameObject selectionIndicator; // Visual selection feedback
+    private static EnemyClickHandler currentlySelected;
 
-    private bool canClickEnemy = false;
+    private EnemyController enemyController;
+    private BattleHandler battleHandler;
+    private bool selectable = false;
 
     void Start()
     {
+        enemyController = GetComponent<EnemyController>();
+        battleHandler = FindObjectOfType<BattleHandler>();
+        Deselect(); // Start deselected
     }
 
     void OnMouseDown()
     {
-        if (canClickEnemy) // Ensure player clicked attack button first
-        {
-            if (enemyUI != null) enemyUI.SetActive(true);
-            if (buttonUI != null) buttonUI.SetActive(true);
+        // Only allow selection when enabled and during player turn
+        if (!selectable || battleHandler == null || !battleHandler.IsPlayerTurn()) return;
 
-            canClickEnemy = false; // Reset so multiple clicks don't trigger repeatedly
+        // Don't select dead enemies
+        if (!enemyController.IsAlive()) return;
+
+        // Deselect previously selected enemy
+        if (currentlySelected != null && currentlySelected != this)
+        {
+            currentlySelected.Deselect();
+        }
+
+        // Select this enemy
+        Select();
+    }
+
+    public void Select()
+    {
+        if (enemyUI != null) enemyUI.SetActive(true);
+        if (selectionIndicator != null) selectionIndicator.SetActive(true);
+
+        currentlySelected = this;
+
+        // Notify BattleHandler
+        if (battleHandler != null)
+        {
+            battleHandler.SetCurrentEnemy(enemyController);
         }
     }
 
-    public void EnableEnemyClick()
+    public void Deselect()
     {
-        canClickEnemy = true; // Called from the Attack button
+        if (enemyUI != null) enemyUI.SetActive(false);
+        if (selectionIndicator != null) selectionIndicator.SetActive(false);
+    }
+
+    public void SetSelectable(bool canSelect)
+    {
+        selectable = canSelect;
+    }
+
+    public static EnemyController GetSelectedEnemy()
+    {
+        return currentlySelected?.enemyController;
     }
 }

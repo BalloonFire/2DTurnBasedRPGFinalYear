@@ -6,8 +6,24 @@ public class PlayerClickHandler : MonoBehaviour
     public GameObject selectionRing; // Assign in Inspector: green circle
     private static PlayerClickHandler currentlySelected;
 
+    private PlayerController playerController;
+    private BattleHandler battleHandler;
+
+    void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+        battleHandler = FindObjectOfType<BattleHandler>();
+        Deselect(); // Start deselected
+    }
+
     void OnMouseDown()
     {
+        // Only allow selection during player turn
+        if (battleHandler == null || !battleHandler.IsPlayerTurn()) return;
+
+        // Don't select dead players
+        if (!playerController.IsAlive()) return;
+
         // Deselect previously selected player
         if (currentlySelected != null && currentlySelected != this)
         {
@@ -25,11 +41,10 @@ public class PlayerClickHandler : MonoBehaviour
 
         currentlySelected = this;
 
-        // Optional: also tell BattleHandler which player is selected
-        BattleHandler battleHandler = FindObjectOfType<BattleHandler>();
+        // Notify BattleHandler
         if (battleHandler != null)
         {
-            battleHandler.SetCurrentPlayer(gameObject.GetComponent<PlayerController>());
+            battleHandler.SetCurrentPlayer(playerController);
         }
     }
 
@@ -37,5 +52,10 @@ public class PlayerClickHandler : MonoBehaviour
     {
         if (playerUI != null) playerUI.SetActive(false);
         if (selectionRing != null) selectionRing.SetActive(false);
+    }
+
+    public static PlayerController GetSelectedPlayer()
+    {
+        return currentlySelected?.playerController;
     }
 }

@@ -36,6 +36,8 @@ public class EnemyController : MonoBehaviour
         if (isAttacking || health <= 0) yield break;
         isAttacking = true;
 
+        enemyBar.SetActive(true);
+
         if (useAttack1)
         {
             yield return StartCoroutine(PerformAttack(player, "attack1", minDmg, maxDmg, critChance));
@@ -47,11 +49,11 @@ public class EnemyController : MonoBehaviour
 
         useAttack1 = !useAttack1;
         isAttacking = false;
+        enemyBar.SetActive(false);
     }
 
     private IEnumerator PerformAttack(GameObject player, string trigger, int minDmg, int maxDmg, int critChance)
     {
-        enemyBar.SetActive(false);
         Vector3 startPos = transform.position;
         Vector3 attackPos = new Vector3(player.transform.position.x + 1f, startPos.y, startPos.z);
 
@@ -111,7 +113,6 @@ public class EnemyController : MonoBehaviour
     {
         float healthPercent = (float)health / maxHealth;
         healthBar.rectTransform.sizeDelta = new Vector2(300f * healthPercent, healthBar.rectTransform.sizeDelta.y);
-        enemyBar.SetActive(true);
     }
 
     private void HandleDeath()
@@ -119,7 +120,7 @@ public class EnemyController : MonoBehaviour
         enemyBar.SetActive(false);
         ani.SetBool("isDead", true);
         ani.SetTrigger("hurt");
-        FindObjectOfType<BattleHandler>().CheckEnemyDefeated();
+        FindObjectOfType<BattleHandler>().CheckGameOver();
     }
 
     public bool IsAlive()

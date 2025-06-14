@@ -2,60 +2,62 @@ using UnityEngine;
 
 public class PlayerClickHandler : MonoBehaviour
 {
-    public GameObject playerUI;      // Assign in Inspector: this player's UI panel
-    public GameObject selectionRing; // Assign in Inspector: green circle
-    private static PlayerClickHandler currentlySelected;
+    [Header("Selection UI")]
+    public GameObject playerUI;
+    public GameObject selectionRing;
 
-    private PlayerController playerController;
+    private PlayerController player;
     private BattleHandler battleHandler;
+    private Collider2D col;
+
+    private bool isSelectable = true;
 
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        player = GetComponent<PlayerController>();
         battleHandler = FindObjectOfType<BattleHandler>();
-        Deselect(); // Start deselected
+        col = GetComponent<Collider2D>();
+
+        if (col != null) col.enabled = true;
+        SetSelected(false);
     }
 
     void OnMouseDown()
     {
-        // Only allow selection during player turn
-        if (battleHandler == null || !battleHandler.IsPlayerTurn()) return;
+        if (!isSelectable || battleHandler == null || !battleHandler.IsPlayerTurn()) return;
+        if (!player.IsAlive()) return;
+        if (player.IsAttacking()) return;
 
-        // Don't select dead players
-        if (!playerController.IsAlive()) return;
-
-        // Deselect previously selected player
-        if (currentlySelected != null && currentlySelected != this)
-        {
-            currentlySelected.Deselect();
-        }
-
-        // Select this player
-        Select();
+        battleHandler.DeselectAllPlayers();
+        battleHandler.SetCurrentPlayer(player);
+        SetSelected(true);
+        player.UpdateAttackButtons();
     }
 
-    public void Select()
+    public void SetSelected(bool selected)
     {
-        if (playerUI != null) playerUI.SetActive(true);
-        if (selectionRing != null) selectionRing.SetActive(true);
+        if (playerUI != null)
+            playerUI.SetActive(selected);
 
-        currentlySelected = this;
-
-        // Notify BattleHandler
-        if (battleHandler != null)
-        {
-            battleHandler.SetCurrentPlayer(playerController);
-        }
+        if (selectionRing != null)
+            selectionRing.SetActive(selected);
     }
 
-    public void Deselect()
+    public void SetSelectable(bool selectable)
     {
-        if (playerUI != null) playerUI.SetActive(false);
-        if (selectionRing != null) selectionRing.SetActive(false);
+        isSelectable = selectable;
+
+        if (col != null)
+            col.enabled = selectable;
+
+        // Optional: Visual feedback for disabled player
+        var sprite = GetComponent<SpriteRenderer>();
+        if (sprite != null)
+            sprite.color = selectable ? Color.white : Color.gray;
     }
 
-    public static PlayerController GetSelectedPlayer()
+    public bool IsSelectable()
     {
-        return currentlySelected?.playerController;
+        return isSelectable;
     }
 }

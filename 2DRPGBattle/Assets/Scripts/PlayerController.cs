@@ -1,275 +1,204 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    // Player identification (new addition)
     public enum PlayerID { Player1, Player2, Player3 }
     public PlayerID playerID;
 
-    private int attackSelected = -1;
-
-    public int health;
+    [Header("Health Settings")]
+    public int health = 100;
     private int maxHealth;
     public Image healthBar;
 
-    public int minDmgAtk;
-    public int maxDmgAtk;
-    public int critChanceAtk;
+    [Header("Basic Attack")]
+    public int minDmgAtk = 10;
+    public int maxDmgAtk = 15;
+    public int critChanceAtk = 15;
 
-    public int minDmgSkill;
-    public int maxDmgSkill;
-    public int critChanceSkill;
+    [Header("Skill Attack")]
+    public int minDmgSkill = 20;
+    public int maxDmgSkill = 25;
+    public int critChanceSkill = 25;
+    public int skillManaCost = 1;
 
-    public int minDmgUltimate;
-    public int maxDmgUltimate;
-    public int critChanceUltimate;
+    [Header("Ultimate Attack")]
+    public int minDmgUltimate = 35;
+    public int maxDmgUltimate = 45;
+    public int critChanceUltimate = 50;
+    public int ultimateManaCost = 5;
 
-    private Animator ani;
-
+    [Header("UI References")]
     public Button attackButton;
     public Button skillButton;
     public Button ultimateButton;
-
-    private const int maxMana = 5;
-    public int currentMana;
-
     public TextMeshProUGUI manaText;
-    private bool isAttacking;
 
-    // Reference to battle handler (new addition)
+    [Header("Mana Settings")]
+    public const int maxMana = 5;
+    public int currentMana = 0;
+
+    private Animator animator;
     private BattleHandler battleHandler;
+    private bool isAttacking;
+    [HideInInspector] public int attackSelected = -1;
+    [HideInInspector] public bool canBeClicked = false;
+    private Vector3 originalPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         maxHealth = health;
-        ani = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         battleHandler = FindObjectOfType<BattleHandler>();
+        originalPosition = transform.position;
 
-        // Initialize based on player ID (modified)
-        switch (playerID)
-        {
-            case PlayerID.Player1:
-                if (attackButton != null)
-                    attackButton.onClick.AddListener(() => SelectAttack(0));
-                if (skillButton != null)
-                    skillButton.onClick.AddListener(() => SelectAttack(1));
-                if (ultimateButton != null)
-                    ultimateButton.onClick.AddListener(() => SelectAttack(2));
-                break;
+        attackButton.onClick.AddListener(() => SelectAttack(0));
+        skillButton.onClick.AddListener(() => SelectAttack(1));
+        ultimateButton.onClick.AddListener(() => SelectAttack(2));
 
-            case PlayerID.Player2:
-                // Player 2 specific initialization
-                break;
-
-            case PlayerID.Player3:
-                // Player 3 specific initialization
-                break;
-        }
-
-        Debug.Log(playerID + " initialized. Current attackSelected: " + attackSelected);
-        currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         UpdateManaUI();
-        Debug.Log(playerID + $" Mana Updated: {manaText.text}");
+        UpdateAttackButtons();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectAttack(int attackType)
     {
-        if (Input.GetButtonUp("Fire2"))
-        {
-            //getHit(100);
-        }
+        if (isAttacking) return;
+
+        attackSelected = attackType;
+        battleHandler?.PlayerReady(this);
     }
 
-    public void SelectAttack(int attackId)
+    public void UpdateAttackButtons()
     {
-        attackSelected = attackId;
-        Debug.Log(playerID + " selected: " +
-            (attackId == 0 ? "Basic Attack" :
-             attackId == 1 ? "Skill Attack" : "Ultimate Attack"));
-
-        // Notify battle handler (new addition)
-        if (battleHandler != null)
-        {
-            battleHandler.PlayerReady(this);
-        }
-    }
-
-    void UpdateManaUI()
-    {
-        if (manaText != null)
-            manaText.text = playerID + " Mana: " + currentMana + "/" + maxMana;
-
-        // Disable skill button if not enough mana
         if (skillButton != null)
-            skillButton.interactable = currentMana > 0;
+            skillButton.interactable = currentMana >= skillManaCost;
 
-        // Disable ultimate button unless mana is full
         if (ultimateButton != null)
-            ultimateButton.interactable = currentMana == maxMana;
+            ultimateButton.interactable = currentMana >= ultimateManaCost;
+
+        UpdateManaUI();
     }
 
-    public void Attack(GameObject enemy)
+    public void Attack(GameObject target)
     {
-        if (enemy == null || isAttacking) return; // Prevent multiple attacks
+        if (isAttacking || target == null || attackSelected == -1) return;
+        StartCoroutine(ExecuteAttack(target));
+    }
 
-        isAttacking = true; // Lock attack to prevent duplicates
+    public void SetInteractable(bool canSelect)
+    {
+        GetComponent<Collider2D>().enabled = canSelect;
+        canBeClicked = canSelect;
 
-        Debug.Log(playerID + " current attackSelected: " + attackSelected);
+        // Optional: Visual feedback
+        var renderer = GetComponent<SpriteRenderer>();
+        if (renderer != null)
+            renderer.color = canSelect ? Color.white : Color.gray;
+    }
 
-        int crit = Random.Range(0, 100);
-        int minDamage = 0, maxDamage = 0, critChance = 0;
-        string attackType = "";
+    private IEnumerator ExecuteAttack(GameObject target)
+    {
+        isAttacking = true;
+        EnemyController enemy = target.GetComponent<EnemyController>();
 
-        // Determine attack type and values
-        if (attackSelected == 0) // Basic Attack
+        int minDamage, maxDamage, critChance;
+        string attackTrigger;
+
+        switch (attackSelected)
         {
-            attackType = "Basic Attack";
-            minDamage = minDmgAtk;
-            maxDamage = maxDmgAtk;
-            critChance = critChanceAtk;
-            currentMana = Mathf.Min(currentMana + 1, maxMana);
-            UpdateManaUI();
-        }
-        else if (attackSelected == 1) // Skill Attack
-        {
-            if (currentMana > 0)
-            {
-                attackType = "Skill Attack";
+            case 1:
                 minDamage = minDmgSkill;
                 maxDamage = maxDmgSkill;
                 critChance = critChanceSkill;
-                currentMana = Mathf.Max(currentMana - 1, 0);
-                UpdateManaUI();
-            }
-            else
-            {
-                Debug.Log(playerID + " Not enough mana!");
-                isAttacking = false; // Unlock attack
-                return;
-            }
-        }
-        else if (attackSelected == 2) // Ultimate Attack
-        {
-            if (currentMana == maxMana)
-            {
-                attackType = "Ultimate Attack";
+                currentMana -= skillManaCost;
+                attackTrigger = "skill";
+                break;
+            case 2:
                 minDamage = minDmgUltimate;
                 maxDamage = maxDmgUltimate;
                 critChance = critChanceUltimate;
-                currentMana = 0;
-                UpdateManaUI();
-            }
-            else
-            {
-                Debug.Log(playerID + " Not enough mana for Ultimate!");
-                isAttacking = false; // Unlock attack
-                return;
-            }
+                currentMana -= ultimateManaCost;
+                attackTrigger = "ultimate";
+                break;
+            default:
+                minDamage = minDmgAtk;
+                maxDamage = maxDmgAtk;
+                critChance = critChanceAtk;
+                currentMana = Mathf.Min(currentMana + 1, maxMana);
+                attackTrigger = "attack";
+                break;
+        }
+
+        UpdateManaUI();
+        UpdateAttackButtons();
+
+        Vector3 attackPos = new Vector3(target.transform.position.x - 1.5f, transform.position.y, transform.position.z);
+        yield return StartCoroutine(SlideToPosition(attackPos, 0.2f));
+        animator.SetTrigger(attackTrigger);
+        yield return new WaitForSeconds(0.5f);
+
+        bool isCrit = Random.Range(0, 100) < critChance;
+        int damage = isCrit ? Mathf.RoundToInt(Random.Range(minDamage, maxDamage) * 1.5f) :
+                             Random.Range(minDamage, maxDamage);
+
+        if (enemy != null) enemy.getHit(damage);
+
+        yield return StartCoroutine(SlideToPosition(originalPosition, 0.2f));
+        isAttacking = false;
+        attackSelected = -1;
+        battleHandler?.NotifyPlayerFinished(this);
+    }
+
+    public void getHit(int damage)
+    {
+        health = Mathf.Max(health - damage, 0);
+        UpdateHealthUI();
+
+        if (health <= 0)
+        {
+            animator.SetBool("isDead", true);
+            battleHandler?.CheckGameOver();
         }
         else
         {
-            Debug.Log(playerID + " No attack initialized");
-            isAttacking = false; // Unlock attack
-            return;
+            animator.SetTrigger("hurt");
         }
-
-        StartCoroutine(SlideAndAttack(enemy, attackType, minDamage, maxDamage, critChance, crit));
     }
 
-    IEnumerator SlideAndAttack(GameObject enemy, string attackType, int minDamage, int maxDamage, int critChance, int crit)
+    private void UpdateHealthUI()
     {
-        Vector3 startPosition = transform.position;
-        Vector3 enemyPosition = enemy.transform.position;
-
-        // Ensure the player moves only on the X-axis (prevent Y movement)
-        Vector3 attackPosition = new Vector3(enemyPosition.x - 1.0f, startPosition.y, startPosition.z);
-
-        // Move towards enemy
-        yield return StartCoroutine(SlideToPosition(attackPosition, 0.2f));
-
-        // Play attack animation only once
-        ani.SetTrigger("attack");
-
-        // Wait for the animation duration (adjust if needed)
-        yield return new WaitForSeconds(0.7f);
-
-        // Apply critical hit logic
-        if (crit <= critChance)
+        if (healthBar != null)
         {
-            Debug.Log(playerID + " Crit!");
-            minDamage = Mathf.RoundToInt(minDamage * 1.5f);
-            maxDamage = Mathf.RoundToInt(maxDamage * 1.5f);
-        }
-
-        // Calculate and apply damage
-        int damage = Random.Range(minDamage, maxDamage);
-        Debug.Log(playerID + $" Total {attackType}: {damage}");
-        enemy.GetComponent<EnemyController>().getHit(damage);
-
-        // Move back to start position
-        yield return StartCoroutine(SlideToPosition(startPosition, 0.2f));
-
-        isAttacking = false; // Unlock attack after completion
-
-        // Notify battle handler (new addition)
-        if (battleHandler != null)
-        {
-            battleHandler.PlayerAttackComplete(this);
+            healthBar.rectTransform.sizeDelta = new Vector2(
+                300 * ((float)health / maxHealth),
+                healthBar.rectTransform.sizeDelta.y
+            );
         }
     }
 
-    IEnumerator SlideToPosition(Vector3 target, float duration)
+    private void UpdateManaUI()
+    {
+        if (manaText != null)
+        {
+            manaText.text = $"{playerID} Mana: {currentMana}/{maxMana}";
+        }
+    }
+
+    public bool IsAlive() => health > 0;
+    public bool IsAttacking() => isAttacking;
+
+    private IEnumerator SlideToPosition(Vector3 target, float duration)
     {
         float elapsed = 0;
-        Vector3 startingPos = transform.position;
-
+        Vector3 startPos = transform.position;
         while (elapsed < duration)
         {
-            transform.position = Vector3.Lerp(startingPos, target, elapsed / duration);
+            transform.position = Vector3.Lerp(startPos, target, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        transform.position = target; // Ensure exact positioning
-    }
-
-    public void getHit(int dmgTaken)
-    {
-        health -= dmgTaken;
-        if (health < 0) health = 0;
-        // Calculate health percentage based on maxHealth
-        float healthPercentage = (float)health / maxHealth;
-        float newWidth = 300f * healthPercentage;
-        // Debugging
-        Debug.Log(playerID + $" Health: {health}/{maxHealth}, Health %: {healthPercentage * 100}%, New Width: {newWidth}");
-        healthBar.rectTransform.sizeDelta = new Vector2(newWidth, healthBar.rectTransform.sizeDelta.y);
-        // Set animation to play based on states
-        if (health <= 0)
-        {
-            ani.SetBool("isDead", true); // Trigger death animation
-            ani.SetTrigger("hurt");
-            Debug.Log(playerID + " Player is dead!");
-            if (battleHandler != null)
-            {
-                battleHandler.CheckGameOver(); // Check for gameover
-            }
-            return;
-        }
-        else
-        {
-            ani.SetTrigger("hurt");
-        }
-    }
-
-    // New helper method
-    public bool IsAlive()
-    {
-        return health > 0;
+        transform.position = target;
     }
 }

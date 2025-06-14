@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3913515}
   - component: {fileID: 3913514}
   m_Layer: 5
-  m_Name: ButtonUlt
+  m_Name: ButtonUlt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,18 +221,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1241,7 +1229,7 @@ GameObject:
   - component: {fileID: 317149291}
   - component: {fileID: 317149290}
   m_Layer: 5
-  m_Name: ButtonSkill
+  m_Name: ButtonSkill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1335,18 +1323,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &317149291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,7 +1374,7 @@ GameObject:
   - component: {fileID: 317157176}
   - component: {fileID: 317157175}
   m_Layer: 5
-  m_Name: ButtonSkill
+  m_Name: ButtonSkill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,18 +1460,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1959,17 +1923,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8768947456523127174, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
   m_PrefabInstance: {fileID: 541414235130716971}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &349124272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
-  m_PrefabInstance: {fileID: 541414235130716971}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349124269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba25e177482e4704081ccdd6b99375c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &349124277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,8 +1935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8e554a8b0d75444bc3cded3ec7d931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyUI: {fileID: 821086718}
-  buttonUI: {fileID: 414894476}
+  enemyUI: {fileID: 1891732244}
+  selectionIndicator: {fileID: 821086718}
 --- !u!1 &357450536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,7 +2239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &414894477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2351,18 +2304,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 487303166}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 349124269}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1891732244}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2374,18 +2315,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1832985479}
-        m_TargetAssemblyTypeName: BattleHandler, Assembly-CSharp
-        m_MethodName: TogglePlayerTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 821086718}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -2403,6 +2332,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1832985479}
+        m_TargetAssemblyTypeName: BattleHandler, Assembly-CSharp
+        m_MethodName: PlayerAttack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2524,17 +2465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426870400}
   m_CullTransparentMesh: 1
---- !u!114 &487303166 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
-  m_PrefabInstance: {fileID: 2067854585657896021}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067854585657896022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978cd31c782b4ed448e4847395a9427f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &498193780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,6 +3161,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 635244259}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: maxDmgAtk
       value: 8
       objectReference: {fileID: 0}
@@ -3253,11 +3187,11 @@ PrefabInstance:
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: skillButton
       value: 
-      objectReference: {fileID: 317157175}
+      objectReference: {fileID: 919662345}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: attackButton
       value: 
-      objectReference: {fileID: 1939442645}
+      objectReference: {fileID: 1193579982}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: maxDmgUltimate
       value: 60
@@ -3269,7 +3203,7 @@ PrefabInstance:
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: ultimateButton
       value: 
-      objectReference: {fileID: 3913514}
+      objectReference: {fileID: 2121848339}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: critChanceUltimate
       value: 75
@@ -3377,7 +3311,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1516293, y: -0.00369817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3388,7 +3322,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 0.96}
+  m_Size: {x: 0.4441879, y: 0.6715337}
   m_EdgeRadius: 0
 --- !u!114 &635244262
 MonoBehaviour:
@@ -5036,7 +4970,7 @@ GameObject:
   - component: {fileID: 919662346}
   - component: {fileID: 919662345}
   m_Layer: 5
-  m_Name: ButtonSkill
+  m_Name: ButtonSkill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5122,18 +5056,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5438,7 +5360,7 @@ GameObject:
   - component: {fileID: 987011671}
   - component: {fileID: 987011670}
   m_Layer: 5
-  m_Name: ButtonAttack
+  m_Name: ButtonAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5524,18 +5446,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5773,6 +5683,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
+      propertyPath: enemyID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: maxDmg2
       value: 13
       objectReference: {fileID: 0}
@@ -5783,26 +5697,26 @@ PrefabInstance:
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: enemyBar
       value: 
-      objectReference: {fileID: 1441962088}
+      objectReference: {fileID: 776889120}
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: critChance2
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.x
-      value: 1.28
+      value: 0.3480322
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.y
-      value: 0.96
+      value: 0.6271545
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.2366898
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: -0.1664228
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_IsTrigger
@@ -5897,8 +5811,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8e554a8b0d75444bc3cded3ec7d931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyUI: {fileID: 821086718}
-  buttonUI: {fileID: 414894476}
+  enemyUI: {fileID: 1891732244}
+  selectionIndicator: {fileID: 339660501}
 --- !u!114 &1017710191 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1875191575801532744, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
@@ -6039,6 +5953,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
+      propertyPath: enemyID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: maxDmg2
       value: 13
       objectReference: {fileID: 0}
@@ -6049,26 +5967,26 @@ PrefabInstance:
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: enemyBar
       value: 
-      objectReference: {fileID: 1441962088}
+      objectReference: {fileID: 1337227258}
     - target: {fileID: 2521659394639480589, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: critChance2
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.x
-      value: 1.28
+      value: 0.3480322
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.y
-      value: 0.96
+      value: 0.6271545
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.2366898
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: -0.1664228
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_IsTrigger
@@ -6163,8 +6081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8e554a8b0d75444bc3cded3ec7d931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyUI: {fileID: 821086718}
-  buttonUI: {fileID: 414894476}
+  enemyUI: {fileID: 1891732244}
+  selectionIndicator: {fileID: 126376443}
 --- !u!1 &1059334040
 GameObject:
   m_ObjectHideFlags: 0
@@ -7159,7 +7077,7 @@ GameObject:
   - component: {fileID: 1193579983}
   - component: {fileID: 1193579982}
   m_Layer: 5
-  m_Name: ButtonAttack
+  m_Name: ButtonAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7245,18 +7163,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8331,6 +8237,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1609044653}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: maxDmgAtk
       value: 8
       objectReference: {fileID: 0}
@@ -8353,11 +8263,11 @@ PrefabInstance:
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: skillButton
       value: 
-      objectReference: {fileID: 317157175}
+      objectReference: {fileID: 317149290}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: attackButton
       value: 
-      objectReference: {fileID: 1939442645}
+      objectReference: {fileID: 987011670}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: maxDmgUltimate
       value: 60
@@ -8369,7 +8279,7 @@ PrefabInstance:
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: ultimateButton
       value: 
-      objectReference: {fileID: 3913514}
+      objectReference: {fileID: 1755294240}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: critChanceUltimate
       value: 75
@@ -8481,7 +8391,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1516293, y: -0.00369817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8492,7 +8402,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 0.96}
+  m_Size: {x: 0.4441879, y: 0.6715337}
   m_EdgeRadius: 0
 --- !u!114 &1609044656
 MonoBehaviour:
@@ -10111,7 +10021,7 @@ GameObject:
   - component: {fileID: 1755294241}
   - component: {fileID: 1755294240}
   m_Layer: 5
-  m_Name: ButtonUlt
+  m_Name: ButtonUlt2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10205,18 +10115,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &1755294241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10284,12 +10182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420cb45214d737246ae674423b949b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurnPlayerUI: {fileID: 1379078310}
-  TurnEnemyUI: {fileID: 326223807}
-  enemies:
-  - {fileID: 349124272}
-  victoryScreen: {fileID: 992511737}
-  defeatScreen: {fileID: 1059334040}
+  playerTurn: 1
+  enemyTurnDelay: 1.5
+  attackConfirmationPanel: {fileID: 414894476}
 --- !u!4 &1832985480
 Transform:
   m_ObjectHideFlags: 0
@@ -11368,7 +11263,7 @@ GameObject:
   - component: {fileID: 1939442646}
   - component: {fileID: 1939442645}
   m_Layer: 5
-  m_Name: ButtonAttack
+  m_Name: ButtonAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11454,18 +11349,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12479,7 +12362,7 @@ GameObject:
   - component: {fileID: 2121848340}
   - component: {fileID: 2121848339}
   m_Layer: 5
-  m_Name: ButtonUlt
+  m_Name: ButtonUlt3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12565,18 +12448,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 349124277}
-        m_TargetAssemblyTypeName: EnemyClickHandler, Assembly-CSharp
-        m_MethodName: EnableEnemyClick
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12931,19 +12802,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.x
-      value: 1.28
+      value: 0.3480322
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Size.y
-      value: 0.96
+      value: 0.62715447
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.23668982
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: -0.16642278
       objectReference: {fileID: 0}
     - target: {fileID: 2972251658147791347, guid: 29e643d421d892c49bfd00f09c461f77, type: 3}
       propertyPath: m_IsTrigger
@@ -13028,6 +12899,10 @@ PrefabInstance:
     - target: {fileID: 4941047127925243438, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: m_Name
       value: manaText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037120883179171320, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6829096006590602661, guid: 9d5c94f803d401a47ba0bd3c5bb6567b, type: 3}
       propertyPath: manaText
@@ -13165,7 +13040,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.15162934, y: -0.0036981702}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13176,7 +13051,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 0.96}
+  m_Size: {x: 0.4441879, y: 0.6715337}
   m_EdgeRadius: 0
 --- !u!114 &2067854585657896024
 MonoBehaviour:

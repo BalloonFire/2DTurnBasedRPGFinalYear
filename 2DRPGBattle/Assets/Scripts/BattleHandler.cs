@@ -1,309 +1,247 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BattleHandler : MonoBehaviour
 {
-    private bool playerTurn = true;
-    private int currentPlayerIndex = 0;
-    private PlayerController[] players;
-    private int readyPlayers = 0;
+    [Header("Battle Settings")]
+    public bool playerTurn = true;
+    public float enemyTurnDelay = 1.5f;
 
-    public GameObject TurnPlayerUI;
-    public GameObject TurnEnemyUI;
-
-    public EnemyController[] enemies;
-    private int enemyIndex = -1;
-
-    public GameObject victoryScreen;
-    public GameObject defeatScreen;
+    [Header("Attack Panel")]
+    public GameObject attackConfirmationPanel;
 
     private PlayerController currentPlayer;
     private EnemyController currentEnemy;
 
+    private List<PlayerController> allPlayers = new List<PlayerController>();
+    private HashSet<PlayerController> playersWhoAttacked = new HashSet<PlayerController>();
+
     void Start()
     {
-        players = FindObjectsOfType<PlayerController>();
-        Debug.Log("Found " + players.Length + " players in battle");
-
-        if (players.Length > 0)
-        {
-            EnableCurrentPlayerControls();
-        }
-    }
-
-    public bool IsPlayerTurn()
-    {
-        return playerTurn;
+        attackConfirmationPanel.SetActive(false); // Hide panel at start
+        allPlayers.AddRange(FindObjectsOfType<PlayerController>());
+        DisableAllPlayerSelection(); // Prevent clicks before turn starts
+        BeginPlayerTurn();
     }
 
     public void SetCurrentPlayer(PlayerController player)
     {
+        if (!IsPlayerTurn() || playersWhoAttacked.Contains(player)) return;
+
         currentPlayer = player;
-        Debug.Log("Selected player: " + player.playerID);
-    }
-
-    public void SetCurrentEnemy(EnemyController enemy)
-    {
-        currentEnemy = enemy;
-        Debug.Log("Selected enemy: " + enemy.enemyID);
-
-        // If we have both player and enemy selected, initiate attack
-        if (currentPlayer != null && currentEnemy != null)
-        {
-            currentPlayer.Attack(currentEnemy.gameObject);
-            currentPlayer = null;
-            currentEnemy = null;
-        }
-    }
-
-    // Modify your attack button to enable enemy selection
-    public void OnAttackButtonClicked()
-    {
-        foreach (EnemyController enemy in enemies)
-        {
-            EnemyClickHandler handler = enemy.GetComponent<EnemyClickHandler>();
-            if (handler != null)
-            {
-                handler.SetSelectable(true);
-            }
-        }
+        DeselectAllPlayers();
+        player.UpdateAttackButtons();
+        attackConfirmationPanel.SetActive(false);
     }
 
     public void PlayerReady(PlayerController player)
     {
-        readyPlayers++;
-        Debug.Log(player.playerID + " is ready. Ready players: " + readyPlayers);
+        if (!IsPlayerTurn() || playersWhoAttacked.Contains(player)) return;
 
-        if (readyPlayers >= players.Length)
-        {
-            StartCoroutine(ExecutePlayerAttacks());
-        }
+        SetAllEnemiesSelectable(true);
+        UpdateAttackInfo();
     }
 
-    public void PlayerAttackComplete(PlayerController player)
+    public void SetCurrentEnemy(EnemyController enemy)
     {
-        Debug.Log(player.playerID + " attack completed");
-        // This method is called by players when their attack finishes
-        // The actual turn handling is managed in ExecutePlayerAttacks coroutine
-    }
+        if (!IsPlayerTurn()) return;
 
-    public void EnemyAttackComplete(EnemyController enemy)
-    {
-        Debug.Log(enemy.enemyID + " attack completed");
-        // Enemy turn progression is handled in ProcessEnemyAttack coroutine
-    }
+        currentEnemy = enemy;
+        UpdateAttackInfo();
 
-    private IEnumerator ExecutePlayerAttacks()
-    {
-        foreach (PlayerController player in players)
+        if (currentPlayer != null && currentPlayer.attackSelected != -1 && currentEnemy != null && currentEnemy.IsAlive())
         {
-            if (player.IsAlive())
-            {
-                EnemyController target = GetNextLivingEnemy();
-                if (target != null)
-                {
-                    player.Attack(target.gameObject);
-                    yield return new WaitForSeconds(1.5f); // Wait for attack animation
-                }
-            }
-        }
-
-        readyPlayers = 0;
-        TogglePlayerTurn();
-    }
-
-    public void CheckEnemyDefeated()
-    {
-        if (AllEnemiesDefeated())
-        {
-            ShowVictoryScreen();
-        }
-    }
-
-    private EnemyController GetNextLivingEnemy()
-    {
-        foreach (EnemyController enemy in enemies)
-        {
-            if (enemy.IsAlive())
-            {
-                return enemy;
-            }
-        }
-        return null;
-    }
-
-    public void TogglePlayerTurn()
-    {
-        if (AllPlayersDefeated())
-        {
-            ShowDefeatScreen();
-            return;
-        }
-
-        if (AllEnemiesDefeated())
-        {
-            ShowVictoryScreen();
-            return;
-        }
-
-        playerTurn = !playerTurn;
-
-        if (playerTurn)
-        {
-            TurnPlayerUI.SetActive(true);
-            TurnEnemyUI.SetActive(false);
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
-            EnableCurrentPlayerControls();
+            attackConfirmationPanel.SetActive(true);
         }
         else
         {
-            TurnPlayerUI.SetActive(false);
-            TurnEnemyUI.SetActive(true);
-            EnemyTurn();
-        }
-    }
-    public void ContinueEnemyTurn()
-    {
-        // This gets called when an enemy finishes their attack animation
-        EnemyTurn(); // Move to the next enemy
-    }
-
-    private void EnemyTurn()
-    {
-        enemyIndex++;
-
-        if (enemyIndex >= enemies.Length)
-        {
-            // All enemies have attacked, switch back to player turn
-            enemyIndex = -1;
-            TogglePlayerTurn();
-            return;
-        }
-
-        // Skip dead enemies
-        if (!enemies[enemyIndex].IsAlive())
-        {
-            EnemyTurn();
-            return;
-        }
-
-        // Process this enemy's attack
-        StartCoroutine(ProcessEnemyAttack(enemies[enemyIndex]));
-    }
-
-
-    IEnumerator ProcessEnemyAttack(EnemyController enemy)
-    {
-        // Early exit if enemy is invalid or dead
-        if (enemy == null || !enemy.IsAlive())
-        {
-            EnemyTurn();
-            yield break;
-        }
-
-        PlayerController target = GetRandomLivingPlayer();
-
-        // If no living players, end battle
-        if (target == null)
-        {
-            ShowDefeatScreen();
-            yield break;
-        }
-
-        // Store original position
-        Vector3 originalPos = enemy.transform.position;
-
-        try
-        {
-            // Execute attack and wait for completion
-            yield return StartCoroutine(enemy.ExecuteAttack(target.gameObject));
-        }
-        finally
-        {
-            // Ensure enemy always returns to original position
-            enemy.transform.position = originalPos;
-
-            // Only proceed to next enemy if battle isn't over
-            if (!AllPlayersDefeated() && !AllEnemiesDefeated())
-            {
-                EnemyTurn();
-            }
+            attackConfirmationPanel.SetActive(false);
         }
     }
 
-
-    private PlayerController GetRandomLivingPlayer()
+    private void UpdateAttackInfo()
     {
-        List<PlayerController> livingPlayers = new List<PlayerController>();
-        foreach (PlayerController player in players)
+        if (currentPlayer == null || currentPlayer.attackSelected == -1) return;
+
+        string attackName = "";
+        int minDmg = 0, maxDmg = 0, critChance = 0;
+
+        switch (currentPlayer.attackSelected)
+        {
+            case 0:
+                attackName = "Basic Attack";
+                minDmg = currentPlayer.minDmgAtk;
+                maxDmg = currentPlayer.maxDmgAtk;
+                critChance = currentPlayer.critChanceAtk;
+                break;
+            case 1:
+                attackName = "Skill Attack";
+                minDmg = currentPlayer.minDmgSkill;
+                maxDmg = currentPlayer.maxDmgSkill;
+                critChance = currentPlayer.critChanceSkill;
+                break;
+            case 2:
+                attackName = "Ultimate Attack";
+                minDmg = currentPlayer.minDmgUltimate;
+                maxDmg = currentPlayer.maxDmgUltimate;
+                critChance = currentPlayer.critChanceUltimate;
+                break;
+        }
+
+        string targetName = currentEnemy != null ? currentEnemy.enemyID.ToString() : "No Target";
+        Debug.Log($"{attackName}\nTarget: {targetName}\nDamage: {minDmg}-{maxDmg}\nCrit: {critChance}%");
+    }
+
+    public void PlayerAttack()
+    {
+        if (!IsPlayerTurn() || currentEnemy == null || !currentEnemy.IsAlive()) return;
+        if (playersWhoAttacked.Contains(currentPlayer)) return;
+
+        ConfirmAttack();
+    }
+
+    private void ConfirmAttack()
+    {
+        if (currentPlayer != null && currentEnemy != null && currentEnemy.IsAlive())
+        {
+            currentPlayer.Attack(currentEnemy.gameObject);
+            playersWhoAttacked.Add(currentPlayer);
+            currentPlayer.GetComponent<PlayerClickHandler>().SetSelectable(false);
+        }
+
+        CancelAttack();
+
+        if (AllAlivePlayersAttacked())
+        {
+            EndPlayerTurn();
+        }
+    }
+
+    private bool AllAlivePlayersAttacked()
+    {
+        int alivePlayerCount = 0;
+
+        foreach (var player in allPlayers)
         {
             if (player.IsAlive())
-            {
-                livingPlayers.Add(player);
-            }
+                alivePlayerCount++;
         }
-        return livingPlayers.Count > 0 ? livingPlayers[Random.Range(0, livingPlayers.Count)] : null;
+
+        return playersWhoAttacked.Count >= alivePlayerCount;
     }
 
-    private bool AllPlayersDefeated()
+    private void CancelAttack()
     {
-        foreach (PlayerController player in players)
+        SetAllEnemiesSelectable(false);
+
+        if (currentPlayer != null)
         {
-            if (player.IsAlive())
-            {
-                return false;
-            }
+            currentPlayer.attackSelected = -1;
+            currentPlayer.UpdateAttackButtons();
         }
-        return true;
+
+        currentEnemy = null;
+        attackConfirmationPanel.SetActive(false);
     }
 
-    private bool AllEnemiesDefeated()
+    private void SetAllEnemiesSelectable(bool selectable)
     {
-        foreach (EnemyController enemy in enemies)
+        foreach (var enemy in FindObjectsOfType<EnemyClickHandler>())
         {
-            if (enemy.IsAlive())
-            {
-                return false;
-            }
+            enemy.SetSelectable(selectable);
+            if (!selectable) enemy.Deselect();
         }
-        return true;
     }
 
-    private void ShowVictoryScreen()
+    public void DeselectAllPlayers()
     {
-        victoryScreen.SetActive(true);
-        TurnPlayerUI.SetActive(false);
-        TurnEnemyUI.SetActive(false);
-        StartCoroutine(WaitAndLoadMenu());
+        foreach (var player in FindObjectsOfType<PlayerClickHandler>())
+        {
+            player.SetSelected(false);
+        }
     }
+
+    private void DisableAllPlayerSelection()
+    {
+        foreach (var clicker in FindObjectsOfType<PlayerClickHandler>())
+        {
+            clicker.SetSelectable(false);
+        }
+    }
+
+    private void EnableAllPlayerSelection()
+    {
+        foreach (var clicker in FindObjectsOfType<PlayerClickHandler>())
+        {
+            var player = clicker.GetComponent<PlayerController>();
+            if (player.IsAlive() && !playersWhoAttacked.Contains(player))
+                clicker.SetSelectable(true);
+        }
+    }
+
+    public void BeginPlayerTurn()
+    {
+        playerTurn = true;
+        playersWhoAttacked.Clear();
+        EnableAllPlayerSelection();
+        Debug.Log("Player turn begins!");
+    }
+
+    public void EndPlayerTurn()
+    {
+        playerTurn = false;
+        DisableAllPlayerSelection();
+        attackConfirmationPanel.SetActive(false);
+        StartCoroutine(EnemyTurn());
+    }
+
+    private IEnumerator EnemyTurn()
+    {
+        Debug.Log("Enemy turn begins!");
+        yield return new WaitForSeconds(enemyTurnDelay);
+
+        var allEnemies = FindObjectsOfType<EnemyController>();
+        var players = FindObjectsOfType<PlayerController>();
+
+        foreach (var enemy in allEnemies)
+        {
+            if (!enemy.IsAlive()) continue;
+
+            List<PlayerController> alivePlayers = new List<PlayerController>();
+            foreach (var p in players)
+            {
+                if (p.IsAlive()) alivePlayers.Add(p);
+            }
+
+            if (alivePlayers.Count > 0)
+            {
+                GameObject target = alivePlayers[Random.Range(0, alivePlayers.Count)].gameObject;
+                yield return StartCoroutine(enemy.ExecuteAttack(target));
+            }
+        }
+
+        BeginPlayerTurn();
+    }
+
+    public bool IsPlayerTurn() => playerTurn;
 
     public void CheckGameOver()
     {
-        if (AllPlayersDefeated())
+        // Game over logic placeholder
+    }
+
+    public void NotifyPlayerFinished(PlayerController player)
+    {
+        if (!playersWhoAttacked.Contains(player))
+            playersWhoAttacked.Add(player);
+
+        player.GetComponent<PlayerClickHandler>().SetSelectable(false);
+
+        if (AllAlivePlayersAttacked())
         {
-            ShowDefeatScreen();
+            EndPlayerTurn();
         }
-    }
-
-    private void ShowDefeatScreen()
-    {
-        defeatScreen.SetActive(true);
-        TurnPlayerUI.SetActive(false);
-        TurnEnemyUI.SetActive(false);
-        StartCoroutine(WaitAndLoadMenu());
-    }
-
-    private IEnumerator WaitAndLoadMenu()
-    {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadSceneAsync(0);
-    }
-
-    private void EnableCurrentPlayerControls()
-    {
-        // Implementation for enabling specific player controls
-        // Example: players[currentPlayerIndex].EnableControls();
     }
 }

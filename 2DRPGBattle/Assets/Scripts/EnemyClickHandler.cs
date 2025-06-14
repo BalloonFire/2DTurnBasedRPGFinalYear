@@ -37,21 +37,13 @@ public class EnemyClickHandler : MonoBehaviour
 
     public void Select()
     {
-        if (enemyUI != null) enemyUI.SetActive(true);
         if (selectionIndicator != null) selectionIndicator.SetActive(true);
-
         currentlySelected = this;
-
-        // Notify BattleHandler
-        if (battleHandler != null)
-        {
-            battleHandler.SetCurrentEnemy(enemyController);
-        }
+        battleHandler?.SetCurrentEnemy(enemyController);
     }
 
     public void Deselect()
     {
-        if (enemyUI != null) enemyUI.SetActive(false);
         if (selectionIndicator != null) selectionIndicator.SetActive(false);
     }
 

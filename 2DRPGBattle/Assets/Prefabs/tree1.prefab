@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8297876998347133104}
   - component: {fileID: 4542174815928839628}
   - component: {fileID: 4006980084384889211}
+  - component: {fileID: 3188783960521173597}
+  - component: {fileID: 6755152326516923773}
   m_Layer: 0
   m_Name: tree1
   m_TagString: Untagged
@@ -120,3 +122,50 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03724397, y: -0.036016524}
   m_Size: {x: 1.1352578, y: 0.5579815}
   m_Direction: 1
+--- !u!58 &3188783960521173597
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065571719064730965}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0076617002, y: 1.2886401}
+  serializedVersion: 2
+  m_Radius: 0.75320375
+--- !u!114 &6755152326516923773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065571719064730965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf2873663e0c6848bffaf7fc422fc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

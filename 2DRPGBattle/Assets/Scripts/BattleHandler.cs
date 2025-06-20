@@ -12,6 +12,12 @@ public class BattleHandler : MonoBehaviour
     [Header("Attack Panel")]
     public GameObject attackConfirmationPanel;
 
+    [Header("UI notification")]
+    public GameObject playerTurns;
+    public GameObject enemyTurns;
+    public GameObject winUI;
+    public GameObject loseUI;
+
     private PlayerController currentPlayer;
     private EnemyController currentEnemy;
 
@@ -186,6 +192,8 @@ public class BattleHandler : MonoBehaviour
         playerTurn = true;
         playersWhoAttacked.Clear();
         EnableAllPlayerSelection();
+        playerTurns.SetActive(true);
+        enemyTurns.SetActive(false);
         Debug.Log("Player turn begins!");
     }
 
@@ -194,6 +202,8 @@ public class BattleHandler : MonoBehaviour
         playerTurn = false;
         DisableAllPlayerSelection();
         attackConfirmationPanel.SetActive(false);
+        playerTurns.SetActive(false);
+        enemyTurns.SetActive(true);
         StartCoroutine(EnemyTurn());
     }
 
@@ -205,21 +215,25 @@ public class BattleHandler : MonoBehaviour
         var allEnemies = FindObjectsOfType<EnemyController>();
         var players = FindObjectsOfType<PlayerController>();
 
+        // Create array of alive players
+        List<PlayerController> alivePlayers = new List<PlayerController>();
+        foreach (var p in players)
+        {
+            if (p.IsAlive()) alivePlayers.Add(p);
+        }
+
+        if (alivePlayers.Count == 0)
+        {
+            Debug.Log("All players defeated!");
+            yield break;
+        }
+
         foreach (var enemy in allEnemies)
         {
             if (!enemy.IsAlive()) continue;
 
-            List<PlayerController> alivePlayers = new List<PlayerController>();
-            foreach (var p in players)
-            {
-                if (p.IsAlive()) alivePlayers.Add(p);
-            }
-
-            if (alivePlayers.Count > 0)
-            {
-                GameObject target = alivePlayers[Random.Range(0, alivePlayers.Count)].gameObject;
-                yield return StartCoroutine(enemy.ExecuteAttack(target));
-            }
+            // Pass the array of all players to the enemy
+            yield return StartCoroutine(enemy.ExecuteAttack(players));
         }
 
         BeginPlayerTurn();
@@ -229,7 +243,36 @@ public class BattleHandler : MonoBehaviour
 
     public void CheckGameOver()
     {
-        // Game over logic placeholder
+        bool allPlayersDead = true;
+        foreach (var player in allPlayers)
+        {
+            if (player.IsAlive())
+            {
+                allPlayersDead = false;
+                break;
+            }
+        }
+
+        bool allEnemiesDead = true;
+        foreach (var enemy in FindObjectsOfType<EnemyController>())
+        {
+            if (enemy.IsAlive())
+            {
+                allEnemiesDead = false;
+                break;
+            }
+        }
+
+        if (allPlayersDead)
+        {
+            Debug.Log("Game Over - Players Defeated!");
+            loseUI.SetActive(true);
+        }
+        else if (allEnemiesDead)
+        {
+            Debug.Log("Victory - All Enemies Defeated!");
+            winUI.SetActive(true);
+        }
     }
 
     public void NotifyPlayerFinished(PlayerController player)

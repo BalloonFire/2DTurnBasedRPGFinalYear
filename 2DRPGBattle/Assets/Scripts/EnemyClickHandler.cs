@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class EnemyClickHandler : MonoBehaviour
 {
-    public GameObject enemyUI; // Assign in Inspector: enemy's UI panel
-    public GameObject selectionIndicator; // Visual selection feedback
+    [Header("Selection UI")]
+    public GameObject enemyUI;
+    public GameObject selectionIndicator;
+
     private static EnemyClickHandler currentlySelected;
 
     private EnemyController enemyController;

@@ -19,11 +19,13 @@ public class UIInventoryPage : MonoBehaviour
 
     List<UIInventoryItem> listItems = new List<UIInventoryItem>();
 
-    public Sprite image;
+    private int currentDragItemIndex = -1;
 
-    public int quantity;
+    public event Action<int> OnDescriptionRequested,
+    OnItemActionRequested,
+    OnStartDragging;
 
-    public string title, description;
+    public event Action<int, int> OnSwapItems;
 
     private void Awake()
     {
@@ -47,44 +49,90 @@ public class UIInventoryPage : MonoBehaviour
         }
     }
 
-    private void HandleShowItemActions(UIInventoryItem item)
+    public void UpdateData(int itemIndex,
+                       Sprite itemImage, int itemQuantity)
+    {
+        if (listItems.Count > itemIndex)
+        {
+            listItems[itemIndex].SetData(itemImage, itemQuantity);
+        }
+    }
+
+    private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
     {
 
     }
 
-    private void HandleEndDrag(UIInventoryItem item)
+    private void HandleEndDrag(UIInventoryItem inventoryItemUI)
+    {
+        ResetDragItem();
+    }
+
+    private void HandleSwap(UIInventoryItem inventoryItemUI)
+    {
+        int index = listItems.IndexOf(inventoryItemUI);
+        if (index == -1)
+        {
+            return;
+        }
+        OnSwapItems?.Invoke(currentDragItemIndex, index);
+
+    }
+
+    private void ResetDragItem()
     {
         mouseFollower.Toggle(false);
+        currentDragItemIndex = -1;
     }
 
-    private void HandleSwap(UIInventoryItem item)
+    private void HandleBeginDrag(UIInventoryItem inventoryItemUI)
     {
-
+        int index = listItems.IndexOf(inventoryItemUI);
+        if (index == -1)
+            return;
+        currentDragItemIndex = index;
+        OnStartDragging?.Invoke(index);
     }
 
-    private void HandleBeginDrag(UIInventoryItem item)
+    public void CreateDraggedItem(Sprite sprite, int quantity)
     {
         mouseFollower.Toggle(true);
-        mouseFollower.SetData(image, quantity);
+        mouseFollower.SetData(sprite, quantity);
     }
 
-    private void HandleItemSelection(UIInventoryItem item)
+
+    private void HandleItemSelection(UIInventoryItem inventoryItemUI)
     {
-        itemDescription.SetDescription(image, title, description);
-        listItems[0].Select();
+        int index = listItems.IndexOf(inventoryItemUI);
+        if (index == -1)
+            return;
+        OnDescriptionRequested?.Invoke(index);
     }
 
     public void Show()
     {
         gameObject.SetActive(true);
-        itemDescription.ResetDescription();
+        ResetSelection();
+    }
 
-        listItems[0].SetData(image, quantity);
+    private void ResetSelection()
+    {
+        itemDescription.ResetDescription();
+        DeselectItems();
+    }
+
+    private void DeselectItems()
+    {
+        foreach (UIInventoryItem item in listItems)
+        {
+            item.Deselect();
+        }
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
+        ResetDragItem();
     }
 }
 

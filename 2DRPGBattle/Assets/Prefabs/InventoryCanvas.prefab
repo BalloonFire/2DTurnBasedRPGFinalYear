@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 6813803028421849427}
-  item: {fileID: 8055215875343125534}
+  inventoryItemUI: {fileID: 0}
 --- !u!1 &5716651611988468597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,6 +1940,7 @@ MonoBehaviour:
   itemDescription: {fileID: 4075461826284102806}
   mouseFollower: {fileID: 5463621114156171195}
   image: {fileID: 416060429, guid: a947671e7bd0b704caa7c35e350ddcdd, type: 3}
+  image2: {fileID: 2032040460, guid: a947671e7bd0b704caa7c35e350ddcdd, type: 3}
   quantity: 15
   title: Fresh Heart
   description: It heals 30 HP.
@@ -2097,14 +2098,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8055215875343125534 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6498280646025946737, guid: 1347319c06f7653478d437384fc2c43f, type: 3}
-  m_PrefabInstance: {fileID: 3884187520422259311}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3995583344544629609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0593eff12d4cce40a0975a20176d5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

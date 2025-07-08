@@ -576,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4243931462530112477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -678,8 +678,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3702720381507487457}
   m_HandleRect: {fileID: 8444376527370700113}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.93606126, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 6813803028421849427}
-  inventoryItemUI: {fileID: 0}
+  inventoryItemUI: {fileID: 6498280646025946737, guid: 1347319c06f7653478d437384fc2c43f, type: 3}
 --- !u!1 &5716651611988468597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1361,7 @@ RectTransform:
   m_Father: {fileID: 5592528575137112480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1939,11 +1939,6 @@ MonoBehaviour:
   contentPanel: {fileID: 3251294150544928087}
   itemDescription: {fileID: 4075461826284102806}
   mouseFollower: {fileID: 5463621114156171195}
-  image: {fileID: 416060429, guid: a947671e7bd0b704caa7c35e350ddcdd, type: 3}
-  image2: {fileID: 2032040460, guid: a947671e7bd0b704caa7c35e350ddcdd, type: 3}
-  quantity: 15
-  title: Fresh Heart
-  description: It heals 30 HP.
 --- !u!1001 &3884187520422259311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2034,6 +2029,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419718635178529626, guid: 1347319c06f7653478d437384fc2c43f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184698949468981964, guid: 1347319c06f7653478d437384fc2c43f, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5276955808404243047, guid: 1347319c06f7653478d437384fc2c43f, type: 3}

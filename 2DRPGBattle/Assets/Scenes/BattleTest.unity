@@ -2315,7 +2315,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 814576408}
-        m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+        m_TargetAssemblyTypeName: Inventory.InventoryController, Assembly-CSharp
         m_MethodName: ToggleInventoryUI
         m_Mode: 1
         m_Arguments:
@@ -4419,7 +4419,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 150512959}
-  inventorySize: 50
+  inventoryData: {fileID: 11400000, guid: b47db1acde6acac41988bce2de6e0623, type: 2}
+  startingItems:
+  - quantity: 5
+    item: {fileID: 11400000, guid: ea2081ef554227742aa8d4122fc12d01, type: 2}
+  - quantity: 10
+    item: {fileID: 11400000, guid: 33ae608d5b65e5b44aae1122a2ff7e12, type: 2}
+  - quantity: 7
+    item: {fileID: 11400000, guid: f5817c9140c0f3645b9cefb4cd0a9825, type: 2}
 --- !u!4 &814576409
 Transform:
   m_ObjectHideFlags: 0
@@ -13296,6 +13303,10 @@ PrefabInstance:
     - target: {fileID: 617230681340750858, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570933889405313143, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2624887146073531504, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
       propertyPath: m_Pivot.x

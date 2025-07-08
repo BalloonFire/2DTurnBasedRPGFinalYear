@@ -1,43 +1,127 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Inventory.UI;
+using Inventory.Model;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+namespace Inventory
 {
-    [SerializeField]
-    private UIInventoryPage inventoryUI;
-
-    public int inventorySize = 10;
-
-    private void Start()
+    public class InventoryController : MonoBehaviour
     {
-        inventoryUI.InitializeInventoryUI(inventorySize);
-    }
+        [SerializeField]
+        private UIInventoryPage inventoryUI;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
+        [SerializeField]
+        private InventorySO inventoryData;
+
+        public List<InventoryItem> startingItems = new List<InventoryItem>();
+
+        private bool isInventoryOpen = false;
+
+        private void Start()
         {
-            ToggleInventoryUI();
-        }
-    }
-
-    // This method is public so it can be used in the Unity Button's OnClick
-    public void ToggleInventoryUI()
-    {
-        if (inventoryUI == null)
-        {
-            Debug.LogWarning("Inventory UI reference is missing.");
-            return;
+            UIReady();
+            PrepareInventory();
         }
 
-        if (inventoryUI.isActiveAndEnabled == false)
+        private void PrepareInventory()
         {
-            inventoryUI.Show();
+            inventoryData.Initialize();
+            inventoryData.OnInventoryUpdated += UpdateInventoryUI;
+            foreach (InventoryItem item in startingItems)
+            {
+                if (item.IsEmpty)
+                    continue;
+                inventoryData.AddItem(item);
+            }
         }
-        else
+
+        private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
-            inventoryUI.Hide();
+            inventoryUI.ResetAllItems();
+            foreach (var item in inventoryState)
+            {
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+        }
+
+        private void UIReady()
+        {
+            inventoryUI.InitializeInventoryUI(inventoryData.Size);
+            inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
+            inventoryUI.OnSwapItems += HandleSwapItems;
+            inventoryUI.OnStartDragging += HandleDragging;
+            inventoryUI.OnItemActionRequested += HandleItemActionRequest;
+        }
+
+        private void HandleItemActionRequest(int itemIndex)
+        {
+            // Your item action implementation
+        }
+
+        private void HandleDragging(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
+            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        }
+
+        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
+        {
+            if (itemIndex_1 >= 0 && itemIndex_1 < inventoryData.Size &&
+                itemIndex_2 >= 0 && itemIndex_2 < inventoryData.Size)
+            {
+                inventoryData.SwapItems(itemIndex_1, itemIndex_2);
+            }
+        }
+
+        private void HandleDescriptionRequest(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+            {
+                inventoryUI.ResetSelection();
+                return;
+            }
+            ItemSO item = inventoryItem.item;
+            inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                ToggleInventory();
+            }
+        }
+
+        public void ToggleInventory()
+        {
+            isInventoryOpen = !isInventoryOpen;
+
+            if (isInventoryOpen)
+            {
+                inventoryUI.Show();
+                // Refresh UI when opening
+                foreach (var item in inventoryData.GetCurrentInventoryState())
+                {
+                    inventoryUI.UpdateData(item.Key,
+                                       item.Value.item.ItemImage,
+                                       item.Value.quantity);
+                }
+            }
+            else
+            {
+                inventoryUI.Hide();
+            }
+        }
+
+        // This method is public so it can be used in the Unity Button's OnClick
+        public void ToggleInventoryUI()
+        {
+            ToggleInventory();
         }
     }
 }

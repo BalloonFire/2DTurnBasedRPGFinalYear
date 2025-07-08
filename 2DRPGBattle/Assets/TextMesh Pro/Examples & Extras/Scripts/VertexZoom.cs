@@ -41,9 +41,9 @@ namespace TMPro.Examples
         }
 
 
-        void ON_TEXT_CHANGED(Object obj)
+        void ON_TEXT_CHANGED(Object itemIndex)
         {
-            if (obj == m_TextComponent)
+            if (itemIndex == m_TextComponent)
                 hasTextChanged = true;
         }
 

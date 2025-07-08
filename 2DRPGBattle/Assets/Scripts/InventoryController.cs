@@ -97,13 +97,27 @@ namespace Inventory
             }
         }
 
+        // Main toggle method (works with keyboard input)
         public void ToggleInventory()
         {
-            isInventoryOpen = !isInventoryOpen;
-
             if (isInventoryOpen)
             {
+                CloseInventory();
+            }
+            else
+            {
+                OpenInventory();
+            }
+        }
+
+        // Public method specifically for opening the inventory
+        public void OpenInventory()
+        {
+            if (!isInventoryOpen)
+            {
+                isInventoryOpen = true;
                 inventoryUI.Show();
+
                 // Refresh UI when opening
                 foreach (var item in inventoryData.GetCurrentInventoryState())
                 {
@@ -112,16 +126,16 @@ namespace Inventory
                                        item.Value.quantity);
                 }
             }
-            else
-            {
-                inventoryUI.Hide();
-            }
         }
 
-        // This method is public so it can be used in the Unity Button's OnClick
-        public void ToggleInventoryUI()
+        // Public method specifically for closing the inventory
+        public void CloseInventory()
         {
-            ToggleInventory();
+            if (isInventoryOpen)
+            {
+                isInventoryOpen = false;
+                inventoryUI.Hide();
+            }
         }
     }
 }

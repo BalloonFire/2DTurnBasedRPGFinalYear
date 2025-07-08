@@ -2316,7 +2316,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 814576408}
         m_TargetAssemblyTypeName: Inventory.InventoryController, Assembly-CSharp
-        m_MethodName: ToggleInventoryUI
+        m_MethodName: OpenInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13304,10 +13304,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1570933889405313143, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2624887146073531504, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13432,6 +13428,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4347213892367513959, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 814576408}
     - target: {fileID: 5836777003729884465, guid: c1878a78cc865254cbb2823cb9e16f00, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

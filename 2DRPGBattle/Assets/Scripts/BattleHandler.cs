@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Player;
 
 public class BattleHandler : MonoBehaviour
 {
@@ -78,21 +79,21 @@ public class BattleHandler : MonoBehaviour
         {
             case 0:
                 attackName = "Basic Attack";
-                minDmg = currentPlayer.minDmgAtk;
-                maxDmg = currentPlayer.maxDmgAtk;
-                critChance = currentPlayer.critChanceAtk;
+                minDmg = currentPlayer.playerData.minDmgAtk;
+                maxDmg = currentPlayer.playerData.maxDmgAtk;
+                critChance = currentPlayer.playerData.critChanceAtk;
                 break;
             case 1:
                 attackName = "Skill Attack";
-                minDmg = currentPlayer.minDmgSkill;
-                maxDmg = currentPlayer.maxDmgSkill;
-                critChance = currentPlayer.critChanceSkill;
+                minDmg = currentPlayer.playerData.minDmgSkill;
+                maxDmg = currentPlayer.playerData.maxDmgSkill;
+                critChance = currentPlayer.playerData.critChanceSkill;
                 break;
             case 2:
                 attackName = "Ultimate Attack";
-                minDmg = currentPlayer.minDmgUltimate;
-                maxDmg = currentPlayer.maxDmgUltimate;
-                critChance = currentPlayer.critChanceUltimate;
+                minDmg = currentPlayer.playerData.minDmgUltimate;
+                maxDmg = currentPlayer.playerData.maxDmgUltimate;
+                critChance = currentPlayer.playerData.critChanceUltimate;
                 break;
         }
 

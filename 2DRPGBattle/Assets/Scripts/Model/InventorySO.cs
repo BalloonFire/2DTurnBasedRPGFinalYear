@@ -35,15 +35,14 @@ namespace Inventory.Model
                     {
                         quantity -= AddToFirstEmptySpot(item, 1);
                     }
-                    InformAboutChange();
-                    return quantity;
                 }
+                InformAboutChange();
+                return quantity;
             }
             quantity = AddStackableItem(item, quantity);
             InformAboutChange();
             return quantity;
         }
-
         private int AddToFirstEmptySpot(ItemSO item, int quantity)
         {
             InventoryItem newItem = new InventoryItem

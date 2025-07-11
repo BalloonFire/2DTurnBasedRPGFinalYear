@@ -2,141 +2,180 @@ using System.Collections;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
+using Enemy.Model;
 
-public class EnemyController : MonoBehaviour
+namespace Enemy
 {
-    public enum EnemyID { Enemy1, Enemy2, Enemy3 }
-    public EnemyID enemyID;
-
-    public int health;
-    private int maxHealth;
-    public Image healthBar;
-    public GameObject enemyBar;
-
-    public int minDmg;
-    public int maxDmg;
-    public int critChance;
-
-    public int minDmg2;
-    public int maxDmg2;
-    public int critChance2;
-
-    private Animator ani;
-    private bool useAttack1 = true;
-    private bool isAttacking;
-
-    void Start()
+    public class EnemyController : MonoBehaviour
     {
-        maxHealth = health;
-        ani = GetComponent<Animator>();
-        enemyBar.SetActive(false);
-    }
+        [Header("Class Data")]
+        public EnemySO enemyData;
+        public enum EnemyID { Enemy1, Enemy2, Enemy3 }
+        public EnemyID enemyID;
 
-    public IEnumerator ExecuteAttack(PlayerController[] players)
-    {
-        if (isAttacking || health <= 0) yield break;
-        isAttacking = true;
+        [Header("UI Elements")]
+        public Image healthBar;
+        public GameObject enemyBar;
 
-        enemyBar.SetActive(true);
+        private int health;
+        private int maxHealth;
+        private Animator ani;
+        private bool useAttack1 = true;
+        private bool isAttacking;
 
-        // Filter alive players
-        var alivePlayers = System.Array.FindAll(players, p => p.IsAlive());
-        if (alivePlayers.Length == 0)
+        private void Awake()
         {
+            // Initialize with the assigned enemyData if it exists
+            if (enemyData != null)
+            {
+                Initialize(enemyData);
+            }
+        }
+
+        public void Initialize(EnemySO data)
+        {
+            enemyData = data;
+
+            // Set health stats
+            maxHealth = enemyData.baseHealth;
+            health = maxHealth;
+
+            // Get components
+            ani = GetComponent<Animator>();
+
+            // Set animator controller if provided
+            if (enemyData.animatorController != null)
+            {
+                ani.runtimeAnimatorController = enemyData.animatorController;
+            }
+
+            // Initialize UI
+            if (healthBar != null)
+            {
+                UpdateHealthBar();
+            }
+
+            enemyBar.SetActive(false);
+        }
+
+        public IEnumerator ExecuteAttack(PlayerController[] players)
+        {
+            if (isAttacking || health <= 0) yield break;
+            isAttacking = true;
+
+            enemyBar.SetActive(true);
+
+            var alivePlayers = System.Array.FindAll(players, p => p.IsAlive());
+            if (alivePlayers.Length == 0)
+            {
+                isAttacking = false;
+                yield break;
+            }
+
+            GameObject randomPlayer = alivePlayers[Random.Range(0, alivePlayers.Length)].gameObject;
+
+            if (useAttack1)
+            {
+                yield return StartCoroutine(PerformAttack(
+                    randomPlayer,
+                    "attack1",
+                    enemyData.minDmg,
+                    enemyData.maxDmg,
+                    enemyData.critChance
+                ));
+            }
+            else
+            {
+                yield return StartCoroutine(PerformAttack(
+                    randomPlayer,
+                    "attack2",
+                    enemyData.minDmg2,
+                    enemyData.maxDmg2,
+                    enemyData.critChance2
+                ));
+            }
+
+            useAttack1 = !useAttack1;
             isAttacking = false;
-            yield break;
+            enemyBar.SetActive(false);
         }
 
-        // Randomly select a player
-        GameObject randomPlayer = alivePlayers[Random.Range(0, alivePlayers.Length)].gameObject;
-
-        if (useAttack1)
+        private IEnumerator PerformAttack(GameObject player, string trigger, int minDmg, int maxDmg, int critChance)
         {
-            yield return StartCoroutine(PerformAttack(randomPlayer, "attack1", minDmg, maxDmg, critChance));
-        }
-        else
-        {
-            yield return StartCoroutine(PerformAttack(randomPlayer, "attack2", minDmg2, maxDmg2, critChance2));
-        }
+            Vector3 startPos = transform.position;
+            Vector3 attackPos = new Vector3(player.transform.position.x + 1f, startPos.y, startPos.z);
 
-        useAttack1 = !useAttack1;
-        isAttacking = false;
-        enemyBar.SetActive(false);
-    }
+            yield return StartCoroutine(SlideToPosition(attackPos, 0.2f));
 
-    private IEnumerator PerformAttack(GameObject player, string trigger, int minDmg, int maxDmg, int critChance)
-    {
-        Vector3 startPos = transform.position;
-        Vector3 attackPos = new Vector3(player.transform.position.x + 1f, startPos.y, startPos.z);
+            ani.SetTrigger(trigger);
+            yield return new WaitForSeconds(0.7f);
 
-        yield return StartCoroutine(SlideToPosition(attackPos, 0.2f));
+            bool isCrit = Random.Range(0, 100) <= critChance;
+            int damage = CalculateDamage(minDmg, maxDmg, isCrit);
 
-        ani.SetTrigger(trigger);
-        yield return new WaitForSeconds(0.7f);
+            Debug.Log($"{enemyID} deals {damage} damage{(isCrit ? " (CRIT!)" : "")} to {player.GetComponent<PlayerController>().playerID}");
+            player.GetComponent<PlayerController>().getHit(damage);
 
-        bool isCrit = Random.Range(0, 100) <= critChance;
-        int damage = CalculateDamage(minDmg, maxDmg, isCrit);
-
-        Debug.Log($"{enemyID} deals {damage} damage{(isCrit ? " (CRIT!)" : "")} to {player.GetComponent<PlayerController>().playerID}");
-        player.GetComponent<PlayerController>().getHit(damage);
-
-        yield return StartCoroutine(SlideToPosition(startPos, 0.2f));
-    }
-
-    private int CalculateDamage(int min, int max, bool isCrit)
-    {
-        int damage = Random.Range(min, max + 1);
-        return isCrit ? Mathf.RoundToInt(damage * 1.5f) : damage;
-    }
-
-    private IEnumerator SlideToPosition(Vector3 target, float duration)
-    {
-        float elapsed = 0;
-        Vector3 startPos = transform.position;
-
-        while (elapsed < duration)
-        {
-            transform.position = Vector3.Lerp(startPos, target, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
+            yield return StartCoroutine(SlideToPosition(startPos, 0.2f));
         }
 
-        transform.position = target;
-    }
-
-    public void getHit(int damage)
-    {
-        if (health <= 0) return;
-
-        health = Mathf.Max(health - damage, 0);
-        UpdateHealthBar();
-
-        if (health <= 0)
+        private int CalculateDamage(int min, int max, bool isCrit)
         {
-            HandleDeath();
+            int damage = Random.Range(min, max + 1);
+            return isCrit ? Mathf.RoundToInt(damage * 1.5f) : damage;
         }
-        else
+
+        private IEnumerator SlideToPosition(Vector3 target, float duration)
         {
+            float elapsed = 0;
+            Vector3 startPos = transform.position;
+
+            while (elapsed < duration)
+            {
+                transform.position = Vector3.Lerp(startPos, target, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = target;
+        }
+
+        public void getHit(int damage)
+        {
+            if (health <= 0) return;
+
+            health = Mathf.Max(health - damage, 0);
+            UpdateHealthBar();
+
+            if (health <= 0)
+            {
+                HandleDeath();
+            }
+            else
+            {
+                ani.SetTrigger("hurt");
+            }
+        }
+
+        private void UpdateHealthBar()
+        {
+            if (healthBar == null) return;
+
+            float healthPercent = (float)health / maxHealth;
+            healthBar.rectTransform.sizeDelta = new Vector2(300f * healthPercent, healthBar.rectTransform.sizeDelta.y);
+        }
+
+        private void HandleDeath()
+        {
+            enemyBar.SetActive(false);
+            ani.SetBool("isDead", true);
             ani.SetTrigger("hurt");
+            FindObjectOfType<BattleHandler>().CheckGameOver();
         }
-    }
 
-    private void UpdateHealthBar()
-    {
-        float healthPercent = (float)health / maxHealth;
-        healthBar.rectTransform.sizeDelta = new Vector2(300f * healthPercent, healthBar.rectTransform.sizeDelta.y);
-    }
-
-    private void HandleDeath()
-    {
-        enemyBar.SetActive(false);
-        ani.SetBool("isDead", true);
-        ani.SetTrigger("hurt");
-        FindObjectOfType<BattleHandler>().CheckGameOver();
-    }
-
-    public bool IsAlive()
-    {
-        return health > 0;
+        public bool IsAlive()
+        {
+            return health > 0;
+        }
     }
 }

@@ -1,5 +1,3 @@
-using Inventory.Model;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player.Model
@@ -34,6 +32,5 @@ namespace Player.Model
 
         [Header("Visuals")]
         public RuntimeAnimatorController animatorController;
-        public GameObject prefab;
     }
 }

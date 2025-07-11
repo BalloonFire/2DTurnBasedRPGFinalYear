@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Player.Model;
 using System.Collections;
+using Enemy;
 
 namespace Player
 {

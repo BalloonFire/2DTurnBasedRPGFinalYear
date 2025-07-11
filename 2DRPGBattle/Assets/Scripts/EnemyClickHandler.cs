@@ -1,4 +1,5 @@
 using UnityEngine;
+using Enemy;
 
 public class EnemyClickHandler : MonoBehaviour
 {
@@ -21,19 +22,27 @@ public class EnemyClickHandler : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Only allow selection when enabled and during player turn
-        if (!selectable || battleHandler == null || !battleHandler.IsPlayerTurn()) return;
+        Debug.Log($"Enemy clicked: {gameObject.name} (Selectable: {selectable})");
 
-        // Don't select dead enemies
-        if (!enemyController.IsAlive()) return;
+        if (!selectable || battleHandler == null || !battleHandler.IsPlayerTurn())
+        {
+            Debug.Log("Cannot select - Not selectable or not player turn");
+            return;
+        }
 
-        // Deselect previously selected enemy
+        if (!enemyController.IsAlive())
+        {
+            Debug.Log("Cannot select - Enemy is dead");
+            return;
+        }
+
+        // Deselect previous selection if necessary
         if (currentlySelected != null && currentlySelected != this)
         {
             currentlySelected.Deselect();
         }
 
-        // Select this enemy
+        // Always select, even if clicking the same enemy again
         Select();
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Player;
+using Enemy;
 
 public class BattleHandler : MonoBehaviour
 {

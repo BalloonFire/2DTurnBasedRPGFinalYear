@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8670709485551487642}
   - component: {fileID: 3237683092119945529}
   - component: {fileID: 6829096006590602661}
+  - component: {fileID: 4318720627458725460}
+  - component: {fileID: 4683280390262324074}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,19 +122,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978cd31c782b4ed448e4847395a9427f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  playerData: {fileID: 11400000, guid: 1c2f7711ab7a3c546a8b73375bbb14c6, type: 2}
+  playerID: 0
   healthBar: {fileID: 8824800685124737684}
-  minDmgAtk: 5
-  maxDmgAtk: 10
-  critChanceAtk: 20
-  minDmgSkill: 8
-  maxDmgSkill: 15
-  critChanceSkill: 50
   attackButton: {fileID: 0}
   skillButton: {fileID: 0}
-  maxMana: 5
-  currentMana: 0
-  manaText: {fileID: 0}
+  ultimateButton: {fileID: 0}
+  manaText: {fileID: 1875191575801532744}
+  attackSelected: -1
+  canBeClicked: 0
+--- !u!114 &4318720627458725460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290517733777326591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194bac19a5bc2ae488272741444a9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUI: {fileID: 0}
+  selectionRing: {fileID: 0}
+--- !u!61 &4683280390262324074
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290517733777326591}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15162934, y: -0.0036981702}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 0.96}
+    newSize: {x: 1.28, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4441879, y: 0.6715337}
+  m_EdgeRadius: 0
 --- !u!1 &4941047127925243438
 GameObject:
   m_ObjectHideFlags: 0

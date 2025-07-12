@@ -68,9 +68,9 @@ namespace TMPro.Examples
         }
 
 
-        void ON_TEXT_CHANGED(Object obj)
+        void ON_TEXT_CHANGED(Object itemIndex)
         {
-            if (obj == m_TextMeshPro)
+            if (itemIndex == m_TextMeshPro)
             {
                 // Update cached vertex data.
                 m_cachedMeshInfoVertexData = m_TextMeshPro.textInfo.CopyMeshInfoVertexData();

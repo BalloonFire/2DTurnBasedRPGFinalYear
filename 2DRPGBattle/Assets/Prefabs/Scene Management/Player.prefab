@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 1491954369876630033}
   - component: {fileID: 6723896534141185400}
   - component: {fileID: 7644585933149601954}
+  - component: {fileID: 3124157702774888924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,8 +303,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040101543, y: -0.5754606}
-  m_Size: {x: 0.74744517, y: 0.38961345}
+  m_Offset: {x: -0.012938527, y: -0.22236773}
+  m_Size: {x: 1.095817, y: 1.095817}
   m_Direction: 1
 --- !u!114 &2613676147391969912
 MonoBehaviour:
@@ -390,6 +391,19 @@ MonoBehaviour:
   fullStaminaImage: {fileID: 21300000, guid: d846dc6e885a40c4692a76b80daf1667, type: 3}
   emptyStaminaImage: {fileID: 21300000, guid: 03ea531f8c0325a4e91c5b3f7e548991, type: 3}
   timeBetweenStaminaRefresh: 3
+--- !u!114 &3124157702774888924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378675188506956004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef9038b26209ad4b80719cbc8674523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: b47db1acde6acac41988bce2de6e0623, type: 2}
 --- !u!1 &3597891565266509536
 GameObject:
   m_ObjectHideFlags: 0

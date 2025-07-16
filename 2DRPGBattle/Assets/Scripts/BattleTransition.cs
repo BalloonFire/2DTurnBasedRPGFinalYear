@@ -7,21 +7,23 @@ using UnityEngine.UI;
 
 public class BattleTransition : MonoBehaviour
 {
-    [Header("Settings")]
-    public float transitionTime = 1f;
+    // Singleton instance for easy access
+    public static BattleTransition Instance { get; private set; }
 
-    [Header("References")]
+    // Current enemy being battled
+    public static EnemySO CurrentEnemy { get; private set; }
+
+    // Inspector settings
+    public float transitionTime = 1f;
     public Image transitionPanel;
     public Animator transitionAnimator;
 
-    private static BattleTransition _instance;
-    private static EnemySO _currentEnemy;
-
     void Awake()
     {
-        if (_instance == null)
+        // Singleton setup
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -30,58 +32,63 @@ public class BattleTransition : MonoBehaviour
         }
     }
 
-    public static void StartBattle(EnemySO enemy)
+    // Call this when player hits an enemy
+    public void StartBattle(EnemySO enemy)
     {
-        _currentEnemy = enemy;
-        _instance.StartCoroutine(_instance.TransitionToBattle());
+        CurrentEnemy = enemy;
+        StartCoroutine(TransitionToBattle());
+    }
+
+    // Call this when battle ends
+    public void ReturnToOverworld()
+    {
+        StartCoroutine(TransitionToOverworld());
     }
 
     IEnumerator TransitionToBattle()
     {
-        // Freeze gameplay
+        // Freeze game
         Time.timeScale = 0f;
 
-        // Setup transition visuals using enemy type color
-        transitionPanel.color = GetEnemyTypeColor(_currentEnemy.enemyType);
+        // Set transition color based on enemy type
+        transitionPanel.color = GetEnemyColor(CurrentEnemy.enemyType);
 
         // Play transition animation
-        transitionAnimator.SetTrigger("StartBattle");
+        transitionAnimator.SetTrigger("FadeIn");
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load battle scene
         SceneManager.LoadScene("BattleScene");
     }
 
-    private Color GetEnemyTypeColor(EnemySO.EnemyType type)
+    IEnumerator TransitionToOverworld()
     {
-        switch (type)
-        {
-            case EnemySO.EnemyType.Melee: return new Color(0.8f, 0.2f, 0.2f); // Red
-            case EnemySO.EnemyType.Ranged: return new Color(0.2f, 0.2f, 0.8f); // Blue
-            case EnemySO.EnemyType.Boss: return new Color(0.8f, 0.1f, 0.8f); // Purple
-            default: return Color.black;
-        }
-    }
+        // Freeze game
+        Time.timeScale = 0f;
 
-    public static void SetupBattleScene(SpriteRenderer enemySprite, Animator enemyAnimator)
-    {
-        if (_currentEnemy == null) return;
+        // Play transition animation
+        transitionAnimator.SetTrigger("FadeIn");
+        yield return new WaitForSecondsRealtime(transitionTime);
 
-        // Apply enemy data to battle scene
-        enemySprite.sprite = _currentEnemy.enemySprite;
+        // Load overworld scene
+        SceneManager.LoadScene("OverworldScene");
 
-        // Setup animator if available
-        if (enemyAnimator != null && _currentEnemy.animatorController != null)
-        {
-            enemyAnimator.runtimeAnimatorController = _currentEnemy.animatorController;
-        }
+        // Fade out
+        transitionAnimator.SetTrigger("FadeOut");
 
-        // Resume gameplay
+        // Unfreeze game
         Time.timeScale = 1f;
     }
 
-    public static EnemySO GetCurrentEnemy()
+    private Color GetEnemyColor(EnemySO.EnemyType type)
     {
-        return _currentEnemy;
+        // Return color based on enemy type
+        return type switch
+        {
+            EnemySO.EnemyType.Melee => new Color(0.8f, 0.2f, 0.2f), // Red
+            EnemySO.EnemyType.Ranged => new Color(0.2f, 0.2f, 0.8f), // Blue
+            EnemySO.EnemyType.Boss => new Color(0.8f, 0.1f, 0.8f),   // Purple
+            _ => Color.black
+        };
     }
 }

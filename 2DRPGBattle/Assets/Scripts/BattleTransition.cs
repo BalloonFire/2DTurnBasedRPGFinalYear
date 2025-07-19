@@ -58,7 +58,7 @@ public class BattleTransition : MonoBehaviour
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load battle scene
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("BattleTest");
     }
 
     IEnumerator TransitionToOverworld()
@@ -71,7 +71,7 @@ public class BattleTransition : MonoBehaviour
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load overworld scene
-        SceneManager.LoadScene("OverworldScene");
+        SceneManager.LoadScene("MapGrass1");
 
         // Fade out
         transitionAnimator.SetTrigger("FadeOut");

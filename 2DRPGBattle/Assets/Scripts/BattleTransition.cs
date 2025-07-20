@@ -25,6 +25,9 @@ public class BattleTransition : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Ensure the transition panel is properly initialized
+            transitionPanel.gameObject.SetActive(true);
         }
         else
         {
@@ -55,10 +58,18 @@ public class BattleTransition : MonoBehaviour
 
         // Play transition animation
         transitionAnimator.SetTrigger("FadeIn");
+
+        // Wait for animation to complete
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load battle scene
         SceneManager.LoadScene("BattleTest");
+
+        // FADE OUT AFTER LOADING BATTLE SCENE - CRITICAL ADDITION
+        transitionAnimator.SetTrigger("FadeOut");
+
+        // Unfreeze game
+        Time.timeScale = 1f;
     }
 
     IEnumerator TransitionToOverworld()
@@ -73,8 +84,11 @@ public class BattleTransition : MonoBehaviour
         // Load overworld scene
         SceneManager.LoadScene("MapGrass1");
 
-        // Fade out
+        // FADE OUT AFTER LOADING OVERWORLD - CRITICAL ADDITION
         transitionAnimator.SetTrigger("FadeOut");
+
+        // Wait for fade out to complete
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         // Unfreeze game
         Time.timeScale = 1f;

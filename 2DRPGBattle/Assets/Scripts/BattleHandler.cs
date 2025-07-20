@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Player;
 using Enemy;
+using UnityEngine.SceneManagement;
 
 public class BattleHandler : MonoBehaviour
 {
@@ -274,7 +275,15 @@ public class BattleHandler : MonoBehaviour
         {
             Debug.Log("Victory - All Enemies Defeated!");
             winUI.SetActive(true);
+            ReturnToOverworld();
         }
+    }
+
+    private IEnumerator ReturnToOverworld()
+    {
+        yield return new WaitForSeconds(3f); // Delay to show win UI
+
+        SceneManager.LoadScene("Map grass 1");
     }
 
     public void NotifyPlayerFinished(PlayerController player)

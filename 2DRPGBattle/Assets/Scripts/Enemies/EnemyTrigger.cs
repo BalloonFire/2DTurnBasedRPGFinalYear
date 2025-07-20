@@ -1,17 +1,26 @@
-using Enemy.Model;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyTrigger : MonoBehaviour
 {
-    public EnemySO enemyData;
+    [Header("Enemy Settings")]
+    public string enemyID = "slime_01"; // Set this in the Inspector
 
-    void OnTriggerEnter2D(Collider2D other)
+    [Header("Scene Settings")]
+    public string battleSceneName = "BattleTest";
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            BattleTransition.Instance.StartBattle(enemyData);
+            // Store info for returning
+            PlayerPrefs.SetString("BattleEnemyID", enemyID);
+            PlayerPrefs.SetString("ReturnScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetFloat("PlayerX", other.transform.position.x);
+            PlayerPrefs.SetFloat("PlayerY", other.transform.position.y);
+
+            // Load the battle scene
+            SceneManager.LoadScene(battleSceneName);
         }
     }
 }

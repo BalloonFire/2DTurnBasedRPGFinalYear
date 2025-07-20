@@ -41,9 +41,21 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            // Optional: play death VFX now or after battle
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
-            GetComponent<PickUpSpawner>().DropItems();
-            Destroy(gameObject);
+
+            // Save ID before battle
+            string slimeID = GetComponent<EnemyTrigger>()?.enemyID;
+            if (!string.IsNullOrEmpty(slimeID))
+            {
+                PlayerPrefs.SetString("BattleEnemyID", slimeID);
+                PlayerPrefs.SetString("ReturnScene", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                PlayerPrefs.SetFloat("PlayerX", PlayerController1.Instance.transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", PlayerController1.Instance.transform.position.y);
+            }
+
+            // Load the battle scene
+            UnityEngine.SceneManagement.SceneManager.LoadScene("BattleTest");
         }
     }
 }

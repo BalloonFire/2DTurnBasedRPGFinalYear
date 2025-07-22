@@ -7,7 +7,7 @@ public class EnemyTrigger : MonoBehaviour
     public string enemyID = "slime_01"; // Set this in the Inspector
 
     [Header("Scene Settings")]
-    public string battleSceneName = "BattleTest";
+    public string battleScene = "BattleTest";
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,7 +20,7 @@ public class EnemyTrigger : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerY", other.transform.position.y);
 
             // Load the battle scene
-            SceneManager.LoadScene(battleSceneName);
+            SceneManager.LoadScene(battleScene);
         }
     }
 }

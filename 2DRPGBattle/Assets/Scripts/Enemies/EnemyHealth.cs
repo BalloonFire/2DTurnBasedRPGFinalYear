@@ -54,9 +54,17 @@ public class EnemyHealth : MonoBehaviour
                 PlayerPrefs.SetFloat("PlayerY", PlayerController1.Instance.transform.position.y);
             }
 
+            // Disable overworld UI before loading battle scene
+            GameObject overworldUI = GameObject.Find("UIOverworldCanvas");
+            if (overworldUI != null)
+            {
+                overworldUI.SetActive(false);
+            }
+
             // Load the battle scene
             UnityEngine.SceneManagement.SceneManager.LoadScene("BattleTest");
         }
     }
+
 }
 

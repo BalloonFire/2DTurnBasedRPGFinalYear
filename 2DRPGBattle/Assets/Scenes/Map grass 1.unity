@@ -10875,7 +10875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &572786638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20227,13 +20227,18 @@ PrefabInstance:
     - target: {fileID: 4622415518951240141, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Name
-      value: Blue slime (3)
+      value: slime_02
       objectReference: {fileID: 0}
     - target: {fileID: 6406597359614386629, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694, type: 2}
+    - target: {fileID: 6954571368454450789, guid: 3380db144501cb441b0f80ce97f03697,
+        type: 3}
+      propertyPath: enemyID
+      value: slime_02
+      objectReference: {fileID: 0}
     - target: {fileID: 8391502435612633937, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20305,7 +20310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1217605676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20500,13 +20505,18 @@ PrefabInstance:
     - target: {fileID: 4622415518951240141, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Name
-      value: Blue slime (1)
+      value: slime_04
       objectReference: {fileID: 0}
     - target: {fileID: 6406597359614386629, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694, type: 2}
+    - target: {fileID: 6954571368454450789, guid: 3380db144501cb441b0f80ce97f03697,
+        type: 3}
+      propertyPath: enemyID
+      value: slime_04
+      objectReference: {fileID: 0}
     - target: {fileID: 8391502435612633937, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20874,13 +20884,18 @@ PrefabInstance:
     - target: {fileID: 4622415518951240141, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Name
-      value: Blue slime (2)
+      value: slime_03
       objectReference: {fileID: 0}
     - target: {fileID: 6406597359614386629, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694, type: 2}
+    - target: {fileID: 6954571368454450789, guid: 3380db144501cb441b0f80ce97f03697,
+        type: 3}
+      propertyPath: enemyID
+      value: slime_03
+      objectReference: {fileID: 0}
     - target: {fileID: 8391502435612633937, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26269,6 +26284,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249539939155392265, guid: 7279f81beb3085e4d92f31e7a7489e90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3378675188506956004, guid: 7279f81beb3085e4d92f31e7a7489e90,
         type: 3}
       propertyPath: m_Name
@@ -26376,6 +26396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 77707802009690905, guid: c2c9030c204d14246a954d8d975e8e5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6456478689400496424, guid: c2c9030c204d14246a954d8d975e8e5e,
         type: 3}
@@ -26761,7 +26786,12 @@ PrefabInstance:
     - target: {fileID: 3105060883903080045, guid: 17c8e84119584434e8be34e27b9e0ffc,
         type: 3}
       propertyPath: m_Name
-      value: UICanvas
+      value: UIOverworldCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105060883903080045, guid: 17c8e84119584434e8be34e27b9e0ffc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3494509829071205177, guid: 17c8e84119584434e8be34e27b9e0ffc,
         type: 3}
@@ -27036,13 +27066,18 @@ PrefabInstance:
     - target: {fileID: 4622415518951240141, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Name
-      value: Blue slime
+      value: slime_01
       objectReference: {fileID: 0}
     - target: {fileID: 6406597359614386629, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694, type: 2}
+    - target: {fileID: 6954571368454450789, guid: 3380db144501cb441b0f80ce97f03697,
+        type: 3}
+      propertyPath: enemyID
+      value: slime_01
+      objectReference: {fileID: 0}
     - target: {fileID: 8391502435612633937, guid: 3380db144501cb441b0f80ce97f03697,
         type: 3}
       propertyPath: m_LocalPosition.x

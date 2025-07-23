@@ -65,11 +65,25 @@ public class BattleTransition : MonoBehaviour
         // Load battle scene
         SceneManager.LoadScene("BattleTest");
 
+        // --- NEW: destroy anything you forgot to unflag
+        CleanupOverworldObjects();
+
         // FADE OUT AFTER LOADING BATTLE SCENE - CRITICAL ADDITION
         transitionAnimator.SetTrigger("FadeOut");
 
         // Unfreeze game
         Time.timeScale = 1f;
+    }
+
+    private void CleanupOverworldObjects()
+    {
+        // Remove Overworld UI if still around
+        var ui = GameObject.Find("UIOverworldCanvas");
+        if (ui != null) Destroy(ui);
+
+        // Remove Overworld Player if still around
+        var player = GameObject.FindWithTag("Player");
+        if (player != null) Destroy(player);
     }
 
     IEnumerator TransitionToOverworld()

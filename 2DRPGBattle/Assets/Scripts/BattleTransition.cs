@@ -50,19 +50,41 @@ public class BattleTransition : MonoBehaviour
 
     IEnumerator TransitionToBattle()
     {
+        // Freeze game
         Time.timeScale = 0f;
+<<<<<<< HEAD
+=======
+
+        // Set transition color based on enemy type
+>>>>>>> parent of cee922b3 (updated)
         transitionPanel.color = GetEnemyColor(CurrentEnemy.enemyType);
+
+        // Play transition animation
         transitionAnimator.SetTrigger("FadeIn");
+<<<<<<< HEAD
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load the Battle scene
+=======
+
+        // Wait for animation to complete
+        yield return new WaitForSecondsRealtime(transitionTime);
+
+        // Load battle scene
+>>>>>>> parent of cee922b3 (updated)
         SceneManager.LoadScene("BattleTest");
 
         // --- NEW: destroy anything you forgot to unflag
         CleanupOverworldObjects();
 
+<<<<<<< HEAD
         // play FadeOut on the battle’s transition panel
+=======
+        // FADE OUT AFTER LOADING BATTLE SCENE - CRITICAL ADDITION
+>>>>>>> parent of cee922b3 (updated)
         transitionAnimator.SetTrigger("FadeOut");
+
+        // Unfreeze game
         Time.timeScale = 1f;
     }
 

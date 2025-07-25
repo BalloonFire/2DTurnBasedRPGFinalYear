@@ -40,14 +40,18 @@ public class PlayerHealth : Singleton<PlayerHealth>
         }
     }
 
-    public void HealPLayer()
+    public void HealPLayer(int healAmount)
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth += 1;
+            currentHealth += healAmount;
+            if (currentHealth > maxHealth)
+                currentHealth = maxHealth;
+
             UpdateHealthSlider();
         }
     }
+
 
     public void TakeDamage(int damageAmount, Transform hitTransform)
     {

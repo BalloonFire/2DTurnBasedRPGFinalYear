@@ -1,0 +1,202 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using Player.Model;
+
+public class PlayerOverworldController : Singleton<PlayerOverworldController>
+{
+    [Header("References")]
+    [SerializeField] private PlayerSO playerData;
+    [SerializeField] private TrailRenderer myTrailRenderer;
+    [SerializeField] private Transform weaponCollider;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float dashMultiplier = 4f;
+
+    [Header("Health Settings")]
+    [SerializeField] private string healthSliderName = "Health Slider";
+    [SerializeField] private float knockBackThrustAmount = 10f;
+    [SerializeField] private float damageRecoveryTime = 1f;
+
+    private PlayerControls playerControls;
+    private Vector2 movement;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Knockback knockback;
+    private Flash flash;
+    private Slider healthSlider;
+
+    private bool facingLeft = false;
+    private bool isDashing = false;
+    private bool canTakeDamage = true;
+
+    private float baseMoveSpeed;
+    private int maxHealth;
+    private int currentHealth;
+
+    public bool FacingLeft => facingLeft;
+    public Transform GetWeaponCollider() => weaponCollider;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        playerControls = new PlayerControls();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        knockback = GetComponent<Knockback>();
+        flash = GetComponent<Flash>();
+    }
+
+    private void Start()
+    {
+        if (playerData != null)
+        {
+            maxHealth = playerData.baseHealth;
+            animator.runtimeAnimatorController = playerData.animatorController;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerSO not assigned!");
+            maxHealth = 100;
+        }
+
+        currentHealth = maxHealth;
+        baseMoveSpeed = moveSpeed;
+
+        playerControls.Combat.Dash.performed += _ => Dash();
+        UpdateHealthSlider();
+    }
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
+    private void Update()
+    {
+        HandleInput();
+    }
+
+    private void FixedUpdate()
+    {
+        AdjustFacingDirection();
+        Move();
+    }
+
+    private void HandleInput()
+    {
+        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+
+        animator.SetFloat("moveX", movement.x);
+        animator.SetFloat("moveY", movement.y);
+    }
+
+    private void Move()
+    {
+        if (knockback.GettingKnockedBack) return;
+
+        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+    }
+
+    private void AdjustFacingDirection()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        facingLeft = mousePos.x < playerScreenPos.x;
+        spriteRenderer.flipX = facingLeft;
+    }
+
+    private void Dash()
+    {
+        if (!isDashing && Stamina.Instance.CurrentStamina > 0)
+        {
+            Stamina.Instance.UseStamina();
+            isDashing = true;
+            moveSpeed *= dashMultiplier;
+            myTrailRenderer.emitting = true;
+            StartCoroutine(EndDashRoutine());
+        }
+    }
+
+    private IEnumerator EndDashRoutine()
+    {
+        float dashTime = 0.2f;
+        float dashCooldown = 0.25f;
+        yield return new WaitForSeconds(dashTime);
+        moveSpeed = baseMoveSpeed;
+        myTrailRenderer.emitting = false;
+        yield return new WaitForSeconds(dashCooldown);
+        isDashing = false;
+    }
+
+    public void HealPlayer(int amount)
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += amount;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            UpdateHealthSlider();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out EnemyAI enemy))
+        {
+            TakeDamage(1, collision.transform);
+        }
+    }
+
+    public void TakeDamage(int damage, Transform hitSource)
+    {
+        if (!canTakeDamage) return;
+
+        knockback.GetKnockedBack(hitSource, knockBackThrustAmount);
+        StartCoroutine(flash.FlashRoutine());
+        currentHealth -= damage;
+        canTakeDamage = false;
+        StartCoroutine(DamageRecoveryRoutine());
+        UpdateHealthSlider();
+        CheckIfDead();
+    }
+
+    private IEnumerator DamageRecoveryRoutine()
+    {
+        yield return new WaitForSeconds(damageRecoveryTime);
+        canTakeDamage = true;
+    }
+
+    private void CheckIfDead()
+    {
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Debug.Log("Player has died!");
+            // Add death handling logic here
+        }
+    }
+
+    private void UpdateHealthSlider()
+    {
+        if (healthSlider == null)
+        {
+            GameObject sliderObj = GameObject.Find(healthSliderName);
+            if (sliderObj) healthSlider = sliderObj.GetComponent<Slider>();
+        }
+
+        if (healthSlider)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
+    }
+}

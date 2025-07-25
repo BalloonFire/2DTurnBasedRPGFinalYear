@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 541832bf2009cff469f548058086efa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8966930929001df4dbbee2f8d3d08a30, type: 3}
   m_Name: Heart
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 30
+  <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Heart
-  <Description>k__BackingField: Heals 30 HP.
+  <Description>k__BackingField: Heal you
   <ItemImage>k__BackingField: {fileID: 711661359, guid: 78bb7071ddd62ac4f83b69f1b0d5efee,
     type: 3}
+  modifiersData:
+  - statModifier: {fileID: 11400000, guid: 24a1d3e7a154d164988c5d2dafa33d22, type: 2}
+    value: 1

@@ -15,7 +15,7 @@ C:/Users/MSI MODERN 14/Documents/FinalProject (DL 6months)/2DTurnBasedRPGFinalYe
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-15125
+39668
 Successfully changed project path to: C:/Users/MSI MODERN 14/Documents/FinalProject (DL 6months)/2DTurnBasedRPGFinalYear/2DRPGBattle
 C:/Users/MSI MODERN 14/Documents/FinalProject (DL 6months)/2DTurnBasedRPGFinalYear/2DRPGBattle
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,14 +49,14 @@ C:/Users/MSI MODERN 14/Documents/FinalProject (DL 6months)/2DTurnBasedRPGFinalYe
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [18876]  Target information:
+Player connection [19396]  Target information:
 
-Player connection [18876]  * "[IP] 192.168.2.14 [Port] 0 [Flags] 2 [Guid] 2373774617 [EditorId] 2373774617 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [19396]  * "[IP] 192.168.2.14 [Port] 0 [Flags] 2 [Guid] 2879805331 [EditorId] 2879805331 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [18876] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [18876] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [19396] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [19396] Host joined alternative multi-casting on [225.0.0.222:34997]...
 [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
-Refreshing native plugins compatible for Editor in 40.92 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 20.37 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.49f1 (4dae1bb8668d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/Resources/UnitySubsystems
@@ -72,47 +72,47 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56816
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56796
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.49f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.017827 seconds.
-- Loaded All Assemblies, in  0.639 seconds
+Registered in 0.014373 seconds.
+- Loaded All Assemblies, in  0.489 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 472 ms
+Android Extension - Scanning For ADB Devices 443 ms
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.010 seconds
-Domain Reload Profiling: 1645ms
-	BeginReloadAssembly (195ms)
+- Finished resetting the current domain, in  0.913 seconds
+Domain Reload Profiling: 1401ms
+	BeginReloadAssembly (142ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (55ms)
-	RebuildNativeTypeToScriptingClass (21ms)
-	initialDomainReloadingComplete (109ms)
-	LoadAllAssembliesAndSetupDomain (255ms)
-		LoadAssemblies (191ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (78ms)
+	LoadAllAssembliesAndSetupDomain (201ms)
+		LoadAssemblies (139ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (252ms)
-			TypeCache.Refresh (249ms)
-				TypeCache.ScanAssembly (228ms)
+		AnalyzeDomain (199ms)
+			TypeCache.Refresh (196ms)
+				TypeCache.ScanAssembly (176ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (1011ms)
+	FinalizeReload (913ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (941ms)
+		SetupLoadedEditorAssemblies (837ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (612ms)
-			SetLoadedEditorAssemblies (11ms)
+			InitializePlatformSupportModulesInManaged (580ms)
+			SetLoadedEditorAssemblies (7ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (6ms)
-			ProcessInitializeOnLoadAttributes (243ms)
-			ProcessInitializeOnLoadMethodAttributes (68ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (184ms)
+			ProcessInitializeOnLoadMethodAttributes (61ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -121,52 +121,304 @@ Domain Reload Profiling: 1645ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.538 seconds
+- Loaded All Assemblies, in  1.453 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.582 seconds
-Domain Reload Profiling: 3113ms
-	BeginReloadAssembly (242ms)
+- Finished resetting the current domain, in  1.281 seconds
+Domain Reload Profiling: 2727ms
+	BeginReloadAssembly (229ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (8ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (33ms)
-	RebuildCommonClasses (66ms)
-	RebuildNativeTypeToScriptingClass (23ms)
-	initialDomainReloadingComplete (79ms)
-	LoadAllAssembliesAndSetupDomain (1120ms)
-		LoadAssemblies (725ms)
+		CreateAndSetChildDomain (30ms)
+	RebuildCommonClasses (64ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (84ms)
+	LoadAllAssembliesAndSetupDomain (1052ms)
+		LoadAssemblies (666ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (535ms)
-			TypeCache.Refresh (432ms)
-				TypeCache.ScanAssembly (389ms)
-			ScanForSourceGeneratedMonoScriptInfo (75ms)
-			ResolveRequiredComponents (24ms)
-	FinalizeReload (1583ms)
+		AnalyzeDomain (523ms)
+			TypeCache.Refresh (445ms)
+				TypeCache.ScanAssembly (412ms)
+			ScanForSourceGeneratedMonoScriptInfo (53ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (1282ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1222ms)
+		SetupLoadedEditorAssemblies (1010ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (34ms)
-			SetLoadedEditorAssemblies (8ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (7ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (177ms)
-			ProcessInitializeOnLoadAttributes (842ms)
-			ProcessInitializeOnLoadMethodAttributes (148ms)
-			AfterProcessingInitializeOnLoad (13ms)
+			BeforeProcessingInitializeOnLoad (151ms)
+			ProcessInitializeOnLoadAttributes (689ms)
+			ProcessInitializeOnLoadMethodAttributes (126ms)
+			AfterProcessingInitializeOnLoad (10ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 10.07 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 7.46 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 6317 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 48 unused Assets / (419.0 KB). Loaded Objects now: 6789.
-Memory consumption went from 242.9 MB to 242.5 MB.
-Total: 7.507800 ms (FindLiveObjects: 0.737000 ms CreateObjectMapping: 0.670600 ms MarkObjects: 5.821600 ms  DeleteObjects: 0.276700 ms)
+Unloading 48 unused Assets / (418.9 KB). Loaded Objects now: 6789.
+Memory consumption went from 242.8 MB to 242.4 MB.
+Total: 4.716500 ms (FindLiveObjects: 0.518900 ms CreateObjectMapping: 0.249300 ms MarkObjects: 3.737700 ms  DeleteObjects: 0.208700 ms)
 
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 37198.101390 seconds.
+  path: Assets/Scenes/Map grass 1.unity
+  artifactKey: Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Map grass 1.unity using Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '222fd33844f7c2b6d76f12625787e80a') in 0.001950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 26.978291 seconds.
+  path: Assets/Scenes/Map grass 1.unity
+  artifactKey: Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Map grass 1.unity using Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '7ed4523c7a87aac2721c308547466fb1') in 0.000846 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 36.501437 seconds.
+  path: Assets/Scenes/Map grass 1.unity
+  artifactKey: Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Map grass 1.unity using Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f3ea638d9ed09e9b2eddb7adc5a9df3e') in 0.000713 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 52.534159 seconds.
+  path: Assets/Scenes/Map grass 1.unity
+  artifactKey: Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Map grass 1.unity using Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '18fe736943c87c925c0ff332ba7cbb27') in 0.000872 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 40.000391 seconds.
+  path: Assets/Scenes/Map grass 1.unity
+  artifactKey: Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Map grass 1.unity using Guid(c274279fbde118d4fa3d54ac8dbf86ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '7efb673080b5bed1ff04509ba7c34d99') in 0.000908 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.111 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.813 seconds
+Domain Reload Profiling: 3915ms
+	BeginReloadAssembly (1404ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (1163ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (74ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (66ms)
+	LoadAllAssembliesAndSetupDomain (528ms)
+		LoadAssemblies (615ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (44ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (29ms)
+	FinalizeReload (1814ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1293ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (39ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (187ms)
+			ProcessInitializeOnLoadAttributes (898ms)
+			ProcessInitializeOnLoadMethodAttributes (145ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (27ms)
+Refreshing native plugins compatible for Editor in 17.82 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6147 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (387.8 KB). Loaded Objects now: 6808.
+Memory consumption went from 211.9 MB to 211.5 MB.
+Total: 8.767600 ms (FindLiveObjects: 0.828100 ms CreateObjectMapping: 0.747600 ms MarkObjects: 6.952600 ms  DeleteObjects: 0.237400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1308.112805 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '5f872c4feaabbb99cfcbace7cbf8515e') in 0.299326 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 174.079257 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001282 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 41.274223 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.003409 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 130.735173 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001813 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 214.117133 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001988 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 72.034482 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001113 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 10.687012 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001030 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 70.071677 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001399 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 11.900153 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.764 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  7.150 seconds
+Domain Reload Profiling: 8906ms
+	BeginReloadAssembly (479ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (27ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (128ms)
+	RebuildCommonClasses (114ms)
+	RebuildNativeTypeToScriptingClass (34ms)
+	initialDomainReloadingComplete (96ms)
+	LoadAllAssembliesAndSetupDomain (1031ms)
+		LoadAssemblies (1188ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (98ms)
+			TypeCache.Refresh (20ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (74ms)
+	FinalizeReload (7151ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1535ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (67ms)
+			SetLoadedEditorAssemblies (15ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (256ms)
+			ProcessInitializeOnLoadAttributes (1020ms)
+			ProcessInitializeOnLoadMethodAttributes (163ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (35ms)
+Refreshing native plugins compatible for Editor in 12.61 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (387.9 KB). Loaded Objects now: 6826.
+Memory consumption went from 211.9 MB to 211.5 MB.
+Total: 9.672700 ms (FindLiveObjects: 1.284600 ms CreateObjectMapping: 0.716000 ms MarkObjects: 7.519300 ms  DeleteObjects: 0.150600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -184,50 +436,50 @@ AssetImportParameters requested are different than current active one (requested
 Received Prepare
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.595 seconds
+- Loaded All Assemblies, in  1.140 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.987 seconds
-Domain Reload Profiling: 4580ms
-	BeginReloadAssembly (1735ms)
+- Finished resetting the current domain, in  3.637 seconds
+Domain Reload Profiling: 4764ms
+	BeginReloadAssembly (317ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (1437ms)
+		DisableScriptedObjects (19ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (77ms)
-	RebuildCommonClasses (74ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (74ms)
-	LoadAllAssembliesAndSetupDomain (682ms)
-		LoadAssemblies (781ms)
+		CreateAndSetChildDomain (66ms)
+	RebuildCommonClasses (85ms)
+	RebuildNativeTypeToScriptingClass (30ms)
+	initialDomainReloadingComplete (90ms)
+	LoadAllAssembliesAndSetupDomain (605ms)
+		LoadAssemblies (741ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (55ms)
-			TypeCache.Refresh (14ms)
+		AnalyzeDomain (42ms)
+			TypeCache.Refresh (12ms)
 				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
-			ResolveRequiredComponents (38ms)
-	FinalizeReload (1988ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (27ms)
+	FinalizeReload (3637ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1415ms)
+		SetupLoadedEditorAssemblies (1520ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (49ms)
-			SetLoadedEditorAssemblies (8ms)
+			InitializePlatformSupportModulesInManaged (41ms)
+			SetLoadedEditorAssemblies (7ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (234ms)
-			ProcessInitializeOnLoadAttributes (902ms)
-			ProcessInitializeOnLoadMethodAttributes (201ms)
-			AfterProcessingInitializeOnLoad (19ms)
+			BeforeProcessingInitializeOnLoad (231ms)
+			ProcessInitializeOnLoadAttributes (1012ms)
+			ProcessInitializeOnLoadMethodAttributes (208ms)
+			AfterProcessingInitializeOnLoad (20ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (37ms)
-Refreshing native plugins compatible for Editor in 13.50 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (35ms)
+Refreshing native plugins compatible for Editor in 17.24 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6147 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 21 unused Assets / (387.7 KB). Loaded Objects now: 6808.
-Memory consumption went from 212.0 MB to 211.7 MB.
-Total: 8.967100 ms (FindLiveObjects: 1.263600 ms CreateObjectMapping: 0.701000 ms MarkObjects: 6.813300 ms  DeleteObjects: 0.186000 ms)
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (387.9 KB). Loaded Objects now: 6843.
+Memory consumption went from 211.9 MB to 211.5 MB.
+Total: 7.375900 ms (FindLiveObjects: 0.639900 ms CreateObjectMapping: 0.372700 ms MarkObjects: 6.174200 ms  DeleteObjects: 0.186700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -243,3 +495,1104 @@ AssetImportParameters requested are different than current active one (requested
   custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 64.675666 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.003358 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 39.170846 seconds.
+  path: Assets/Art/prop
+  artifactKey: Guid(5b0d0a7a581e0654e848aaffb9a7d080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/prop using Guid(5b0d0a7a581e0654e848aaffb9a7d080) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '71ceae7cf8df109df7f457a3f142a299') in 0.001803 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.062115 seconds.
+  path: Assets/Art/prop/Prop.prefab
+  artifactKey: Guid(d38e0da839e3b4747815f5621a919ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/prop/Prop.prefab using Guid(d38e0da839e3b4747815f5621a919ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '93a033d4c257d715a53e828369161d36') in 1.157549 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 125
+========================================================================
+Received Import Request.
+  Time since last request: 53.417599 seconds.
+  path: Assets/Art/Background
+  artifactKey: Guid(92e08c93d1069084eae2ec43f17ecd9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/Background using Guid(92e08c93d1069084eae2ec43f17ecd9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '4e9aa53d6815a02d7a939cbdf3944353') in 0.002249 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.630077 seconds.
+  path: Assets/Art/kenney_onscreen-controls
+  artifactKey: Guid(2c46e5d76b0c6f84abffb606ba41f8d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls using Guid(2c46e5d76b0c6f84abffb606ba41f8d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '8a5123837b570e92049bd52b0c6a758c') in 0.001228 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.049998 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Preview.png
+  artifactKey: Guid(bb10fdddcba121c4bb724b23d24c61d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Preview.png using Guid(bb10fdddcba121c4bb724b23d24c61d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '83dad4bc4649689993652a6d22d572f3') in 0.078327 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.120518 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Spritesheets
+  artifactKey: Guid(037f788ae590e90498e67e8a55530ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Spritesheets using Guid(037f788ae590e90498e67e8a55530ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'a3e38b8fc4aa9f4f3033fd0eb0963d6d') in 0.001564 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.822756 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites
+  artifactKey: Guid(1fe00acf521a2d947a8cdb15f6b37579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites using Guid(1fe00acf521a2d947a8cdb15f6b37579) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'ac28b7e7d95326b4c15d93920881edc3') in 0.000746 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.238020 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark
+  artifactKey: Guid(aecbf8b6a7ea8054c806afb71e5aca7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark using Guid(aecbf8b6a7ea8054c806afb71e5aca7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '4f5f4aa707f03b9bffd50740cde12344') in 0.000753 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.653097 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-dark
+  artifactKey: Guid(62152b2eb0b7f2b47b614ea5a281f964) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-dark using Guid(62152b2eb0b7f2b47b614ea5a281f964) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '66adb7e8e719947e75a801a7cc4c77bc') in 0.000788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.772528 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight00.png
+  artifactKey: Guid(83c2999757615e64a81c8345194caa0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight00.png using Guid(83c2999757615e64a81c8345194caa0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'dd98b004f591e5bf3e44d45e48a78358') in 0.082604 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000082 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight33.png
+  artifactKey: Guid(2b6aceb87f4fc824088d3f30af772b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight33.png using Guid(2b6aceb87f4fc824088d3f30af772b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '23454e41c2f6c341c992710fe2f98000') in 0.080499 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight10.png
+  artifactKey: Guid(20dcec18803cddd429741319bb63f7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight10.png using Guid(20dcec18803cddd429741319bb63f7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '315bcf7ad33b9a7015ce7f34da329764') in 0.045038 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight22.png
+  artifactKey: Guid(a00b5ae4bb66a4b4192ac25411f6c5bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight22.png using Guid(a00b5ae4bb66a4b4192ac25411f6c5bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'e8e633c7f1389378b83effd22fa45491') in 0.045330 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight20.png
+  artifactKey: Guid(6056fd552d5f3bb41b24c2b810adf5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight20.png using Guid(6056fd552d5f3bb41b24c2b810adf5ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'c26b6e6f2a3d783c61ce311d1e7cbdbf') in 0.054745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000983 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight27.png
+  artifactKey: Guid(e6fc74d4e47f8d643a256b393873f707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight27.png using Guid(e6fc74d4e47f8d643a256b393873f707) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '58c0a856d95aeaa9c9fd52a7f4bdf9d0') in 0.054230 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight09.png
+  artifactKey: Guid(8bad602a7462da24dab9aec935e35308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight09.png using Guid(8bad602a7462da24dab9aec935e35308) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '6e8967fa31f0cdd8ebfea5f218fb44e1') in 0.091135 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight23.png
+  artifactKey: Guid(727897017726ce547946920d814352af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight23.png using Guid(727897017726ce547946920d814352af) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '2871893b9b0123c645f0bdb09a1d572e') in 0.048438 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight24.png
+  artifactKey: Guid(b34d08520fd1d2341b28f4ef7d67ebaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight24.png using Guid(b34d08520fd1d2341b28f4ef7d67ebaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f6ec295f745fd8d4ad07be8a4bb2fc30') in 0.051661 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight26.png
+  artifactKey: Guid(bbd485fc2b85fe64b894f67a83f18f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight26.png using Guid(bbd485fc2b85fe64b894f67a83f18f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '21391f2607d6b66aa1ce7413d0418a78') in 0.062253 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000076 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight05.png
+  artifactKey: Guid(cffe0cdc811c1fb4088a5921aec0c38b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight05.png using Guid(cffe0cdc811c1fb4088a5921aec0c38b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f0847de0e6292513864606ed2ce3c211') in 0.066168 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003091 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight42.png
+  artifactKey: Guid(6d7cd339a3c3886468a744a64b842c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight42.png using Guid(6d7cd339a3c3886468a744a64b842c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'cde16105848dd00f2ae7d053cee46e30') in 0.070275 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight41.png
+  artifactKey: Guid(a49ffb92a0a65024cadb125c67e5956b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight41.png using Guid(a49ffb92a0a65024cadb125c67e5956b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'fcfc5a66833db2b0390ef59e52adb096') in 0.049307 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000480 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight44.png
+  artifactKey: Guid(5a9bdaebad9085f47b61c45080f75e3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight44.png using Guid(5a9bdaebad9085f47b61c45080f75e3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '35ffe66f898d18c488cf45dbaf759cac') in 0.039313 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight47.png
+  artifactKey: Guid(749a10ca42fe69240a369148f43d6d3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight47.png using Guid(749a10ca42fe69240a369148f43d6d3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'd7ef93f45dc7a6919243248baba9e126') in 0.041688 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight40.png
+  artifactKey: Guid(3dc4333d7cbf1c94a9e41a21d12f89fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight40.png using Guid(3dc4333d7cbf1c94a9e41a21d12f89fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1947bfd370aaec06e65adaf54d3f88db') in 0.055268 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight39.png
+  artifactKey: Guid(3e5eed5bbb506d845b6a2f071e639361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight39.png using Guid(3e5eed5bbb506d845b6a2f071e639361) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'e72d660fa5ec49623672f209601b76d9') in 0.042270 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight06.png
+  artifactKey: Guid(dffd150b57ef0df49b64fc32ba191234) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight06.png using Guid(dffd150b57ef0df49b64fc32ba191234) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '56b2de2c3452d105519cd87a1d9a122c') in 0.049077 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight12.png
+  artifactKey: Guid(1c96e18dea84eab4ba9c36e272afa546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight12.png using Guid(1c96e18dea84eab4ba9c36e272afa546) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'a8ecfcdcb9059eaf4f0253488f0b9918') in 0.049441 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight08.png
+  artifactKey: Guid(6f01b5c38aa230b40870fddbbfdc9cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight08.png using Guid(6f01b5c38aa230b40870fddbbfdc9cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '623d9db7cdeb0a6cea90b0c1d201d8ea') in 0.052953 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight18.png
+  artifactKey: Guid(6c5585ad281731348818339107a8466d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight18.png using Guid(6c5585ad281731348818339107a8466d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '5b8c45aaf07de3c7ee9f4fda60bd2d2c') in 0.054298 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight32.png
+  artifactKey: Guid(c79d6a67cb93e5a42b8f6c48a6de46da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight32.png using Guid(c79d6a67cb93e5a42b8f6c48a6de46da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '5b531baace19da647368f3ef994a4874') in 0.055802 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight07.png
+  artifactKey: Guid(d6749f20d6406fc4f93575c7f18b3252) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight07.png using Guid(d6749f20d6406fc4f93575c7f18b3252) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '37265c106d13f3ab763f293e9c3cd316') in 0.064336 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight02.png
+  artifactKey: Guid(bed060296fa1fda4f88e6f40e5b894f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight02.png using Guid(bed060296fa1fda4f88e6f40e5b894f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'dbb913eb78aeccbdbabf380b2983db66') in 0.066626 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight36.png
+  artifactKey: Guid(5b9809cd11cb969458822684ea311b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/line-light/lineLight36.png using Guid(5b9809cd11cb969458822684ea311b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'dd83e540c39d69a441af12e2feb1e010') in 0.061860 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 2.747609 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light
+  artifactKey: Guid(75cdf95294f91a043be4fb9c91dd564d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light using Guid(75cdf95294f91a043be4fb9c91dd564d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '4795ad45152110b85a37b8b7c281b3de') in 0.001596 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.630828 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight00.png
+  artifactKey: Guid(f7f7b83276e52f2489c1423b4c4bb648) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight00.png using Guid(f7f7b83276e52f2489c1423b4c4bb648) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '59da32648bffa38734a1a2b57d716683') in 0.052330 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight35.png
+  artifactKey: Guid(3cf503e3ff2f00c478dfba30c827a451) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight35.png using Guid(3cf503e3ff2f00c478dfba30c827a451) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '0438ff7419b72199083c3292b550deed') in 0.058950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000087 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight22.png
+  artifactKey: Guid(19e169ea5bf3c7944a208d8f713a69d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight22.png using Guid(19e169ea5bf3c7944a208d8f713a69d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'fe150cfcc658e6d8f9e38c2fbef39e93') in 0.050775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight13.png
+  artifactKey: Guid(53f1e8cfb9c7a30469f8bd36aaf481d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight13.png using Guid(53f1e8cfb9c7a30469f8bd36aaf481d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'ab677546c7944e0257d32805e67706ac') in 0.049457 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight09.png
+  artifactKey: Guid(8ade40a06348c4740a9c1bcf79e58e2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight09.png using Guid(8ade40a06348c4740a9c1bcf79e58e2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '03f6c72798639d6ef9ba84664e98a2db') in 0.049756 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight30.png
+  artifactKey: Guid(893c9d973a37b2145b5f4885bb13bdf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight30.png using Guid(893c9d973a37b2145b5f4885bb13bdf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'ab5b3c3400b39d7f8987df4082456efe') in 0.043761 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight29.png
+  artifactKey: Guid(246fa472c25eb3d4fa70aaf41be7608f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight29.png using Guid(246fa472c25eb3d4fa70aaf41be7608f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '0a541d618117f1491de7083e6830172a') in 0.047849 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight16.png
+  artifactKey: Guid(b2f5bb1e00b41724d81d6a3d5c36e04a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight16.png using Guid(b2f5bb1e00b41724d81d6a3d5c36e04a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'c10232c8acb9bdd6b6f8da9d086a1d70') in 0.061666 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight27.png
+  artifactKey: Guid(232e8158ef1430946a6963f24a41bd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight27.png using Guid(232e8158ef1430946a6963f24a41bd64) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '593a5da54fcea8e85890e779bb2622ff') in 0.049671 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight23.png
+  artifactKey: Guid(e1c9e976cda5c654a9c5c989aed3c5a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight23.png using Guid(e1c9e976cda5c654a9c5c989aed3c5a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '683a8776131c9f0a3ffacb2c3246788a') in 0.056860 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004023 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight31.png
+  artifactKey: Guid(7590a8265c9084344b1b70b4a1663ada) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight31.png using Guid(7590a8265c9084344b1b70b4a1663ada) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'e0135234ed98cb663229ab6328d2573f') in 0.065107 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight21.png
+  artifactKey: Guid(780fc99b992e4fd46a05018c7989a05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight21.png using Guid(780fc99b992e4fd46a05018c7989a05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '06dde0bc38459ed767ae6ac2feb6bded') in 0.067121 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight14.png
+  artifactKey: Guid(ff75ee38b09d9084294e10a137b7195b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight14.png using Guid(ff75ee38b09d9084294e10a137b7195b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '756a061d0740fc23c63ee0813e8f5c37') in 0.048278 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight03.png
+  artifactKey: Guid(f17aa36f2a4f8a448accc7f5f1df9fbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight03.png using Guid(f17aa36f2a4f8a448accc7f5f1df9fbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '5cf527328539ecc4d239ec666c74bde7') in 0.079925 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight17.png
+  artifactKey: Guid(e28d5743c95c5c84cbf087cb69ae3e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight17.png using Guid(e28d5743c95c5c84cbf087cb69ae3e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '8d36d164b2a1eea79cf5daae50e17e49') in 0.050319 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight04.png
+  artifactKey: Guid(44b774bf7655d0344af3458f5dbc2003) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight04.png using Guid(44b774bf7655d0344af3458f5dbc2003) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '8b46511b88c6ad42e0a9f294709a33e5') in 0.053909 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight25.png
+  artifactKey: Guid(9fe60306467f051439b635b71d42a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight25.png using Guid(9fe60306467f051439b635b71d42a7b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '89993c9e7963a4e7d0b6478692c3b464') in 0.070658 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000720 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight07.png
+  artifactKey: Guid(c65801b688f5be042a967267c0c61de9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight07.png using Guid(c65801b688f5be042a967267c0c61de9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '63e2ae21014478ab6026e97a8f683e8d') in 0.085495 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight28.png
+  artifactKey: Guid(71faa14a6674c704997c71ee7d1136a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight28.png using Guid(71faa14a6674c704997c71ee7d1136a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'bf600eb442bebbc346e9df64688bdb14') in 0.054457 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.546938 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark00.png
+  artifactKey: Guid(6f34ab65da6788b40b81df96c9115d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark00.png using Guid(6f34ab65da6788b40b81df96c9115d6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'f18565f420fd82177f5fa71d539cd04c') in 0.054349 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark33.png
+  artifactKey: Guid(343921cf79de83741a44793f4aa47d93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark33.png using Guid(343921cf79de83741a44793f4aa47d93) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1d8b64bbe1120cf6d63780d30931aac6') in 0.041071 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark22.png
+  artifactKey: Guid(f2af8ec4d978d504a956db1f2fb7637d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark22.png using Guid(f2af8ec4d978d504a956db1f2fb7637d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '413463ccc6ac8c3543cc02ee736d9afa') in 0.045794 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark15.png
+  artifactKey: Guid(42d0485f4be2fa3488bfeaff5e025b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark15.png using Guid(42d0485f4be2fa3488bfeaff5e025b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'ab47d81d55ef79499a10eb2d59afe67f') in 0.048914 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark05.png
+  artifactKey: Guid(e727bb8851c84fb4882c00a12c578254) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark05.png using Guid(e727bb8851c84fb4882c00a12c578254) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '75fc82f4d8620bc8fa47a5ceed41fa78') in 0.049755 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000136 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark27.png
+  artifactKey: Guid(b6f8a65d85356054cb458983003a3bd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark27.png using Guid(b6f8a65d85356054cb458983003a3bd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '2f9bca9154aaa21ad01cf3b7449395b4') in 0.047655 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark28.png
+  artifactKey: Guid(dfee1d6e0c5ea004aac84a70e224d512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark28.png using Guid(dfee1d6e0c5ea004aac84a70e224d512) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '75a0e24492aa765c9be3d7b403d40028') in 0.046338 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark16.png
+  artifactKey: Guid(f1f509482632d614b94d4a14ce17df82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark16.png using Guid(f1f509482632d614b94d4a14ce17df82) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1a94ca707fa5dafd6935c9c24063b8a7') in 0.050879 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark31.png
+  artifactKey: Guid(fbb858d3d53516a46bb8d638cd91cce4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark31.png using Guid(fbb858d3d53516a46bb8d638cd91cce4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'fbc027d93e8d019ee8ac833b13ba9b4f') in 0.048882 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000084 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark08.png
+  artifactKey: Guid(35e8e0c03d1dd914c970ee01466cbaf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark08.png using Guid(35e8e0c03d1dd914c970ee01466cbaf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'a47c5fdedce675ec87b4ff284d362100') in 0.058375 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark09.png
+  artifactKey: Guid(044916828cbc3f94397244e012797dee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark09.png using Guid(044916828cbc3f94397244e012797dee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '691add01d48000b0983d73a59dcfc5f3') in 0.068368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004914 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark10.png
+  artifactKey: Guid(988b639e2f936df43ad25b8f0a899f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark10.png using Guid(988b639e2f936df43ad25b8f0a899f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '6c8882f782b9fca4c50f6a71ad77b863') in 0.074994 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark25.png
+  artifactKey: Guid(d74161f336fa8c84e9fdcdf42caaeb36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark25.png using Guid(d74161f336fa8c84e9fdcdf42caaeb36) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'd33ebd2aa7012ea8c20bb2ef737ef97b') in 0.049491 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark30.png
+  artifactKey: Guid(9a1edce521fbec845aeee1632a273d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark30.png using Guid(9a1edce521fbec845aeee1632a273d9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'b0729eda7a16ad82a581a282ed2afe83') in 0.063212 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark19.png
+  artifactKey: Guid(7985c68fb53e08642b06af2123bc3302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark19.png using Guid(7985c68fb53e08642b06af2123bc3302) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '146274473639e65a85c05d8c516521ce') in 0.057850 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000653 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark02.png
+  artifactKey: Guid(71dfbc2376b769b488aa391909a6102c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark02.png using Guid(71dfbc2376b769b488aa391909a6102c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'de358a28b8077f1a1bfda3744014c1ab') in 0.081472 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark23.png
+  artifactKey: Guid(e98ec2e3a7e470d41abc183179a24cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark23.png using Guid(e98ec2e3a7e470d41abc183179a24cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'afc6e9f7d86bc17de7ee07c29917a7f3') in 0.055218 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000086 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark29.png
+  artifactKey: Guid(2ebd0259364f246439dcf15f3167c517) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark29.png using Guid(2ebd0259364f246439dcf15f3167c517) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '5c8fe93312ddc733f37961f6bc722d99') in 0.046294 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark03.png
+  artifactKey: Guid(259406c8d30b8b742aeec95cbdef8dc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-dark/flatDark03.png using Guid(259406c8d30b8b742aeec95cbdef8dc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'b0c59f89b899a87f55a8e94a5da25af3') in 0.045061 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 2.992607 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight37.png
+  artifactKey: Guid(25dcc6a8f9433d84a95ddbf546ea44a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight37.png using Guid(25dcc6a8f9433d84a95ddbf546ea44a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '01f20583226276a8e880c81b46ee175d') in 0.049542 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight48.png
+  artifactKey: Guid(89a410886a46e5f4fb5368d360cfcd46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight48.png using Guid(89a410886a46e5f4fb5368d360cfcd46) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'ca20bcb181dee412849b4bc3dc337f8d') in 0.043784 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight41.png
+  artifactKey: Guid(05325ca611bdd1242b62e0dfbe6d139d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight41.png using Guid(05325ca611bdd1242b62e0dfbe6d139d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '775ac92c044e264bc4dcc3b2296d4926') in 0.054905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight45.png
+  artifactKey: Guid(69d2ef55deeee394782d41aa3cbf9b29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight45.png using Guid(69d2ef55deeee394782d41aa3cbf9b29) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '0e60c2afd5f2c6101c3582d53ec9cba2') in 0.048604 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight42.png
+  artifactKey: Guid(96e7a8d596e36dd44a4520cad79cbdac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight42.png using Guid(96e7a8d596e36dd44a4520cad79cbdac) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '1c9a694fed98f2631b3001712f36c64f') in 0.046660 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight43.png
+  artifactKey: Guid(530c0dc913601fd469d057f9ba3441a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight43.png using Guid(530c0dc913601fd469d057f9ba3441a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'cab82ae5dd9705845d2da2eee28305af') in 0.052026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.093517 seconds.
+  path: Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight49.png
+  artifactKey: Guid(c1496f01f761dc0458f80d3d7853f5b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/kenney_onscreen-controls/Sprites/flat-light/flatLight49.png using Guid(c1496f01f761dc0458f80d3d7853f5b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'bc2884b072376180bae7b19f87b47132') in 0.040788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 69.933676 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001309 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 80.704758 seconds.
+  path: Assets/Scripts/Player/PlayerOverworldController.cs
+  artifactKey: Guid(2f7a90e86004c2e46826f98f7ca66ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Player/PlayerOverworldController.cs using Guid(2f7a90e86004c2e46826f98f7ca66ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: '3c509d4b1e780e75f45ed07ddbc67ba1') in 0.001768 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.894 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  7.706 seconds
+Domain Reload Profiling: 9583ms
+	BeginReloadAssembly (426ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (40ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (91ms)
+	RebuildCommonClasses (155ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (118ms)
+	LoadAllAssembliesAndSetupDomain (1142ms)
+		LoadAssemblies (1067ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (290ms)
+			TypeCache.Refresh (41ms)
+				TypeCache.ScanAssembly (4ms)
+			ScanForSourceGeneratedMonoScriptInfo (193ms)
+			ResolveRequiredComponents (52ms)
+	FinalizeReload (7707ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2015ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (135ms)
+			SetLoadedEditorAssemblies (14ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (253ms)
+			ProcessInitializeOnLoadAttributes (1393ms)
+			ProcessInitializeOnLoadMethodAttributes (196ms)
+			AfterProcessingInitializeOnLoad (24ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (43ms)
+Refreshing native plugins compatible for Editor in 21.17 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (388.0 KB). Loaded Objects now: 6929.
+Memory consumption went from 216.5 MB to 216.2 MB.
+Total: 14.618000 ms (FindLiveObjects: 0.862900 ms CreateObjectMapping: 1.324600 ms MarkObjects: 12.275300 ms  DeleteObjects: 0.153000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.832 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.893 seconds
+Domain Reload Profiling: 6709ms
+	BeginReloadAssembly (580ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (24ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (122ms)
+	RebuildCommonClasses (89ms)
+	RebuildNativeTypeToScriptingClass (32ms)
+	initialDomainReloadingComplete (79ms)
+	LoadAllAssembliesAndSetupDomain (1036ms)
+		LoadAssemblies (1249ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (144ms)
+			TypeCache.Refresh (39ms)
+				TypeCache.ScanAssembly (10ms)
+			ScanForSourceGeneratedMonoScriptInfo (78ms)
+			ResolveRequiredComponents (24ms)
+	FinalizeReload (4894ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1827ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (50ms)
+			SetLoadedEditorAssemblies (10ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (232ms)
+			ProcessInitializeOnLoadAttributes (1205ms)
+			ProcessInitializeOnLoadMethodAttributes (304ms)
+			AfterProcessingInitializeOnLoad (25ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (61ms)
+Refreshing native plugins compatible for Editor in 17.64 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (388.0 KB). Loaded Objects now: 6946.
+Memory consumption went from 216.5 MB to 216.1 MB.
+Total: 8.014500 ms (FindLiveObjects: 0.600900 ms CreateObjectMapping: 0.338400 ms MarkObjects: 6.940800 ms  DeleteObjects: 0.132600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 023f6185edc9e17169373e041fa36fc5 -> 3ed2e529fe32a66d6683106fcc392069
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 631.964592 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.003150 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 67.077370 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.001510 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.116 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.295 seconds
+Domain Reload Profiling: 4398ms
+	BeginReloadAssembly (340ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (20ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (65ms)
+	RebuildCommonClasses (100ms)
+	RebuildNativeTypeToScriptingClass (36ms)
+	initialDomainReloadingComplete (79ms)
+	LoadAllAssembliesAndSetupDomain (548ms)
+		LoadAssemblies (698ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (45ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (29ms)
+	FinalizeReload (3295ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1302ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (36ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (202ms)
+			ProcessInitializeOnLoadAttributes (874ms)
+			ProcessInitializeOnLoadMethodAttributes (162ms)
+			AfterProcessingInitializeOnLoad (18ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (39ms)
+Refreshing native plugins compatible for Editor in 12.75 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (387.9 KB). Loaded Objects now: 6963.
+Memory consumption went from 216.5 MB to 216.1 MB.
+Total: 6.048900 ms (FindLiveObjects: 0.811700 ms CreateObjectMapping: 0.401500 ms MarkObjects: 4.673100 ms  DeleteObjects: 0.160400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 023f6185edc9e17169373e041fa36fc5 -> 3ed2e529fe32a66d6683106fcc392069
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.955 seconds
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.114 seconds
+Domain Reload Profiling: 4058ms
+	BeginReloadAssembly (307ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (83ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (64ms)
+	LoadAllAssembliesAndSetupDomain (461ms)
+		LoadAssemblies (607ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (37ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (3115ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1318ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (177ms)
+			ProcessInitializeOnLoadAttributes (938ms)
+			ProcessInitializeOnLoadMethodAttributes (149ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (32ms)
+Refreshing native plugins compatible for Editor in 18.44 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (388.0 KB). Loaded Objects now: 6980.
+Memory consumption went from 216.5 MB to 216.1 MB.
+Total: 8.641100 ms (FindLiveObjects: 0.775400 ms CreateObjectMapping: 0.590800 ms MarkObjects: 7.075400 ms  DeleteObjects: 0.196800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 023f6185edc9e17169373e041fa36fc5 -> 3ed2e529fe32a66d6683106fcc392069
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 24.575659 seconds.
+  path: Assets/MobileInput.inputactions
+  artifactKey: Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MobileInput.inputactions using Guid(0b0825cb114e41f4da9384b5af55d94b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 8 workers.
+ -> (artifact id: 'da212906ba94650529862e7846e73bbc') in 0.003891 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

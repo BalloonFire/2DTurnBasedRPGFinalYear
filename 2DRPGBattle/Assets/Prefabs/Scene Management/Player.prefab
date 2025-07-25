@@ -141,11 +141,11 @@ GameObject:
   - component: {fileID: 7115088030199023189}
   - component: {fileID: 2613676147391969912}
   - component: {fileID: 4571947422643683168}
-  - component: {fileID: 2564914103950831544}
   - component: {fileID: 1491954369876630033}
   - component: {fileID: 6723896534141185400}
   - component: {fileID: 7644585933149601954}
   - component: {fileID: 3124157702774888924}
+  - component: {fileID: 2721446155011128335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -318,10 +318,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7a90e86004c2e46826f98f7ca66ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  dashSpeed: 4
+  playerData: {fileID: 11400000, guid: 1c2f7711ab7a3c546a8b73375bbb14c6, type: 2}
   myTrailRenderer: {fileID: 6471192315480259687}
   weaponCollider: {fileID: 3105254747750058997}
+  moveSpeed: 4
+  dashMultiplier: 4
+  healthSliderName: Health Slider
+  knockBackThrustAmount: 10
+  damageRecoveryTime: 1
 --- !u!210 &4571947422643683168
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -334,21 +338,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!114 &2564914103950831544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3378675188506956004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ba8d5bd8136204cae2b87d8c832d44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  knockBackThrustAmount: 10
-  damageRecoveryTime: 1
 --- !u!114 &1491954369876630033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +393,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: b47db1acde6acac41988bce2de6e0623, type: 2}
+--- !u!114 &2721446155011128335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378675188506956004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 76f852d44dc15c94a8009219ea14acb5,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Movement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &3597891565266509536
 GameObject:
   m_ObjectHideFlags: 0

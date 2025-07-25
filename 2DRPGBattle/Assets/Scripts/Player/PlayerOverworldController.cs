@@ -1,7 +1,9 @@
 using System.Collections;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using Player.Model;
+using UnityEngine.InputSystem;
 
 public class PlayerOverworldController : Singleton<PlayerOverworldController>
 {
@@ -13,6 +15,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashMultiplier = 4f;
+    [SerializeField] private InputActionReference joystick;
 
     [Header("Health Settings")]
     [SerializeField] private string healthSliderName = "Health Slider";
@@ -93,7 +96,14 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
 
     private void HandleInput()
     {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        Vector2 inputMovement = playerControls.Movement.Move.ReadValue<Vector2>();
+        Vector2 joystickMovement = joystick != null ? joystick.action.ReadValue<Vector2>() : Vector2.zero;
+
+        movement = inputMovement + joystickMovement;
+
+        // Normalize to prevent faster diagonal movement
+        if (movement.magnitude > 1f)
+            movement = movement.normalized;
 
         animator.SetFloat("moveX", movement.x);
         animator.SetFloat("moveY", movement.y);

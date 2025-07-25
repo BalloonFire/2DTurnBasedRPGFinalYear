@@ -29,9 +29,6 @@ namespace Inventory.UI
 
         public event Action<int, int> OnSwapItems;
 
-        [SerializeField]
-        private ItemActionPanel actionPanel;
-
         private void Awake()
         {
             Hide();
@@ -133,29 +130,16 @@ namespace Inventory.UI
             DeselectItems();
         }
 
-        public void ShowItemAction(int itemIndex)
-        {
-            actionPanel.Toggle(true);
-            actionPanel.transform.position = listItems[itemIndex].transform.position;
-        }
-
-        public void AddAction(string actionName, Action performAction)
-        {
-            actionPanel.AddButton(actionName, performAction);
-        }
-
         private void DeselectItems()
         {
             foreach (UIInventoryItem item in listItems)
             {
                 item.Deselect();
             }
-            actionPanel.Toggle(false);
         }
 
         public void Hide()
         {
-            actionPanel.Toggle(false);
             gameObject.SetActive(false);
             ResetDragItem();
         }

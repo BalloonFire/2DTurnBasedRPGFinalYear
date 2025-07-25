@@ -7,21 +7,18 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     private static T instance;
     public static T Instance => instance;
 
-    // Subclasses can override this to prevent persistence
-    protected virtual bool ShouldPersist => true;
-
     protected virtual void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance != null && this.gameObject != null)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = (T)this;
         }
 
-        instance = (T)this;
-
-        // Respect ShouldPersist flag!
-        if (ShouldPersist && transform.parent == null)
+        if (!gameObject.transform.parent)
         {
             DontDestroyOnLoad(gameObject);
         }

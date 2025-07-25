@@ -52,36 +52,23 @@ public class BattleTransition : MonoBehaviour
     {
         // Freeze game
         Time.timeScale = 0f;
-<<<<<<< HEAD
-=======
 
         // Set transition color based on enemy type
->>>>>>> parent of cee922b3 (updated)
         transitionPanel.color = GetEnemyColor(CurrentEnemy.enemyType);
 
         // Play transition animation
         transitionAnimator.SetTrigger("FadeIn");
-<<<<<<< HEAD
-        yield return new WaitForSecondsRealtime(transitionTime);
-
-        // Load the Battle scene
-=======
 
         // Wait for animation to complete
         yield return new WaitForSecondsRealtime(transitionTime);
 
         // Load battle scene
->>>>>>> parent of cee922b3 (updated)
         SceneManager.LoadScene("BattleTest");
 
-        // --- NEW: destroy anything you forgot to unflag
+        // Destroy leftover overworld objects
         CleanupOverworldObjects();
 
-<<<<<<< HEAD
-        // play FadeOut on the battle’s transition panel
-=======
-        // FADE OUT AFTER LOADING BATTLE SCENE - CRITICAL ADDITION
->>>>>>> parent of cee922b3 (updated)
+        // Play fade out animation
         transitionAnimator.SetTrigger("FadeOut");
 
         // Unfreeze game
@@ -111,7 +98,7 @@ public class BattleTransition : MonoBehaviour
         // Load overworld scene
         SceneManager.LoadScene("MapGrass1");
 
-        // FADE OUT AFTER LOADING OVERWORLD - CRITICAL ADDITION
+        // Play fade out animation
         transitionAnimator.SetTrigger("FadeOut");
 
         // Wait for fade out to complete

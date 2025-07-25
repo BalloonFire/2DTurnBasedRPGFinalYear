@@ -21,7 +21,7 @@ public class Grape : MonoBehaviour, IEnemy
     {
         myAnimator.SetTrigger(ATTACK_HASH);
 
-        if (transform.position.x - PlayerOverworldController.Instance.transform.position.x < 0)
+        if (transform.position.x - PlayerController1.Instance.transform.position.x < 0)
         {
             spriteRenderer.flipX = false;
         }

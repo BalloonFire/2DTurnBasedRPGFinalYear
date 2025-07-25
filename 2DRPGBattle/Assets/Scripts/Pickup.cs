@@ -33,7 +33,7 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
-        Vector3 playerPos = PlayerOverworldController.Instance.transform.position;
+        Vector3 playerPos = PlayerController1.Instance.transform.position;
 
         if (Vector3.Distance(transform.position, playerPos) < pickUpDistance)
         {
@@ -54,7 +54,7 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<PlayerOverworldController>())
+        if (other.gameObject.GetComponent<PlayerController1>())
         {
             DetectPickupType();
             Destroy(gameObject);

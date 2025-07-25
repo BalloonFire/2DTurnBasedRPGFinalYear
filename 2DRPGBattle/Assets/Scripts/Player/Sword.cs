@@ -23,7 +23,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     private void Start()
     {
-        weaponCollider = PlayerOverworldController.Instance.GetWeaponCollider();
+        weaponCollider = PlayerController1.Instance.GetWeaponCollider();
         slashAnimSpawnPoint = GameObject.Find("SlashSpawnPoint").transform;
     }
 
@@ -57,7 +57,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
 
-        if (PlayerOverworldController.Instance.FacingLeft)
+        if (PlayerController1.Instance.FacingLeft)
         {
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -67,7 +67,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         slashAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (PlayerOverworldController.Instance.FacingLeft)
+        if (PlayerController1.Instance.FacingLeft)
         {
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -77,7 +77,7 @@ public class Sword : MonoBehaviour, IWeapon
     private void MouseFollowWithOffset()
     {
         Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerOverworldController.Instance.transform.position);
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController1.Instance.transform.position);
 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 

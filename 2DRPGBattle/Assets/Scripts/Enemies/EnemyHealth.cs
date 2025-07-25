@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        knockback.GetKnockedBack(PlayerOverworldController.Instance.transform, knockedBackThrust);
+        knockback.GetKnockedBack(PlayerController1.Instance.transform, knockedBackThrust);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(CheckedDetectDeathRoutine());
     }
@@ -50,8 +50,8 @@ public class EnemyHealth : MonoBehaviour
             {
                 PlayerPrefs.SetString("BattleEnemyID", slimeID);
                 PlayerPrefs.SetString("ReturnScene", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-                PlayerPrefs.SetFloat("PlayerX", PlayerOverworldController.Instance.transform.position.x);
-                PlayerPrefs.SetFloat("PlayerY", PlayerOverworldController.Instance.transform.position.y);
+                PlayerPrefs.SetFloat("PlayerX", PlayerController1.Instance.transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", PlayerController1.Instance.transform.position.y);
             }
 
             // Disable overworld UI before loading battle scene

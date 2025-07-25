@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController1 : Singleton<PlayerController1>
 {
+    // Prevent player from persisting between scenes
+    protected override bool ShouldPersist => false;
     public bool FacingLeft { get { return facingLeft; } }
     
 

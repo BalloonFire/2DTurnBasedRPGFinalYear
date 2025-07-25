@@ -5,19 +5,23 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T instance;
-    public static T Instance { get { return instance; } }
+    public static T Instance => instance;
 
-    protected virtual void Awake ()
+    // Subclasses can override this to prevent persistence
+    protected virtual bool ShouldPersist => true;
+
+    protected virtual void Awake()
     {
-        if (instance != null && this.gameObject != null)
+        if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
-        } else
-        {
-            instance = (T)this;
+            Destroy(gameObject);
+            return;
         }
 
-        if (!gameObject.transform.parent)
+        instance = (T)this;
+
+        // Respect ShouldPersist flag!
+        if (ShouldPersist && transform.parent == null)
         {
             DontDestroyOnLoad(gameObject);
         }

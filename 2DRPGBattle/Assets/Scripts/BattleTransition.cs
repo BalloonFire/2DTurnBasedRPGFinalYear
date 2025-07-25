@@ -50,40 +50,45 @@ public class BattleTransition : MonoBehaviour
 
     IEnumerator TransitionToBattle()
     {
-        // Freeze game
         Time.timeScale = 0f;
 
-        // Set transition color based on enemy type
         transitionPanel.color = GetEnemyColor(CurrentEnemy.enemyType);
-
-        // Play transition animation
         transitionAnimator.SetTrigger("FadeIn");
 
-        // Wait for animation to complete
         yield return new WaitForSecondsRealtime(transitionTime);
 
-        // Load battle scene
+        // Destroy player BEFORE scene loads
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Debug.Log("Destroying player before battle scene");
+            Destroy(player);
+        }
+
         SceneManager.LoadScene("BattleTest");
 
-        // --- NEW: destroy anything you forgot to unflag
-        CleanupOverworldObjects();
+        yield return null;
 
-        // FADE OUT AFTER LOADING BATTLE SCENE - CRITICAL ADDITION
         transitionAnimator.SetTrigger("FadeOut");
-
-        // Unfreeze game
         Time.timeScale = 1f;
     }
 
     private void CleanupOverworldObjects()
     {
-        // Remove Overworld UI if still around
-        var ui = GameObject.Find("UIOverworldCanvas");
-        if (ui != null) Destroy(ui);
-
-        // Remove Overworld Player if still around
+        // Double-check and destroy player if it still exists
         var player = GameObject.FindWithTag("Player");
-        if (player != null) Destroy(player);
+        if (player != null)
+        {
+            Debug.Log("Destroying player before battle scene load.");
+            Destroy(player);
+        }
+
+        // Clean up UI canvas
+        var ui = GameObject.Find("UIOverworldCanvas");
+        if (ui != null)
+        {
+            Destroy(ui);
+        }
     }
 
     IEnumerator TransitionToOverworld()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Player.Model;
 
 namespace Player.Model
 {

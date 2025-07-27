@@ -57,9 +57,9 @@ namespace Player
             health = maxHealth;
 
             animator = GetComponent<Animator>();
-            if (playerData.animatorController != null)
+            if (playerData.battleAnimatorController != null)
             {
-                animator.runtimeAnimatorController = playerData.animatorController;
+                animator.runtimeAnimatorController = playerData.battleAnimatorController;
             }
         }
 

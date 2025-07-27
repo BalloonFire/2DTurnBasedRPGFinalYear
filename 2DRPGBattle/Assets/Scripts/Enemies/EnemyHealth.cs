@@ -60,6 +60,12 @@ public class EnemyHealth : MonoBehaviour
             {
                 overworldUI.SetActive(false);
             }
+            // Disable playerOverworld UI before loading battle scene
+            GameObject playerOverworld = GameObject.Find("Player");
+            if (playerOverworld != null)
+            {
+                playerOverworld.SetActive(false);
+            }
 
             // Load the battle scene
             UnityEngine.SceneManagement.SceneManager.LoadScene("BattleTest");

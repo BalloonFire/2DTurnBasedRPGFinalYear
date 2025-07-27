@@ -58,7 +58,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
         if (playerData != null)
         {
             maxHealth = playerData.baseHealth;
-            animator.runtimeAnimatorController = playerData.animatorController;
+            animator.runtimeAnimatorController = playerData.overworldAnimatorController;
         }
         else
         {

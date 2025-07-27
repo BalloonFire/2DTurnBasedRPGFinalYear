@@ -32,6 +32,7 @@ namespace Player.Model
         public int ultimateManaCost = 5;
 
         [Header("Visuals")]
-        public RuntimeAnimatorController animatorController;
+        public RuntimeAnimatorController overworldAnimatorController;
+        public RuntimeAnimatorController battleAnimatorController;
     }
 }

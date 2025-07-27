@@ -14,7 +14,7 @@ public class DamageSource : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+        EnemyOverworldController enemyHealth = other.gameObject.GetComponent<EnemyOverworldController>();
         enemyHealth?.TakeDamage(damageAmount);
     }
 }

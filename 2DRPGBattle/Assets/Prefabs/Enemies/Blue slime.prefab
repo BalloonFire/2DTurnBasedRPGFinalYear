@@ -15,11 +15,10 @@ GameObject:
   - component: {fileID: 4243962035723718458}
   - component: {fileID: 8299851546944891546}
   - component: {fileID: 6406597359614386629}
-  - component: {fileID: 1649451446397195383}
   - component: {fileID: 554674697432587112}
   - component: {fileID: 6322107191130668544}
   - component: {fileID: 965919275408220098}
-  - component: {fileID: 6954571368454450789}
+  - component: {fileID: 557701978345786449}
   m_Layer: 0
   m_Name: Blue slime
   m_TagString: Untagged
@@ -196,7 +195,7 @@ Animator:
   m_GameObject: {fileID: 4622415518951240141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -207,22 +206,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1649451446397195383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4622415518951240141}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13109e70993c04045a76d8fe4f575947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  deathVFXPrefab: {fileID: 9018506522455251260, guid: 4aaa97b21910d994dbdb89b3b096e126,
-    type: 3}
-  knockedBackThrust: 15
 --- !u!114 &554674697432587112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +251,7 @@ MonoBehaviour:
     type: 3}
   staminaGlobe: {fileID: 1290514806848089882, guid: 9aec4a9f49ae19d47a4ec4e533bdf2e5,
     type: 3}
---- !u!114 &6954571368454450789
+--- !u!114 &557701978345786449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,8 +260,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4622415518951240141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cb948ae7dc4914588bffc3b7a21ae9, type: 3}
+  m_Script: {fileID: 11500000, guid: 13109e70993c04045a76d8fe4f575947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: slime_01
-  battleSceneName: BattleTest
+  enemyData: {fileID: 11400000, guid: 650b5aeb2796e3148904dc0a33b2377e, type: 2}
+  battleScene: BattleTest
+  deathVFXPrefab: {fileID: 7791211261907679854, guid: dcd465eb8f0601e42ac0b6fe8fcfacc9,
+    type: 3}
+  knockedBackThrust: 15

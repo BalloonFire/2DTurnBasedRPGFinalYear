@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   enemyName: Slime
-  enemySprite: {fileID: -665120079, guid: 0b35364b9015e214dad6ebda9717f7b2, type: 3}
-  enemyDescription: 
+  enemySprite: {fileID: 0}
+  enemyDescription: A basic slime. Easy to kill.
   enemyType: 0
-  baseHealth: 2
-  minDmg: 7
-  maxDmg: 12
+  baseHealth: 50
+  minDmg: 3
+  maxDmg: 6
   critChance: 5
-  minDmg2: 8
-  maxDmg2: 13
-  critChance2: 15
+  minDmg2: 4
+  maxDmg2: 9
+  critChance2: 10
   expReward: 50
   goldReward: 100
-  animatorController: {fileID: 0}
+  overworldAnimatorController: {fileID: 9100000, guid: 6522f6075582de34b99cfa4c42d4c694,
+    type: 2}
+  battleAnimatorController: {fileID: 9100000, guid: 1db98dddf8baf564e9c5aeb9b33d5b5b,
+    type: 2}

@@ -25,10 +25,17 @@ namespace Enemy
 
         private void Awake()
         {
-            // Initialize with the assigned enemyData if it exists
-            if (enemyData != null)
+            if (BattleTransition.Instance != null && BattleTransition.Instance.CurrentEnemySO != null)
+            {
+                Initialize(BattleTransition.Instance.CurrentEnemySO);
+            }
+            else if (enemyData != null)
             {
                 Initialize(enemyData);
+            }
+            else
+            {
+                Debug.LogError("No EnemySO found for battle!");
             }
         }
 
@@ -44,9 +51,9 @@ namespace Enemy
             ani = GetComponent<Animator>();
 
             // Set animator controller if provided
-            if (enemyData.animatorController != null)
+            if (enemyData.battleAnimatorController != null)
             {
-                ani.runtimeAnimatorController = enemyData.animatorController;
+                ani.runtimeAnimatorController = enemyData.battleAnimatorController;
             }
 
             // Initialize UI

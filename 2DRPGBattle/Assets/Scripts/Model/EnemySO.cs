@@ -29,7 +29,8 @@ namespace Enemy.Model
         public int goldReward = 100;
 
         [Header("Visuals")]
-        public RuntimeAnimatorController animatorController;
+        public RuntimeAnimatorController overworldAnimatorController;
+        public RuntimeAnimatorController battleAnimatorController;
 
         public enum EnemyType { Melee, Ranged, Boss }
     }

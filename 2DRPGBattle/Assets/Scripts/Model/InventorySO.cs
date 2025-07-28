@@ -163,6 +163,16 @@ namespace Inventory.Model
                 InformAboutChange();
             }
         }
+
+        public bool IsEmpty()
+        {
+            foreach (var item in GetCurrentInventoryState().Values)
+            {
+                if (!item.IsEmpty)
+                    return false;
+            }
+            return true;
+        }
     }
 
     [Serializable]

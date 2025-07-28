@@ -67,9 +67,9 @@ namespace Enemy
 
         public IEnumerator ExecuteAttack(PlayerController[] players)
         {
-            if (isAttacking || health <= 0) yield break;
-            isAttacking = true;
+            if (isAttacking || !IsAlive()) yield break;
 
+            isAttacking = true;
             enemyBar.SetActive(true);
 
             var alivePlayers = System.Array.FindAll(players, p => p.IsAlive());
@@ -80,6 +80,9 @@ namespace Enemy
             }
 
             GameObject randomPlayer = alivePlayers[Random.Range(0, alivePlayers.Length)].gameObject;
+
+            // Add a small delay before starting attack animation
+            yield return new WaitForSeconds(0.2f);
 
             if (useAttack1)
             {
@@ -102,9 +105,12 @@ namespace Enemy
                 ));
             }
 
+            // Add a small delay after attack completes
+            yield return new WaitForSeconds(0.1f);
+
             useAttack1 = !useAttack1;
-            isAttacking = false;
             enemyBar.SetActive(false);
+            isAttacking = false;
         }
 
         private IEnumerator PerformAttack(GameObject player, string trigger, int minDmg, int maxDmg, int critChance)

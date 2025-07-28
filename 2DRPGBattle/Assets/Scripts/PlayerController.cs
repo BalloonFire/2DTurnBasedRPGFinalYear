@@ -178,6 +178,7 @@ namespace Player
             if (health <= 0)
             {
                 animator.SetBool("isDead", true);
+                animator.SetTrigger("hurt");
                 battleHandler?.CheckGameOver();
             }
             else

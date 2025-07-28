@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using Player;
 using Enemy;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class BattleHandler : MonoBehaviour
 {
     [Header("Battle Settings")]
     public bool playerTurn = true;
     public float enemyTurnDelay = 1.5f;
+    public float endBattleDelay = 10f;
 
     [Header("Attack Panel")]
     public GameObject attackConfirmationPanel;
@@ -23,15 +25,23 @@ public class BattleHandler : MonoBehaviour
 
     private PlayerController currentPlayer;
     private EnemyController currentEnemy;
+    private bool gameEnded = false;
 
     private List<PlayerController> allPlayers = new List<PlayerController>();
     private HashSet<PlayerController> playersWhoAttacked = new HashSet<PlayerController>();
 
     void Start()
     {
-        attackConfirmationPanel.SetActive(false); // Hide panel at start
+        // Initialize UI states
+        attackConfirmationPanel.SetActive(false);
+        winUI.SetActive(false);
+        loseUI.SetActive(false);
+        playerTurns.SetActive(false);
+        enemyTurns.SetActive(false);
+
+        // Find all players and setup battle
         allPlayers.AddRange(FindObjectsOfType<PlayerController>());
-        DisableAllPlayerSelection(); // Prevent clicks before turn starts
+        DisableAllPlayerSelection();
         BeginPlayerTurn();
     }
 
@@ -213,39 +223,48 @@ public class BattleHandler : MonoBehaviour
     private IEnumerator EnemyTurn()
     {
         Debug.Log("Enemy turn begins!");
-        yield return new WaitForSeconds(enemyTurnDelay);
+        yield return new WaitForSeconds(enemyTurnDelay); // Initial delay
 
-        var allEnemies = FindObjectsOfType<EnemyController>();
+        // Get all enemies and sort them by their EnemyID
+        var allEnemies = new List<EnemyController>(FindObjectsOfType<EnemyController>());
+        allEnemies.Sort((a, b) => a.enemyID.CompareTo(b.enemyID));
+
         var players = FindObjectsOfType<PlayerController>();
-
-        // Create array of alive players
-        List<PlayerController> alivePlayers = new List<PlayerController>();
-        foreach (var p in players)
-        {
-            if (p.IsAlive()) alivePlayers.Add(p);
-        }
+        List<PlayerController> alivePlayers = new List<PlayerController>(players.Where(p => p.IsAlive()));
 
         if (alivePlayers.Count == 0)
         {
             Debug.Log("All players defeated!");
+            CheckGameOver();
             yield break;
         }
 
+        // Attack in strict order with delays
         foreach (var enemy in allEnemies)
         {
             if (!enemy.IsAlive()) continue;
 
-            // Pass the array of all players to the enemy
-            yield return StartCoroutine(enemy.ExecuteAttack(players));
+            Debug.Log($"{enemy.enemyID} preparing to attack...");
+
+            // Wait for enemy to complete their attack sequence
+            yield return enemy.ExecuteAttack(players);
+
+            // Add delay between enemy attacks
+            yield return new WaitForSeconds(enemyTurnDelay);
+
+            CheckGameOver();
+            if (gameEnded) yield break;
         }
 
-        BeginPlayerTurn();
+        if (!gameEnded) BeginPlayerTurn();
     }
 
     public bool IsPlayerTurn() => playerTurn;
 
     public void CheckGameOver()
     {
+        if (gameEnded) return;
+
         bool allPlayersDead = true;
         foreach (var player in allPlayers)
         {
@@ -268,22 +287,34 @@ public class BattleHandler : MonoBehaviour
 
         if (allPlayersDead)
         {
+            gameEnded = true;
             Debug.Log("Game Over - Players Defeated!");
             loseUI.SetActive(true);
+            StartCoroutine(EndBattle(false));
         }
         else if (allEnemiesDead)
         {
+            gameEnded = true;
             Debug.Log("Victory - All Enemies Defeated!");
             winUI.SetActive(true);
-            ReturnToOverworld();
+            StartCoroutine(EndBattle(true));
         }
     }
 
-    private IEnumerator ReturnToOverworld()
+    private IEnumerator EndBattle(bool won)
     {
-        yield return new WaitForSeconds(3f); // Delay to show win UI
+        // Disable all interactions
+        DisableAllPlayerSelection();
+        SetAllEnemiesSelectable(false);
+        playerTurns.SetActive(false);
+        enemyTurns.SetActive(false);
+        attackConfirmationPanel.SetActive(false);
 
-        SceneManager.LoadScene("Map grass 1");
+        // Wait to show the result
+        yield return new WaitForSeconds(endBattleDelay);
+
+        // Return to appropriate scene
+        SceneManager.LoadScene(won ? "Map grass 1" : "Map grass 1");
     }
 
     public void NotifyPlayerFinished(PlayerController player)

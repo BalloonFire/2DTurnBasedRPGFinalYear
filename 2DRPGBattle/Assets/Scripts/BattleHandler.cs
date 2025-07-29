@@ -310,6 +310,7 @@ public class BattleHandler : MonoBehaviour
         enemyTurns.SetActive(false);
         attackConfirmationPanel.SetActive(false);
 
+
         // Wait to show the result
         yield return new WaitForSeconds(endBattleDelay);
 

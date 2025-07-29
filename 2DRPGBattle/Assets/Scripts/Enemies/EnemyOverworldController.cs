@@ -92,6 +92,7 @@ public class EnemyOverworldController : MonoBehaviour
             PlayerPrefs.SetString("ReturnScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
             PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
+            PlayerPrefs.Save();
         }
     }
 }

@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class OverworldReturnPosition : MonoBehaviour
 {
-    public GameObject playerPrefab; // Assign this in Inspector 
-
-    private void Start()
+    void Start()
     {
-        float x = PlayerPrefs.GetFloat("PlayerX", 0f);
-        float y = PlayerPrefs.GetFloat("PlayerY", 0f);
-        Vector3 returnPosition = new Vector3(x, y, 0f);
+        GameObject player = GameObject.Find("Player");
 
-        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
+            {
+                float x = PlayerPrefs.GetFloat("PlayerX");
+                float y = PlayerPrefs.GetFloat("PlayerY");
+                player.transform.position = new Vector3(x, y, player.transform.position.z);
+            }
 
-        if (player == null && playerPrefab != null)
-        {
-            player = Instantiate(playerPrefab, returnPosition, Quaternion.identity);
-        }
-        else if (player != null)
-        {
-            player.transform.position = returnPosition;
             player.SetActive(true);
         }
+        else
+        {
+            Debug.LogWarning("No player found to return to.");
+        }
 
-        // Enable UI
         GameObject overworldUI = GameObject.Find("UIOverworldCanvas");
         if (overworldUI) overworldUI.SetActive(true);
     }

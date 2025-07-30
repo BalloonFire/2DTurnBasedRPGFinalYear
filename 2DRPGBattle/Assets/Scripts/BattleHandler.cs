@@ -315,7 +315,9 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(endBattleDelay);
 
         // Return to appropriate scene
-        SceneManager.LoadScene(won ? "Map grass 1" : "Map grass 1");
+        string returnScene = SceneTracker.Instance != null ? SceneTracker.Instance.GetPreviousScene() : "MenuScenes";
+        SceneManager.LoadScene(returnScene);
+
     }
 
     public void NotifyPlayerFinished(PlayerController player)

@@ -49,28 +49,30 @@ public class EnemyOverworldController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (hasTriggeredBattle) return;
+            hasTriggeredBattle = true;
+
             Debug.Log("Player collided with enemy — loading battle scene!");
-            BattleTransition.Instance.SetEnemy(enemyData);
             StoreBattleInfo(other.transform);
+            BattleTransition.Instance.SetEnemy(enemyData);
             SceneManager.LoadScene(battleScene);
         }
     }
 
     public void TakeDamage(int damage)
     {
-        if (hasTriggeredBattle) return; // prevent multiple triggers
+        if (hasTriggeredBattle) return;
 
         currentHealth -= damage;
 
-        // Optional: knockback and flash
         if (PlayerOverworldController.Instance != null)
             knockback.GetKnockedBack(PlayerOverworldController.Instance.transform, knockedBackThrust);
 
         StartCoroutine(flash.FlashRoutine());
 
-        // Now: trigger battle transition on first damage
         hasTriggeredBattle = true;
         StoreBattleInfo(PlayerOverworldController.Instance.transform);
+        BattleTransition.Instance.SetEnemy(enemyData);
 
         if (deathVFXPrefab != null)
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
@@ -88,8 +90,13 @@ public class EnemyOverworldController : MonoBehaviour
     {
         if (enemyData != null)
         {
-            BattleTransition.Instance.SetEnemy(enemyData);
-            PlayerPrefs.SetString("ReturnScene", SceneManager.GetActiveScene().name);
+            // Save return scene name using SceneTracker
+            if (SceneTracker.Instance != null)
+            {
+                SceneTracker.Instance.SetPreviousScene(SceneManager.GetActiveScene().name);
+            }
+
+            // Optionally keep position in PlayerPrefs
             PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
             PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
             PlayerPrefs.Save();

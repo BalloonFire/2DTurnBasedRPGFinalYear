@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e56a35f4dc355648abde7bf129956fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 0
 --- !u!114 &778658899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,6 +3196,19 @@ MonoBehaviour:
   enemyType: {fileID: 0}
   attackCooldown: 2
   stopMovingWhileAttacking: 0
+--- !u!114 &778658907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778658888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02da6a302fe176e4681bcbda33769e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapeProjectilePrefab: {fileID: 0}
 --- !u!1 &783066956
 GameObject:
   m_ObjectHideFlags: 0
@@ -19985,6 +19998,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bringer of Death
       objectReference: {fileID: 0}
+    - target: {fileID: 6797632416144841894, guid: 96af983e4728a6543930d41f9d408a33,
+        type: 3}
+      propertyPath: battleScene
+      value: BattleBoss
+      objectReference: {fileID: 0}
     - target: {fileID: 7525297789256296930, guid: 96af983e4728a6543930d41f9d408a33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20047,6 +20065,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 778658899}
+    - targetCorrespondingSourceObject: {fileID: 44782869520294212, guid: 96af983e4728a6543930d41f9d408a33,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 778658907}
   m_SourcePrefab: {fileID: 100100000, guid: 96af983e4728a6543930d41f9d408a33, type: 3}
 --- !u!4 &1392207070111388979
 Transform:

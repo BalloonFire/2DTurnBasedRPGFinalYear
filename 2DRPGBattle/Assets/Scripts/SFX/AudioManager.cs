@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -16,8 +17,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip menuMusic;
     public AudioClip menuSelection;
 
+    [Header("Overworld Music")]
+    public AudioClip grass1;
+    public AudioClip grass2;
+    public AudioClip dungeon;
+
     [Header("Battle Music and SFX")]
     public AudioClip battleMusic;
+    public AudioClip bossMusic;
     public AudioClip battleStart;
     public AudioClip battleSwing;
     public AudioClip battleSelect;
@@ -36,6 +43,14 @@ public class AudioManager : MonoBehaviour
             PlayMenuMusic();
         else if (currentScene == "BattleTest")
             PlayBattleMusic();
+        else if (currentScene == "BattleBoss")
+            PlayBossMusic();
+        else if (currentScene == "Map grass 1")
+            PlayBGMusic1();
+        else if (currentScene == "Map grass 2")
+            PlayBGMusic2();
+        else if (currentScene == "Dungeon 1")
+            PlayBGMusic3();
     }
 
     private void Awake()
@@ -75,6 +90,30 @@ public class AudioManager : MonoBehaviour
     public void PlayBattleMusic()
     {
         musicSource.clip = battleMusic;
+        musicSource.Play();
+    }
+
+    public void PlayBossMusic()
+    {
+        musicSource.clip = bossMusic;
+        musicSource.Play();
+    }
+
+    public void PlayBGMusic1()
+    {
+        musicSource.clip = grass1;
+        musicSource.Play();
+    }
+
+    public void PlayBGMusic2()
+    {
+        musicSource.clip = grass2;
+        musicSource.Play();
+    }
+
+    public void PlayBGMusic3()
+    {
+        musicSource.clip = dungeon;
         musicSource.Play();
     }
 

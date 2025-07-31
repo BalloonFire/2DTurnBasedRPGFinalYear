@@ -10,7 +10,14 @@ public class OverworldBattleLauncher : MonoBehaviour
 
     public void StartBattle()
     {
+        // Save selected characters for battle
         GameDataCarrier.Instance.SetSelectedPlayers(chosenParty);
-        SceneManager.LoadScene("BattleSceneNameHere");
+
+        // Track the scene and player position
+        SceneTracker.Instance.SetPreviousScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneTracker.Instance.SetPlayerPosition(PlayerOverworldController.Instance.transform.position);
+
+        // Load the battle scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("BattleTest");
     }
 }

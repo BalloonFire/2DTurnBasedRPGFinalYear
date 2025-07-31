@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SceneTracker : MonoBehaviour
 {
     public static SceneTracker Instance;
 
     public string previousSceneName;
+
+    public Vector3 playerReturnPosition;
 
     private void Awake()
     {
@@ -26,5 +29,10 @@ public class SceneTracker : MonoBehaviour
     public string GetPreviousScene()
     {
         return previousSceneName;
+    }
+
+    public void SetPlayerPosition(Vector3 pos)
+    {
+        playerReturnPosition = pos;
     }
 }

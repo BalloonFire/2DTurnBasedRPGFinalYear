@@ -35,9 +35,42 @@ public class AudioManager : MonoBehaviour
     public AudioClip battleVictory;
     public AudioClip battleLose;
 
-    private void Start()
+    private void Awake()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        // Singleton pattern
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded; // subscribe to scene change
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Ensure AudioSources are assigned
+        if (musicSource == null)
+            musicSource = gameObject.AddComponent<AudioSource>();
+        if (sfxSource == null)
+            sfxSource = gameObject.AddComponent<AudioSource>();
+
+        musicSource.loop = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded; // clean unsubscribe
+        }
+    }
+
+    // Automatically play music when scene changes
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        string currentScene = scene.name;
 
         if (currentScene == "MenuScenes")
             PlayMenuMusic();
@@ -53,81 +86,54 @@ public class AudioManager : MonoBehaviour
             PlayBGMusic3();
     }
 
-    private void Awake()
-    {
-        // Singleton pattern
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        // Ensure AudioSources are assigned
-        if (musicSource == null)
-        {
-            musicSource = gameObject.AddComponent<AudioSource>();
-        }
-        if (sfxSource == null)
-        {
-            sfxSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        musicSource.loop = true;
-    }
-
     // Music Controls
     public void PlayMenuMusic()
     {
-        musicSource.clip = menuMusic;
-        musicSource.Play();
+        PlayMusic(menuMusic);
     }
 
     public void PlayBattleMusic()
     {
-        musicSource.clip = battleMusic;
-        musicSource.Play();
+        PlayMusic(battleMusic);
     }
 
     public void PlayBossMusic()
     {
-        musicSource.clip = bossMusic;
-        musicSource.Play();
+        PlayMusic(bossMusic);
     }
 
     public void PlayBGMusic1()
     {
-        musicSource.clip = grass1;
-        musicSource.Play();
+        PlayMusic(grass1);
     }
 
     public void PlayBGMusic2()
     {
-        musicSource.clip = grass2;
-        musicSource.Play();
+        PlayMusic(grass2);
     }
 
     public void PlayBGMusic3()
     {
-        musicSource.clip = dungeon;
-        musicSource.Play();
+        PlayMusic(dungeon);
     }
 
     public void PlayVictoryMusic()
     {
         musicSource.loop = false;
-        musicSource.clip = battleVictory;
-        musicSource.Play();
+        PlayMusic(battleVictory);
     }
 
     public void PlayLoseMusic()
     {
         musicSource.loop = false;
-        musicSource.clip = battleLose;
+        PlayMusic(battleLose);
+    }
+
+    private void PlayMusic(AudioClip clip)
+    {
+        if (musicSource.clip == clip && musicSource.isPlaying) return; // avoid restart
+        musicSource.Stop();
+        musicSource.clip = clip;
         musicSource.Play();
     }
 

@@ -8504,16 +8504,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -12256,7 +12246,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 974
+  - m_RefCount: 973
     m_Data: {fileID: 11400000, guid: c3377c87a41bc334d96b1427f246535e, type: 2}
   - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: 582a93e48d1ed0b4c8c19824a2f097c6, type: 2}
@@ -12265,7 +12255,7 @@ Tilemap:
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: f99dc7ada49d4f64a840388c775d7ca4, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 974
+  - m_RefCount: 973
     m_Data: {fileID: 21300000, guid: 5dfd235c5edc13944a55ba5a01a0e3e7, type: 3}
   - m_RefCount: 11
     m_Data: {fileID: 979480116, guid: 799c5d26ffc20904caf9e72673bb6ccb, type: 3}
@@ -12274,7 +12264,7 @@ Tilemap:
   - m_RefCount: 10
     m_Data: {fileID: 1742820706, guid: 799c5d26ffc20904caf9e72673bb6ccb, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data:
       e00: 1
       e01: 0
@@ -12293,7 +12283,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -12537,6 +12527,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518891266}
   m_CullTransparentMesh: 1
+--- !u!1 &530500968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3378675188506956004, guid: 7279f81beb3085e4d92f31e7a7489e90,
+    type: 3}
+  m_PrefabInstance: {fileID: 4625897377796765297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534225606
 GameObject:
   m_ObjectHideFlags: 0
@@ -12933,6 +12929,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4625897377796765297}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &641731974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530500968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e7457f0ad1034469e8429646ffbf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenesToHideIn:
+  - BattleTest
+  - BattleBoss
 --- !u!1 &642457794
 GameObject:
   m_ObjectHideFlags: 0
@@ -25126,6 +25137,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1519303149}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1549815387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3105060883903080045, guid: 17c8e84119584434e8be34e27b9e0ffc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5799826918445131794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1549815393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549815387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e7457f0ad1034469e8429646ffbf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenesToHideIn:
+  - BattleTest
+  - BattleBoss
 --- !u!4 &1556097756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8114780017553488037, guid: f6f935e8c847faf4695fb649f658c8e4,
@@ -32824,7 +32856,7 @@ PrefabInstance:
     - target: {fileID: 6762021695670748057, guid: deb55e695dc97bb4eaa05c9bd0bb12f4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.209255
+      value: -7.2102747
       objectReference: {fileID: 0}
     - target: {fileID: 6762021695670748057, guid: deb55e695dc97bb4eaa05c9bd0bb12f4,
         type: 3}
@@ -32970,7 +33002,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3378675188506956004, guid: 7279f81beb3085e4d92f31e7a7489e90,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 641731974}
   m_SourcePrefab: {fileID: 100100000, guid: 7279f81beb3085e4d92f31e7a7489e90, type: 3}
 --- !u!4 &4822017341435354256
 Transform:
@@ -33070,11 +33106,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 77707802009690905, guid: c2c9030c204d14246a954d8d975e8e5e,
+    - target: {fileID: 3149666011054698561, guid: c2c9030c204d14246a954d8d975e8e5e,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 530500968}
+    - target: {fileID: 3149666011054698561, guid: c2c9030c204d14246a954d8d975e8e5e,
+        type: 3}
+      propertyPath: overworldCanvas
+      value: 
+      objectReference: {fileID: 1549815387}
     - target: {fileID: 6456478689400496424, guid: c2c9030c204d14246a954d8d975e8e5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33579,7 +33620,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3105060883903080045, guid: 17c8e84119584434e8be34e27b9e0ffc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549815393}
   m_SourcePrefab: {fileID: 100100000, guid: 17c8e84119584434e8be34e27b9e0ffc, type: 3}
 --- !u!199 &6038992773808986473
 ParticleSystemRenderer:
@@ -34023,7 +34068,7 @@ SceneRoots:
   - {fileID: 799249302}
   - {fileID: 1176142378}
   - {fileID: 1250079590}
+  - {fileID: 1627074766}
   - {fileID: 1402835102}
   - {fileID: 3147969242867425823}
   - {fileID: 3053051892861490925}
-  - {fileID: 1627074766}

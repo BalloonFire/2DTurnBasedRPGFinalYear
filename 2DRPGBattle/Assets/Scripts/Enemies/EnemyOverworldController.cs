@@ -45,20 +45,6 @@ public class EnemyOverworldController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (hasTriggeredBattle) return;
-            hasTriggeredBattle = true;
-
-            Debug.Log("Player collided with enemy — loading battle scene!");
-            StoreBattleInfo(other.transform);
-            BattleTransition.Instance.SetEnemy(enemyData);
-            SceneManager.LoadScene(battleScene);
-        }
-    }
-
     public void TakeDamage(int damage)
     {
         if (hasTriggeredBattle) return;
@@ -76,12 +62,6 @@ public class EnemyOverworldController : MonoBehaviour
 
         if (deathVFXPrefab != null)
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
-
-        GameObject overworldUI = GameObject.Find("UIOverworldCanvas");
-        if (overworldUI) overworldUI.SetActive(false);
-
-        GameObject playerOverworld = GameObject.Find("Player");
-        if (playerOverworld) playerOverworld.SetActive(false);
 
         SceneManager.LoadScene(battleScene);
     }

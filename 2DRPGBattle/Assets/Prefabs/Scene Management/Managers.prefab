@@ -33,6 +33,7 @@ Transform:
   - {fileID: 7034780557997276262}
   - {fileID: 1282512303046110315}
   - {fileID: 4271046544922660052}
+  - {fileID: 3558507897146368523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6646054061139246785
@@ -47,6 +48,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ad78d248a12e74cb535c7b1dbe2976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1004482137706238131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3558507897146368523}
+  - component: {fileID: 3149666011054698561}
+  m_Layer: 0
+  m_Name: Visible Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3558507897146368523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004482137706238131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6456478689400496424}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3149666011054698561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004482137706238131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef69b40a0c7ea8644abaecd133a98d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  overworldCanvas: {fileID: 0}
+  battleScenes:
+  - BattleTest
+  - BattleBoss
 --- !u!1 &3972284318349295949
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class OverworldSpawnManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-
-    void Start()
+    private void Start()
     {
-        if (SceneTracker.Instance != null && SceneTracker.Instance.GetPreviousScene() == "BattleScene")
+        // Check if SceneTracker has a stored position
+        if (SceneTracker.Instance != null && SceneTracker.Instance.HasStoredPosition())
         {
-            Vector3 spawnPos = SceneTracker.Instance.playerReturnPosition;
-            Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+            var player = PlayerOverworldController.Instance;
+
+            if (player != null)
+            {
+                player.transform.position = SceneTracker.Instance.GetPlayerPosition();
+                Debug.Log("Player repositioned to: " + player.transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerOverworldController not found!");
+            }
         }
     }
 }

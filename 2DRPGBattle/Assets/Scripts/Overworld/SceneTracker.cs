@@ -1,38 +1,33 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SceneTracker : MonoBehaviour
+public class SceneTracker : Singleton<SceneTracker>
 {
-    public static SceneTracker Instance;
+    private string previousScene;
+    private Vector3 playerPosition;
 
-    public string previousSceneName;
-
-    public Vector3 playerReturnPosition;
-
-    private void Awake()
+    public void SetPreviousScene(string sceneName)
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject); // Prevent duplicates
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void SetPreviousScene(string name)
-    {
-        previousSceneName = name;
+        previousScene = sceneName;
     }
 
     public string GetPreviousScene()
     {
-        return previousSceneName;
+        return previousScene;
     }
 
     public void SetPlayerPosition(Vector3 pos)
     {
-        playerReturnPosition = pos;
+        playerPosition = pos;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return playerPosition;
+    }
+
+    public bool HasStoredPosition()
+    {
+        return playerPosition != Vector3.zero;
     }
 }

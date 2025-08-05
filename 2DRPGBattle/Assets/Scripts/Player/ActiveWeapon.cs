@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
@@ -9,6 +10,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private PlayerControls playerControls;
     private float timeBetweenAttacks;
+    [SerializeField] private InputActionReference attackButton;
 
     private bool attackButtonDown, isAttacking = false;
 
@@ -26,8 +28,12 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private void Start()
     {
-        playerControls.Combat.Attack.started += _ => StartAttacking();
-        playerControls.Combat.Attack.canceled += _ => StopAttacking();
+        if (attackButton != null)
+        {
+            attackButton.action.started += _ => StartAttacking();
+            attackButton.action.canceled += _ => StopAttacking();
+            attackButton.action.Enable();
+        }
 
         AttackCooldown();
     }

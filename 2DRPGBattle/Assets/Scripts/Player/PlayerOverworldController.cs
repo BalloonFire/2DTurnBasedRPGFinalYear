@@ -85,6 +85,17 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
     private void OnEnable()
     {
         playerControls.Enable();
+
+        // Make sure camera rebinds to this player when player is reactivated
+        if (CameraController.Instance != null)
+        {
+            CameraController.Instance.SetPlayerCameraFollow();
+        }
+
+        if (weaponCollider != null)
+        {
+            weaponCollider.gameObject.SetActive(false);
+        }
     }
 
     private void OnDisable()

@@ -87,4 +87,10 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
             (CurrentActiveWeapon as IWeapon).Attack();
         }
     }
+
+    public void ResetAttackState()
+    {
+        attackButtonDown = false;
+        isAttacking = false;
+    }
 }

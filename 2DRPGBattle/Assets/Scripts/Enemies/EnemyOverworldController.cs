@@ -51,18 +51,36 @@ public class EnemyOverworldController : MonoBehaviour
 
         currentHealth -= damage;
 
+        // Apply knockback
         if (PlayerOverworldController.Instance != null)
             knockback.GetKnockedBack(PlayerOverworldController.Instance.transform, knockedBackThrust);
 
         StartCoroutine(flash.FlashRoutine());
 
         hasTriggeredBattle = true;
+
+        // Disable weapon collider
+        if (PlayerOverworldController.Instance != null)
+        {
+            Transform weapon = PlayerOverworldController.Instance.GetWeaponCollider();
+            if (weapon != null)
+                weapon.gameObject.SetActive(false);
+        }
+
+        if (ActiveWeapon.Instance != null)
+        {
+            ActiveWeapon.Instance.ResetAttackState();
+        }
+
+        // Save scene and set enemy
         StoreBattleInfo(PlayerOverworldController.Instance.transform);
         BattleTransition.Instance.SetEnemy(enemyData);
 
+        // Optional VFX
         if (deathVFXPrefab != null)
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
 
+        // Load battle scene
         SceneManager.LoadScene(battleScene);
     }
 

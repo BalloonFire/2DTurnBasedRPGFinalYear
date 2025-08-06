@@ -6,6 +6,8 @@ public class SceneTracker : Singleton<SceneTracker>
     private string previousScene;
     private Vector3 playerPosition;
 
+    public static bool returningFromBattle = false;
+
     public void SetPreviousScene(string sceneName)
     {
         previousScene = sceneName;

@@ -26,12 +26,11 @@ public class SceneVisibilityManager : MonoBehaviour
 
     private IEnumerator HandleVisibilityWithDelay(string sceneName)
     {
-        // Delay to ensure everything is loaded
+        // Wait 1–2 frames to ensure scene load completes
         yield return null;
         yield return null;
 
         bool isBattle = false;
-
         foreach (string battleScene in battleScenes)
         {
             if (sceneName == battleScene)
@@ -41,12 +40,30 @@ public class SceneVisibilityManager : MonoBehaviour
             }
         }
 
-        if (player != null)
-            player.SetActive(!isBattle);
+        if (!isBattle && SceneTracker.returningFromBattle)
+        {
+            // Wait for everything to fully initialize (especially weapon/camera)
+            yield return new WaitForSeconds(0.1f);
 
-        if (overworldCanvas != null)
-            overworldCanvas.SetActive(!isBattle);
+            if (player != null)
+                player.SetActive(true);
 
-        Debug.Log("Scene '" + sceneName + "' loaded. Player and UI active: " + !isBattle);
+            if (overworldCanvas != null)
+                overworldCanvas.SetActive(true);
+
+            Debug.Log("Returned from battle. Player + UI reactivated in scene: " + sceneName);
+
+            SceneTracker.returningFromBattle = false;
+        }
+        else
+        {
+            if (player != null)
+                player.SetActive(!isBattle);
+
+            if (overworldCanvas != null)
+                overworldCanvas.SetActive(!isBattle);
+
+            Debug.Log("Scene '" + sceneName + "' loaded. Player and UI active: " + !isBattle);
+        }
     }
 }

@@ -10,4 +10,9 @@ public class SceneManagement : Singleton<SceneManagement>
     {
         this.SceneTransitionName = sceneTransitionName;
     }
+
+    public void ClearTransitionName()
+    {
+        SceneTransitionName = null;
+    }
 }

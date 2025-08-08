@@ -103,6 +103,16 @@ namespace Player
             StartCoroutine(ExecuteAttack(target));
         }
 
+        public void Heal(int amount)
+        {
+            if (!IsAlive()) return;
+
+            health = Mathf.Min(health + amount, maxHealth);
+            UpdateHealthUI();
+            Debug.Log($"{playerID} healed for {amount} HP");
+        }
+
+
         public void SetInteractable(bool canSelect)
         {
             GetComponent<Collider2D>().enabled = canSelect;

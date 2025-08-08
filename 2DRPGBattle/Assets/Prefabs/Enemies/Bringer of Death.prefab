@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3706086832573132456}
   - component: {fileID: 6877064229890568163}
   - component: {fileID: 6797632416144841894}
+  - component: {fileID: 6255564681749137305}
   m_Layer: 0
   m_Name: Bringer of Death
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44782869520294212}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -163,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 44782869520294212}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccee253ff083e9e45ac8d4d553de6318, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58052924208f5054a93c5461cc782798, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -213,8 +214,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13109e70993c04045a76d8fe4f575947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleScene: BattleTest
+  battleScene: BattleBoss
   enemyData: {fileID: 11400000, guid: f3d9bbecc922f664ba664a370057de36, type: 2}
   deathVFXPrefab: {fileID: 7791211261907679854, guid: dcd465eb8f0601e42ac0b6fe8fcfacc9,
     type: 3}
   knockedBackThrust: 15
+--- !u!114 &6255564681749137305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44782869520294212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e56a35f4dc355648abde7bf129956fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0

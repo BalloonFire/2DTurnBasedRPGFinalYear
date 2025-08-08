@@ -4,8 +4,8 @@ using Enemy.Model;
 public class BattleTransition : MonoBehaviour
 {
     public static BattleTransition Instance { get; private set; }
-
     public EnemySO CurrentEnemySO { get; private set; }
+    public string OverworldEnemyName { get; private set; }
 
     private void Awake()
     {
@@ -14,13 +14,14 @@ public class BattleTransition : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Persist between scenes
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void SetEnemy(EnemySO enemy)
+    public void SetEnemy(EnemySO enemyData, string overworldEnemyName)
     {
-        CurrentEnemySO = enemy;
+        CurrentEnemySO = enemyData;
+        OverworldEnemyName = overworldEnemyName;
+        Debug.Log($"BattleTransition: Set enemy {overworldEnemyName} with data {enemyData.enemyName}");
     }
 }

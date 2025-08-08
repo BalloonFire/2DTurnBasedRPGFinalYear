@@ -137,6 +137,12 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip != null)
+            sfxSource.PlayOneShot(clip);
+    }
+
     // SFX Controls
     public void PlayMenuSelection() => sfxSource.PlayOneShot(menuSelection);
     public void PlayBattleStart() => sfxSource.PlayOneShot(battleStart);

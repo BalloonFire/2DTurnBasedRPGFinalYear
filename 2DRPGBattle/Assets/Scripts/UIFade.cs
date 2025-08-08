@@ -23,13 +23,14 @@ public class UIFade : Singleton<UIFade>
 
     public void FadeToClear()
     {
-        if (fadeRoutine != null)
-            {
-                StopCoroutine (fadeRoutine);
-            }
+        if (!gameObject.activeInHierarchy)
+            return; // Skip if inactive, prevents coroutine error
 
-            fadeRoutine = FadeRoutine(0);
-            StartCoroutine(fadeRoutine);
+        if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = FadeRoutine(0);
+        StartCoroutine(fadeRoutine);
     }
 
     private IEnumerator FadeRoutine(float targetAlpha)

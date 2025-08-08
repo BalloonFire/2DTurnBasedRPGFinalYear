@@ -24,6 +24,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
     [SerializeField] private float damageRecoveryTime = 1f;
 
     private PlayerControls playerControls;
+    public PlayerControls Controls => playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator animator;
@@ -82,11 +83,31 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
         UpdateHealthSlider();
     }
 
+    private void OnDisable()
+    {
+        // Disable PlayerControls action maps
+        if (playerControls != null)
+            playerControls.Disable();
+
+        // Also disable joystick and dashButton InputActionReferences to avoid leak
+        if (dashButton != null)
+            dashButton.action.Disable();
+
+        if (joystick != null)
+            joystick.action.Disable();
+    }
+
     private void OnEnable()
     {
-        playerControls.Enable();
+        if (playerControls != null)
+            playerControls.Enable();
 
-        // Make sure camera rebinds to this player when player is reactivated
+        if (dashButton != null)
+            dashButton.action.Enable();
+
+        if (joystick != null)
+            joystick.action.Enable();
+
         if (CameraController.Instance != null)
         {
             CameraController.Instance.SetPlayerCameraFollow();
@@ -96,11 +117,6 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
         {
             weaponCollider.gameObject.SetActive(false);
         }
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
     }
 
     private void Update()
@@ -182,7 +198,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
     {
         if (collision.gameObject.TryGetComponent(out EnemyAI enemy))
         {
-            TakeDamage(1, collision.transform);
+            TakeDamage(20, collision.transform);
         }
     }
 
@@ -191,7 +207,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
         if (!canTakeDamage) return;
 
         knockback.GetKnockedBack(hitSource, knockBackThrustAmount);
-        StartCoroutine(flash.FlashRoutine());
+        flash.StartFlash();
         currentHealth -= damage;
         canTakeDamage = false;
         StartCoroutine(DamageRecoveryRoutine());

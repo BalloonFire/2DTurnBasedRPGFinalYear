@@ -14,6 +14,10 @@ public class BattleHandler : MonoBehaviour
     public float enemyTurnDelay = 1.5f;
     public float endBattleDelay = 10f;
 
+    [Header("Return Scene (Optional)")]
+    [Tooltip("Leave empty to use automatic scene transition, or specify scene name to return to")]
+    public string returnScene = "";
+
     [Header("Attack Panel")]
     public GameObject attackConfirmationPanel;
 
@@ -27,11 +31,14 @@ public class BattleHandler : MonoBehaviour
     private EnemyController currentEnemy;
     private bool gameEnded = false;
 
+    public static BattleHandler Instance { get; private set; }
     private List<PlayerController> allPlayers = new List<PlayerController>();
     private HashSet<PlayerController> playersWhoAttacked = new HashSet<PlayerController>();
 
     void Start()
     {
+        Instance = this;
+
         // Initialize UI states
         attackConfirmationPanel.SetActive(false);
         winUI.SetActive(false);
@@ -276,7 +283,8 @@ public class BattleHandler : MonoBehaviour
         }
 
         bool allEnemiesDead = true;
-        foreach (var enemy in FindObjectsOfType<EnemyController>())
+        var enemies = FindObjectsOfType<EnemyController>();
+        foreach (var enemy in enemies)
         {
             if (enemy.IsAlive())
             {
@@ -296,6 +304,26 @@ public class BattleHandler : MonoBehaviour
         {
             gameEnded = true;
             Debug.Log("Victory - All Enemies Defeated!");
+
+            // Only record the original overworld enemy
+            if (DeadEnemiesManager.Instance != null && BattleTransition.Instance != null)
+            {
+                string overworldEnemyName = BattleTransition.Instance.OverworldEnemyName;
+                if (!string.IsNullOrEmpty(overworldEnemyName))
+                {
+                    Debug.Log($"Marking overworld enemy as defeated: {overworldEnemyName}");
+                    DeadEnemiesManager.Instance.AddDefeatedEnemy(overworldEnemyName);
+                }
+                else
+                {
+                    Debug.LogWarning("No overworld enemy name recorded!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Critical manager instances are null!");
+            }
+
             winUI.SetActive(true);
             StartCoroutine(EndBattle(true));
         }
@@ -310,14 +338,29 @@ public class BattleHandler : MonoBehaviour
         enemyTurns.SetActive(false);
         attackConfirmationPanel.SetActive(false);
 
-
         // Wait to show the result
         yield return new WaitForSeconds(endBattleDelay);
 
-        // Return to appropriate scene
-        string returnScene = SceneTracker.Instance != null ? SceneTracker.Instance.GetPreviousScene() : "MenuScenes";
-        SceneManager.LoadScene(returnScene);
+        // Determine which scene to return to
+        string sceneToLoad;
 
+        if (!string.IsNullOrEmpty(returnScene))
+        {
+            // Use the manually specified scene
+            sceneToLoad = returnScene;
+        }
+        else if (SceneTracker.Instance != null)
+        {
+            // Use the SceneTracker's previous scene
+            sceneToLoad = SceneTracker.Instance.GetPreviousScene();
+        }
+        else
+        {
+            // Fallback to menu scene
+            sceneToLoad = "MenuScenes";
+        }
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     public void NotifyPlayerFinished(PlayerController player)

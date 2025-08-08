@@ -2430,6 +2430,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83572c22ec33e0439fd094eb354f7ab, type: 3}
+--- !u!82 &439939845 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7561202923003836906, guid: c83572c22ec33e0439fd094eb354f7ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 439939844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498193780
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,7 +4823,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 27cb1786e5d267742aaba15e67f8aff2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5660,6 +5666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916842535589158443, guid: d308526c414237c488150fa6c29b4146,
         type: 3}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 439939845}
+    - target: {fileID: 6916842535589158443, guid: d308526c414237c488150fa6c29b4146,
+        type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 150512959}
@@ -6489,7 +6500,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df443974dca545e48b9edc65db3453b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.26981127, b: 0.26981127, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9101,7 +9112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Win!
+  m_text: Thank You For Playing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
@@ -9789,6 +9800,7 @@ MonoBehaviour:
   playerTurn: 1
   enemyTurnDelay: 1.5
   endBattleDelay: 3
+  returnScene: MenuScenes
   attackConfirmationPanel: {fileID: 414894476}
   playerTurns: {fileID: 1379078310}
   enemyTurns: {fileID: 326223807}

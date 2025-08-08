@@ -50,7 +50,7 @@ namespace Inventory.UI
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
                 uiItem.OnItemEndDrag += HandleEndDrag;
-                uiItem.OnRightMouseBtnClick += HandleShowItemActions;
+                //uiItem.OnRightMouseBtnClick += HandleShowItemActions; Removed since we need it to work on Android too
             }
         }
 
@@ -112,13 +112,17 @@ namespace Inventory.UI
             mouseFollower.SetData(sprite, quantity);
         }
 
-
         private void HandleItemSelection(UIInventoryItem inventoryItemUI)
         {
             int index = listItems.IndexOf(inventoryItemUI);
             if (index == -1)
                 return;
+
+            // Show description
             OnDescriptionRequested?.Invoke(index);
+
+            // Also show item action buttons (equip/drop)
+            OnItemActionRequested?.Invoke(index);
         }
 
         public void Show()

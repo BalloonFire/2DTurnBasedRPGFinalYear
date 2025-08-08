@@ -34,6 +34,18 @@ public class EnemyOverworldController : MonoBehaviour
             return;
         }
 
+        string enemyName = gameObject.name;
+        if (enemyName.EndsWith("(Clone)"))
+            enemyName = enemyName.Replace("(Clone)", "");
+
+        if (DeadEnemiesManager.Instance != null &&
+            DeadEnemiesManager.Instance.IsEnemyDefeated(enemyName))
+        {
+            Debug.Log($"Enemy {enemyName} is defeated. Destroying from overworld.");
+            Destroy(gameObject);
+            return;
+        }
+
         currentHealth = enemyData.baseHealth;
 
         // Apply animator from SO
@@ -51,13 +63,35 @@ public class EnemyOverworldController : MonoBehaviour
 
         currentHealth -= damage;
 
-        // Apply knockback
+        // Apply knockback to enemy itself (your current code)
         if (PlayerOverworldController.Instance != null)
             knockback.GetKnockedBack(PlayerOverworldController.Instance.transform, knockedBackThrust);
 
         StartCoroutine(flash.FlashRoutine());
 
         hasTriggeredBattle = true;
+
+        var player = PlayerOverworldController.Instance;
+        if (player != null)
+        {
+            // Reset player's knockback immediately so it won't lock after battle
+            var playerKnockback = player.GetComponent<Knockback>();
+            if (playerKnockback != null)
+            {
+                playerKnockback.ResetKnockbackState();
+            }
+
+            // Reset flash state to avoid stuck flash
+            var playerFlash = player.GetComponent<Flash>();
+            if (playerFlash != null)
+            {
+                playerFlash.ResetFlash();
+            }
+
+            // Save the position so we can restore it after battle using SceneTracker
+            SceneTracker.Instance.SetPlayerPosition(player.transform.position);
+            SceneTracker.returningFromBattle = true;
+        }
 
         // Disable weapon collider
         if (PlayerOverworldController.Instance != null)
@@ -73,8 +107,7 @@ public class EnemyOverworldController : MonoBehaviour
         }
 
         // Save scene and set enemy
-        StoreBattleInfo(PlayerOverworldController.Instance.transform);
-        BattleTransition.Instance.SetEnemy(enemyData);
+        StoreBattleInfo(player.transform);
 
         // Optional VFX
         if (deathVFXPrefab != null)
@@ -88,16 +121,18 @@ public class EnemyOverworldController : MonoBehaviour
     {
         if (enemyData != null)
         {
-            // Save return scene name using SceneTracker
+            // Save the overworld enemy's name
+            string enemyName = gameObject.name;
+            if (enemyName.EndsWith("(Clone)"))
+                enemyName = enemyName.Replace("(Clone)", "");
+
+            BattleTransition.Instance.SetEnemy(enemyData, enemyName);
+
+            // Save return scene
             if (SceneTracker.Instance != null)
             {
                 SceneTracker.Instance.SetPreviousScene(SceneManager.GetActiveScene().name);
             }
-
-            // Optionally keep position in PlayerPrefs
-            PlayerPrefs.SetFloat("PlayerX", playerTransform.position.x);
-            PlayerPrefs.SetFloat("PlayerY", playerTransform.position.y);
-            PlayerPrefs.Save();
         }
     }
 }

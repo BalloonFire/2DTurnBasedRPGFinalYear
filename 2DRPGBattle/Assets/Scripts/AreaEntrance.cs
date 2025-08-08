@@ -13,6 +13,9 @@ public class AreaEntrance : MonoBehaviour
             PlayerOverworldController.Instance.transform.position = this.transform.position;
             CameraController.Instance.SetPlayerCameraFollow();
             UIFade.Instance.FadeToClear();
+
+            // Clear transition name so it won't override position next time
+            SceneManagement.Instance.ClearTransitionName();
         }
     }
 }

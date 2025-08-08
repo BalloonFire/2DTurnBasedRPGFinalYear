@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 public class SceneTracker : Singleton<SceneTracker>
 {
     private string previousScene;
-    private Vector3 playerPosition;
+    private Vector3 playerPosition = Vector3.zero;  // default no position stored
 
     public static bool returningFromBattle = false;
 
@@ -31,5 +31,10 @@ public class SceneTracker : Singleton<SceneTracker>
     public bool HasStoredPosition()
     {
         return playerPosition != Vector3.zero;
+    }
+
+    public void ClearStoredPosition()
+    {
+        playerPosition = Vector3.zero;
     }
 }

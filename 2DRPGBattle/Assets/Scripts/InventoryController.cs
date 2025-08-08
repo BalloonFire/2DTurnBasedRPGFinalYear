@@ -38,6 +38,9 @@ namespace Inventory
         private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             InitializeInventory();
+            // Reassign AudioSource if missing after scene load
+            if (AudioSource == null)
+                AudioSource = FindObjectOfType<AudioSource>();
         }
 
         private void InitializeInventory()
@@ -159,7 +162,7 @@ namespace Inventory
             if (itemAction != null)
             {
                 itemAction.PerformAction(PlayerOverworldController.Instance.gameObject, inventoryItem.itemState);
-                AudioSource.PlayOneShot(itemAction.actionSFX);
+                AudioManager.Instance.PlaySFX(itemAction.actionSFX);
 
                 if (inventoryData.GetItemAt(itemIndex).IsEmpty)
                     inventoryUI.ResetSelection();

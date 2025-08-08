@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 namespace Inventory.Model
@@ -12,16 +13,39 @@ namespace Inventory.Model
         private List<ModifierData> modifiersData = new List<ModifierData>();
         public string ActionName => "Consume";
 
-        public AudioClip actionSFX { get; private set; }
+        [SerializeField] private AudioClip actionSFX;
+        AudioClip IItemAction.actionSFX => actionSFX;
 
         public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
         {
-            foreach (ModifierData data in modifiersData)
+            if (BattleHandler.Instance != null && BattleHandler.Instance.IsPlayerTurn())
             {
-                data.statModifier.AffectCharacter(character, data.value);
+                // Heal all alive players in battle
+                var allPlayers = UnityEngine.Object.FindObjectsOfType<PlayerController>();
+                foreach (var player in allPlayers)
+                {
+                    if (player.IsAlive())
+                    {
+                        foreach (ModifierData data in modifiersData)
+                        {
+                            data.statModifier.AffectCharacter(player.gameObject, data.value);
+                        }
+                    }
+                }
             }
+            else
+            {
+                // Overworld - only the one character
+                foreach (ModifierData data in modifiersData)
+                {
+                    Debug.Log("Edible item used on: " + character.name);
+                    data.statModifier.AffectCharacter(character, data.value);
+                }
+            }
+
             return true;
         }
+
     }
 
     public interface IDestroyableItem

@@ -30,7 +30,7 @@ public class ActiveInventory : MonoBehaviour
         ToggleActiveHighlight(numValue - 1);
     }
 
-    private void ToggleActiveHighlight(int indexNum)
+    public void ToggleActiveHighlight(int indexNum)
     {
         activeSlotIndexNum = indexNum;
 

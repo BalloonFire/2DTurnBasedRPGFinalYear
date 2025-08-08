@@ -193,6 +193,10 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
             UpdateHealthSlider();
         }
     }
+    public void PrepareForBattle()
+    {
+        BattleTransition.SetPlayerData(playerData);
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {

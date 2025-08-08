@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  // add this
 using Player.Model;
 using Player;
 
@@ -15,7 +16,11 @@ public class PlayerSpawner : MonoBehaviour
 
         if (playersFromOverworld == null || playersFromOverworld.Count == 0)
         {
-            Debug.LogError("No players loaded from overworld!");
+            // Only log error if NOT in battle scene
+            if (SceneManager.GetActiveScene().name != "BattleTest" && SceneManager.GetActiveScene().name != "BattleBoss" && SceneManager.GetActiveScene().name != "Menu Scenes")
+            {
+                Debug.LogError("No players loaded from overworld!");
+            }
             return;
         }
 

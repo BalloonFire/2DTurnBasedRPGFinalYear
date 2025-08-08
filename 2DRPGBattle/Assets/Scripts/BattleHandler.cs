@@ -39,14 +39,22 @@ public class BattleHandler : MonoBehaviour
     {
         Instance = this;
 
-        // Initialize UI states
+        // Initialize UI states first
         attackConfirmationPanel.SetActive(false);
         winUI.SetActive(false);
         loseUI.SetActive(false);
         playerTurns.SetActive(false);
         enemyTurns.SetActive(false);
 
-        // Find all players and setup battle
+        // Wait one frame to ensure all players are initialized
+        StartCoroutine(DelayedStart());
+    }
+
+    private IEnumerator DelayedStart()
+    {
+        yield return null; // Wait one frame
+
+        // Now find and initialize players
         allPlayers.AddRange(FindObjectsOfType<PlayerController>());
         DisableAllPlayerSelection();
         BeginPlayerTurn();

@@ -1,9 +1,11 @@
 using UnityEngine;
 using Enemy.Model;
+using Player.Model;
 
 public class BattleTransition : MonoBehaviour
 {
     public static BattleTransition Instance { get; private set; }
+    public static PlayerSO PlayerDataToTransfer { get; set; } // Changed from array to single SO
     public EnemySO CurrentEnemySO { get; private set; }
     public string OverworldEnemyName { get; private set; }
 
@@ -23,5 +25,10 @@ public class BattleTransition : MonoBehaviour
         CurrentEnemySO = enemyData;
         OverworldEnemyName = overworldEnemyName;
         Debug.Log($"BattleTransition: Set enemy {overworldEnemyName} with data {enemyData.enemyName}");
+    }
+
+    public static void SetPlayerData(PlayerSO playerData)
+    {
+        PlayerDataToTransfer = playerData;
     }
 }

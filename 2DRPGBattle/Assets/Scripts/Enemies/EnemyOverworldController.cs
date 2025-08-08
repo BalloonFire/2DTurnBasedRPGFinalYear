@@ -63,6 +63,8 @@ public class EnemyOverworldController : MonoBehaviour
 
         currentHealth -= damage;
 
+        PlayerOverworldController.Instance.PrepareForBattle();
+
         // Apply knockback to enemy itself (your current code)
         if (PlayerOverworldController.Instance != null)
             knockback.GetKnockedBack(PlayerOverworldController.Instance.transform, knockedBackThrust);

@@ -40,6 +40,11 @@ namespace Player
 
         void Start()
         {
+            if (BattleTransition.Instance != null && BattleTransition.PlayerDataToTransfer != null)
+            {
+                playerData = BattleTransition.PlayerDataToTransfer;
+            }
+
             if (playerData == null)
             {
                 Debug.LogError("PlayerData SO not assigned!", this);

@@ -1618,9 +1618,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1075662015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -57.99997}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -350, y: -70}
   m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326223809
@@ -7845,9 +7845,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1075662015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -58}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -350, y: -70}
   m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1379078312
@@ -10530,6 +10530,7 @@ MonoBehaviour:
   playerTurn: 1
   enemyTurnDelay: 1.5
   endBattleDelay: 3
+  returnScene: 
   attackConfirmationPanel: {fileID: 414894476}
   playerTurns: {fileID: 1379078310}
   enemyTurns: {fileID: 326223807}
@@ -10799,7 +10800,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1.9, y: 1.7, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1175743241}
@@ -12321,9 +12322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c0fab6d69b0c148b1ef4c467cd5611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 648028781}
   brightnessOverlay: {fileID: 0}
-  brightnessSlider: {fileID: 0}
+  brightnessSlider: {fileID: 1995826975}
   GraphicDropDown: {fileID: 0}
   ResolutionDropdown: {fileID: 0}
 --- !u!1 &2085354979

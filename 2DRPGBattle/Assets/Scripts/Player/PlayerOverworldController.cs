@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Player.Model;
+using UnityEngine.SceneManagement;
 
 public class PlayerOverworldController : Singleton<PlayerOverworldController>
 {
@@ -11,6 +12,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private TrailRenderer myTrailRenderer;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] public GameObject gameOverUI;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 1f;
@@ -231,8 +233,17 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
         {
             currentHealth = 0;
             Debug.Log("Player has died!");
-            // Add death handling logic here
+            gameOverUI.SetActive(true);
+            StartCoroutine(DelayedSceneTransition());
         }
+    }
+
+    private System.Collections.IEnumerator DelayedSceneTransition()
+    {
+        // Wait for 4 seconds
+        yield return new WaitForSeconds(4f);
+
+        SceneManager.LoadScene("MenuScenes");
     }
 
     private void UpdateHealthSlider()

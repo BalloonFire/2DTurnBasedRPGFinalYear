@@ -153,8 +153,7 @@ public class SceneVisibilityManager : MonoBehaviour
         var controller = player.GetComponent<PlayerOverworldController>();
         if (controller?.Controls != null)
         {
-            controller.Controls.Movement.Disable();
-            controller.Controls.Combat.Disable();
+            controller.Controls.OWMovement.Disable();
             controller.Controls.Inventory.Disable();
             Debug.Log("Overworld controls disabled for battle.");
         }
@@ -165,8 +164,7 @@ public class SceneVisibilityManager : MonoBehaviour
         var controller = player.GetComponent<PlayerOverworldController>();
         if (controller?.Controls != null)
         {
-            controller.Controls.Movement.Enable();
-            controller.Controls.Combat.Enable();
+            controller.Controls.OWMovement.Enable();
             controller.Controls.Inventory.Enable();
             Debug.Log("Overworld controls enabled.");
         }

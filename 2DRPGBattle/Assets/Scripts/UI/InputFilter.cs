@@ -1,32 +1,18 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class InputFilter : MonoBehaviour
 {
     public static InputFilter Instance { get; private set; }
 
-    [Header("Button Display References")]
-    public Image buttonSouthDisplay;  // A button
-    public Image buttonEastDisplay;   // B button
-    public Image leftStickDisplay;    // Left stick
-
-    [Header("Button Sprites")]
-    public Sprite buttonSouthSprite;  // A button sprite
-    public Sprite buttonEastSprite;   // B button sprite
-    public Sprite leftStickSprite;    // Left stick sprite
-    public Sprite keyboardMouseSprite; // Fallback sprite
-
     private bool inputProcessedThisFrame = false;
-    private bool usingGamepad = false;
 
     private void Awake()
     {
-        // Singleton pattern
+        // Singleton pattern without DontDestroyOnLoad
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -34,90 +20,42 @@ public class InputFilter : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        UpdateButtonDisplays();
-    }
-
     private void Update()
     {
         // Reset input flag at the start of each frame
         inputProcessedThisFrame = false;
-
-        // Detect input device change
-        bool gamepadConnected = Input.GetJoystickNames().Length > 0;
-        if (gamepadConnected != usingGamepad)
-        {
-            usingGamepad = gamepadConnected;
-            UpdateButtonDisplays();
-        }
     }
 
-    private void UpdateButtonDisplays()
-    {
-        if (usingGamepad)
-        {
-            buttonSouthDisplay.sprite = buttonSouthSprite;
-            buttonEastDisplay.sprite = buttonEastSprite;
-            leftStickDisplay.sprite = leftStickSprite;
-        }
-        else
-        {
-            buttonSouthDisplay.sprite = keyboardMouseSprite;
-            buttonEastDisplay.sprite = keyboardMouseSprite;
-            leftStickDisplay.sprite = keyboardMouseSprite;
-        }
-    }
-
-    public bool GetButtonSouthInput() // A button
+    public bool GetActionInput()
     {
         if (inputProcessedThisFrame) return false;
 
-        if (Input.GetButtonDown("Button South") ||
-            (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             inputProcessedThisFrame = true;
             return true;
         }
-        return false;
-    }
 
-    public bool GetButtonEastInput() // B button
-    {
-        if (inputProcessedThisFrame) return false;
-
-        if (Input.GetButtonDown("Button East") || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             inputProcessedThisFrame = true;
             return true;
         }
+
         return false;
     }
 
-    public Vector2 GetLeftStickInput()
+    public float GetHorizontalInput()
     {
-        if (inputProcessedThisFrame) return Vector2.zero;
+        if (inputProcessedThisFrame) return 0f;
 
-        Vector2 input = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        );
-
-        // Add keyboard fallback
-        if (input.magnitude < 0.1f)
-        {
-            input = new Vector2(
-                Input.GetAxisRaw("HorizontalKeyboard"),
-                Input.GetAxisRaw("VerticalKeyboard")
-            );
-        }
-
-        if (input.magnitude > 0.1f)
+        float input = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(input) > 0.1f)
         {
             inputProcessedThisFrame = true;
-            return input.normalized;
+            return input;
         }
 
-        return Vector2.zero;
+        return 0f;
     }
 }

@@ -134,7 +134,7 @@ public class PlayerOverworldController : Singleton<PlayerOverworldController>
 
     private void HandleInput()
     {
-        Vector2 keyboardMovement = playerControls.Movement.Move.ReadValue<Vector2>();
+        Vector2 keyboardMovement = playerControls.OWMovement.Move.ReadValue<Vector2>();
         Vector2 gamepadMovement = joystick != null ? joystick.action.ReadValue<Vector2>() : Vector2.zero;
 
         // Combine both input sources

@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 3326371599269531703}
   - component: {fileID: 7052165135360973500}
   - component: {fileID: 3967770827384409912}
+  - component: {fileID: 2689761528462755418}
   m_Layer: 5
   m_Name: TouchScreenCanvas
   m_TagString: Untagged
@@ -152,7 +153,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 150
+  m_SortingOrder: 140
   m_TargetDisplay: 0
 --- !u!114 &3326371599269531703
 MonoBehaviour:
@@ -206,13 +207,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3905abf97d8b93e4b8a03486a6a039d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSouthDisplay: {fileID: 6688560206550632163}
-  buttonEastDisplay: {fileID: 4792781150683631293}
-  leftStickDisplay: {fileID: 8687812105301409083}
-  buttonSouthSprite: {fileID: 0}
-  buttonEastSprite: {fileID: 0}
-  leftStickSprite: {fileID: 0}
-  keyboardMouseSprite: {fileID: 0}
+--- !u!114 &2689761528462755418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4878656508174676152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c903d8a588808478962b0778272530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6350236798175105379
 GameObject:
   m_ObjectHideFlags: 0

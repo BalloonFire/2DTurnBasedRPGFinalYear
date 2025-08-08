@@ -2,7 +2,7 @@
     "name": "Player Controls",
     "maps": [
         {
-            "name": "Movement",
+            "name": "OWMovement",
             "id": "eed60446-b7c8-42a5-9168-489d01e83c08",
             "actions": [
                 {
@@ -10,6 +10,24 @@
                     "type": "PassThrough",
                     "id": "1ebf8b27-2146-4504-87f1-b9018e4967f2",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "59d3171e-43e5-48cd-a845-eb5c5f22b94d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "d8400cef-c4ff-45dd-813a-3aa001552049",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -74,44 +92,18 @@
                 {
                     "name": "",
                     "id": "23ca1be0-20f8-441b-a05b-24c44bd0e3a1",
-                    "path": "",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Combat",
-            "id": "e5defd3d-1ee4-48f7-82dd-dc878481d749",
-            "actions": [
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "8f53a33f-0f47-4e4a-bed8-94413bf9fcc9",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "6c45e525-6bcf-492b-b61f-fef3e7e2e453",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
                     "name": "",
-                    "id": "e12a5db7-6ddf-4f1e-be5c-a6c4537849b2",
-                    "path": "<Mouse>/leftButton",
+                    "id": "5faa1ff0-4b3a-412c-94af-39447786d786",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -121,19 +113,30 @@
                 },
                 {
                     "name": "",
-                    "id": "47d05050-bb24-452c-a339-b71435675c2f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0c2954bb-8197-4ae8-b4df-46cb2d8ce73d",
+                    "id": "883a0353-f085-4061-bea5-f50634f56029",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c70bae39-b6c6-4bbc-b4a2-c2fc4ccfee8d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "002d88b8-e2ec-45d6-b2dd-718c488da3e7",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -24,7 +24,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ""name"": ""Player Controls"",
     ""maps"": [
         {
-            ""name"": ""Movement"",
+            ""name"": ""OWMovement"",
             ""id"": ""eed60446-b7c8-42a5-9168-489d01e83c08"",
             ""actions"": [
                 {
@@ -32,6 +32,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""1ebf8b27-2146-4504-87f1-b9018e4967f2"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""59d3171e-43e5-48cd-a845-eb5c5f22b94d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8400cef-c4ff-45dd-813a-3aa001552049"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -96,44 +114,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23ca1be0-20f8-441b-a05b-24c44bd0e3a1"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Combat"",
-            ""id"": ""e5defd3d-1ee4-48f7-82dd-dc878481d749"",
-            ""actions"": [
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""8f53a33f-0f47-4e4a-bed8-94413bf9fcc9"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""6c45e525-6bcf-492b-b61f-fef3e7e2e453"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
                     ""name"": """",
-                    ""id"": ""e12a5db7-6ddf-4f1e-be5c-a6c4537849b2"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""5faa1ff0-4b3a-412c-94af-39447786d786"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -143,19 +135,30 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""47d05050-bb24-452c-a339-b71435675c2f"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0c2954bb-8197-4ae8-b4df-46cb2d8ce73d"",
+                    ""id"": ""883a0353-f085-4061-bea5-f50634f56029"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c70bae39-b6c6-4bbc-b4a2-c2fc4ccfee8d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""002d88b8-e2ec-45d6-b2dd-718c488da3e7"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -240,13 +243,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Movement
-        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
-        // Combat
-        m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
-        m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
-        m_Combat_Dash = m_Combat.FindAction("Dash", throwIfNotFound: true);
+        // OWMovement
+        m_OWMovement = asset.FindActionMap("OWMovement", throwIfNotFound: true);
+        m_OWMovement_Move = m_OWMovement.FindAction("Move", throwIfNotFound: true);
+        m_OWMovement_Attack = m_OWMovement.FindAction("Attack", throwIfNotFound: true);
+        m_OWMovement_Dash = m_OWMovement.FindAction("Dash", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
@@ -254,8 +255,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 
     ~@PlayerControls()
     {
-        //UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerControls.Movement.Disable() has not been called.");
-        //UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, PlayerControls.Combat.Disable() has not been called.");
+        //UnityEngine.Debug.Assert(!m_OWMovement.enabled, "This will cause a leak and performance issues, PlayerControls.OWMovement.Disable() has not been called.");
         //UnityEngine.Debug.Assert(!m_Inventory.enabled, "This will cause a leak and performance issues, PlayerControls.Inventory.Disable() has not been called.");
     }
 
@@ -315,72 +315,31 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Movement
-    private readonly InputActionMap m_Movement;
-    private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
-    private readonly InputAction m_Movement_Move;
-    public struct MovementActions
+    // OWMovement
+    private readonly InputActionMap m_OWMovement;
+    private List<IOWMovementActions> m_OWMovementActionsCallbackInterfaces = new List<IOWMovementActions>();
+    private readonly InputAction m_OWMovement_Move;
+    private readonly InputAction m_OWMovement_Attack;
+    private readonly InputAction m_OWMovement_Dash;
+    public struct OWMovementActions
     {
         private @PlayerControls m_Wrapper;
-        public MovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Movement_Move;
-        public InputActionMap Get() { return m_Wrapper.m_Movement; }
+        public OWMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_OWMovement_Move;
+        public InputAction @Attack => m_Wrapper.m_OWMovement_Attack;
+        public InputAction @Dash => m_Wrapper.m_OWMovement_Dash;
+        public InputActionMap Get() { return m_Wrapper.m_OWMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
-        public void AddCallbacks(IMovementActions instance)
+        public static implicit operator InputActionMap(OWMovementActions set) { return set.Get(); }
+        public void AddCallbacks(IOWMovementActions instance)
         {
-            if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_OWMovementActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_OWMovementActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IMovementActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IMovementActions instance)
-        {
-            if (m_Wrapper.m_MovementActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMovementActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MovementActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MovementActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public MovementActions @Movement => new MovementActions(this);
-
-    // Combat
-    private readonly InputActionMap m_Combat;
-    private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
-    private readonly InputAction m_Combat_Attack;
-    private readonly InputAction m_Combat_Dash;
-    public struct CombatActions
-    {
-        private @PlayerControls m_Wrapper;
-        public CombatActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Attack => m_Wrapper.m_Combat_Attack;
-        public InputAction @Dash => m_Wrapper.m_Combat_Dash;
-        public InputActionMap Get() { return m_Wrapper.m_Combat; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
-        public void AddCallbacks(ICombatActions instance)
-        {
-            if (instance == null || m_Wrapper.m_CombatActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CombatActionsCallbackInterfaces.Add(instance);
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -389,8 +348,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Dash.canceled += instance.OnDash;
         }
 
-        private void UnregisterCallbacks(ICombatActions instance)
+        private void UnregisterCallbacks(IOWMovementActions instance)
         {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -399,21 +361,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Dash.canceled -= instance.OnDash;
         }
 
-        public void RemoveCallbacks(ICombatActions instance)
+        public void RemoveCallbacks(IOWMovementActions instance)
         {
-            if (m_Wrapper.m_CombatActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_OWMovementActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICombatActions instance)
+        public void SetCallbacks(IOWMovementActions instance)
         {
-            foreach (var item in m_Wrapper.m_CombatActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_OWMovementActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CombatActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_OWMovementActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CombatActions @Combat => new CombatActions(this);
+    public OWMovementActions @OWMovement => new OWMovementActions(this);
 
     // Inventory
     private readonly InputActionMap m_Inventory;
@@ -460,12 +422,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public InventoryActions @Inventory => new InventoryActions(this);
-    public interface IMovementActions
+    public interface IOWMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-    }
-    public interface ICombatActions
-    {
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
     }
